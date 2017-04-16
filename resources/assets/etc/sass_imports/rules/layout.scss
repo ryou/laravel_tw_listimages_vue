@@ -1,0 +1,39 @@
+/***********************************************************************
+layout rule
+**********************************************************************/
+
+.l-header {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.l-content {
+  padding-top: 70px;
+  margin-bottom: 40px;
+}
+
+/* l-container
+----------------------------------------------------------*/
+.l-container {
+}
+@include mq-pc {
+  .l-container {
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 960px;
+  }
+}
+@include mq-tb {
+  .l-container {
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 760px;
+  }
+}
+@include mq-sp {
+  .l-container {
+    padding: 0 10px;
+  }
+}

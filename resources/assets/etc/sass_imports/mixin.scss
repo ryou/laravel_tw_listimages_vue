@@ -1,0 +1,31 @@
+@import 'variables';
+
+
+@mixin mq-pc {
+  @media only screen and (min-width: 1000px) {
+    @content
+  }
+};
+@mixin mq-tb {
+  @media only screen and (min-width: 768px) and (max-width: 999px) {
+    @content
+  }
+};
+@mixin mq-not-sp {
+  @media only screen and (min-width: 768px) {
+    @content
+  }
+};
+@mixin mq-sp {
+  @media only screen and (max-width: 767px) {
+    @content
+  }
+};
+
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

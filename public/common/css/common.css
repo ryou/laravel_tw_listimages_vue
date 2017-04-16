@@ -1,0 +1,426 @@
+/***********************************************************************
+layout rule
+**********************************************************************/
+.l-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.l-content {
+  margin-bottom: 40px; 
+  padding-top: 70px;
+}
+
+/* l-container
+----------------------------------------------------------*/
+@media only screen and (min-width: 1000px) {
+  .l-container {
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 960px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 999px) {
+  .l-container {
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 760px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .l-container {
+    padding: 0 10px;
+  }
+}
+/***********************************************************************
+utility rule
+**********************************************************************/
+/* clearfix
+----------------------------------------------------------------------*/
+.u-cf:after {
+  display: block;
+  clear: both;
+  content: '';
+}
+
+/* imghover
+----------------------------------------------------------------------*/
+.u-ov:hover img {
+  opacity: .8;
+}
+
+/* align
+----------------------------------------------------------*/
+.u-align-center {
+  text-align: center;
+}
+
+.u-align-right {
+  text-align: right;
+}
+
+.u-align-left {
+  text-align: left;
+}
+
+/* color
+----------------------------------------------------------*/
+.u-color-green {
+  color: #2ecc71;
+}
+
+/* font size
+----------------------------------------------------------*/
+.u-font-small {
+  font-size: 1.2rem;
+}
+
+/***********************************************************************
+module rule
+**********************************************************************/
+.m-nav .m-nav_main {
+  border-bottom: 1px solid #cccccc; 
+  background: #ffffff;
+}
+.m-nav .m-nav_main:after {
+  display: block;
+  clear: both;
+  content: '';
+}
+.m-nav .m-nav_btn {
+  display: inline-block; 
+  padding: 10px;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #3498db;
+  text-align: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.m-nav .m-nav_btn.m-nav_btn-list {
+  float: left;
+}
+.m-nav .m-nav_btn.m-nav_btn-logout {
+  float: right;
+}
+.m-nav .m-nav_icon {
+  font-size: 2.0rem;
+}
+
+.m-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+}
+.m-modal .m-modal_filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: table; 
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+}
+.m-modal .m-modal_mainWrapper {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.m-modal .m-modal_main {
+  display: inline-block;
+  background: #ffffff;
+}
+.m-modal .m-modal_title {
+  position: relative;
+  padding: 10px 40px;
+  border-bottom: 1px solid #cccccc; 
+  text-align: center;
+}
+.m-modal .m-modal_close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #999999;
+  cursor: pointer;
+}
+.m-modal .m-modal_content {
+  padding: 20px; 
+  text-align: left;
+}
+
+.m-list {
+  border: 1px solid #cccccc;
+}
+.m-list .m-list_item {
+  padding: 10px;
+}
+.m-list .m-list_item:not(:last-child) {
+  border-bottom: 1px solid #cccccc;
+}
+.m-list .m-list_item.m-list_item-btn {
+  cursor: pointer;
+}
+
+.m-imgList .m-imgList_listName {
+  margin-bottom: 20px; 
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+.m-imgList .m-imgList_loading {
+  text-align: center;
+}
+.m-imgList .m-imgList_images {
+  margin-bottom: 20px;
+}
+.m-imgList .m-imgList_imgItem {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; 
+  vertical-align: top;
+}
+@media only screen and (min-width: 768px) {
+  .m-imgList .m-imgList_imgItem {
+    padding: 2px; 
+    width: 25%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .m-imgList .m-imgList_imgItem {
+    padding: 1px; 
+    width: 33.3333333%;
+  }
+}
+.m-imgList .m-imgList_img {
+  position: relative; 
+  padding-top: 100%;
+  width: 100%;
+  background: #ffffff;
+  background-position: center top;
+  -webkit-background-size: cover;
+          background-size: cover;
+}
+
+.m-tweetModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+}
+.m-tweetModal .m-tweetModal_imgWrapper {
+  display: -webkit-box;
+  display: flex;
+  width: 100%;
+  height: 100%; 
+
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.m-tweetModal .m-tweetModal_img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.m-tweetModal .m-tweetModal_loading {
+  color: #ffffff; 
+  font-size: 4.0rem;
+}
+.m-tweetModal .m-tweetModal_close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  outline: none; 
+  border: none;
+  background: rgba(0, 0, 0, .8);
+  color: #ffffff;
+  font-size: 3.0rem;
+  line-height: 1.0;
+  cursor: pointer;
+}
+.m-tweetModal .m-tweetModal_navItem {
+  position: absolute;
+  top: 50%;
+  margin-top: -3.5rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, .8);
+  color: #ffffff;
+  font-size: 4.0rem;
+  line-height: 1.0;
+  cursor: pointer;
+}
+.m-tweetModal .m-tweetModal_navItem.m-tweetModal_navItem-next {
+  right: 0;
+}
+.m-tweetModal .m-tweetModal_textContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px 0; 
+  width: 100%;
+  background: rgba(0, 0, 0, .8);
+  color: #ffffff;
+}
+
+.m-tweet01.m-tweet01-textWhite {
+  color: #ffffff;
+}
+.m-tweet01.m-tweet01-textWhite a {
+  color: inherit;
+}
+.m-tweet01 .m-tweet01_row {
+  display: table;
+}
+.m-tweet01 .m-tweet01_leftCol {
+  display: table-cell;
+  padding-right: 10px;
+  width: 48px;
+}
+.m-tweet01 .m-tweet01_rightCol {
+  display: table-cell;
+}
+.m-tweet01 .m-tweet01_icon img {
+  width: 48px;
+  height: 48px; 
+  border-radius: 5px;
+}
+.m-tweet01 .m-tweet01_name {
+  font-weight: bold;
+}
+.m-tweet01 .m-tweet01_screenName {
+  font-size: 1.2rem;
+}
+.m-tweet01 .m-tweet01_date {
+  font-size: 1.1rem;
+}
+.m-tweet01 .m-tweet01_text {
+  font-size: 1.4rem;
+}
+.m-tweet01 .m-tweet01_actionBtns {
+  padding-top: 7px;
+}
+.m-tweet01 .m-tweet01_actionBtn {
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: top;
+}
+
+.m-btn {
+  padding: 1.0rem 2.0rem;
+  outline: none; 
+  border: none;
+  border-radius: 5px;
+  background: #3498db;
+  color: #ffffff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.m-btn.m-btn-full {
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; 
+  width: 100%;
+}
+
+.m-actionBtn {
+  display: inline-block;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  vertical-align: top; 
+  text-align: center;
+  font-size: 1.0rem;
+  cursor: pointer;
+}
+.m-actionBtn i {
+  font-size: 1.8rem;
+}
+.m-actionBtn.is-active {
+  color: #3498db;
+}
+
+.m-alert {
+  padding: 1.0rem; 
+  border: 1px solid #e74c3c;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #e74c3c;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: .2s;
+          transition: .2s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/***********************************************************************
+theme rule
+**********************************************************************/
+/***********************************************************************
+common
+**********************************************************************/
+#GHead {
+  position: fixed;
+  padding: 5px 0;
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+  background: #ffffff;
+}
+#GHead .gNav {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+#GHead .gNav > li {
+  display: table-cell;
+  width: 33.33333%;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1.0rem;
+}
+#GHead .gNav > li .icon {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+#Contents {
+  padding-top: 76px;
+  padding-bottom: 40px;
+}
+#Contents .postBox {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background: #ffffff;
+}
+#Contents .postBox textarea {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: .5em;
+  width: 100%;
+  border-color: #cccccc;
+  border-radius: 3px;
+  font-size: 1.6rem;
+  resize: vertical;
+}
+#Contents .loginBlock {
+  padding-top: 20px;
+}
