@@ -25,10 +25,12 @@
             <i class="m-nav_icon fa fa-list"></i><br>
             リスト
           </button>
+          @if (config('app.use_test_account') === false)
           <a class="m-nav_btn m-nav_btn-logout" href="/auth/logout">
             <i class="m-nav_icon fa fa-sign-out"></i><br>
             ログアウト
           </a>
+          @endif
         </div>
       </div>
     </nav>
