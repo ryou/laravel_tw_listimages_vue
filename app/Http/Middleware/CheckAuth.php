@@ -17,7 +17,7 @@ class CheckAuth
      */
     public function handle($request, Closure $next)
     {
-        if (Session::has('access_token'))
+        if (Session::has('access_token') || config('app.use_test_account'))
         {
             return $next($request);
         }

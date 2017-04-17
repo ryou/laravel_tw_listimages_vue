@@ -232,4 +232,6 @@ return [
 
     ],
 
+    'use_test_account' => env('USE_TEST_ACCOUNT', false)
+
 ];
