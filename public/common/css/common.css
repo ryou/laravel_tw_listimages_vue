@@ -440,9 +440,15 @@ module rule
   font-size: 18px;
   line-height: 1.0;
 }
+.m-appBox .m-appBox_head a {
+  color: inherit;
+}
+.m-appBox .m-appBox_head .fa {
+  font-size: 23px;
+}
 .m-appBox .m-appBox_headLeft {
   display: table-cell;
-  width: 50px;
+  width: 45px;
   height: 45px; 
   vertical-align: middle;
   text-align: center;
@@ -456,7 +462,7 @@ module rule
 }
 .m-appBox .m-appBox_headRight {
   display: table-cell;
-  width: 50px;
+  width: 45px;
   height: 45px; 
   vertical-align: middle;
   text-align: center;

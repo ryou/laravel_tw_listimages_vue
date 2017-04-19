@@ -327,12 +327,18 @@ module rule
     color: #fff;
     line-height: 1.0;
     table-layout: fixed;
+    a {
+      color: inherit;
+    }
+    .fa {
+      font-size: 23px;
+    }
   }
   .m-appBox_headLeft {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    width: 50px;
+    width: 45px;
     height: 45px;
   }
   .m-appBox_headTitle {
@@ -346,7 +352,7 @@ module rule
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    width: 50px;
+    width: 45px;
     height: 45px;
   }
   .m-appBox_content {

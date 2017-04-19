@@ -8,7 +8,7 @@
           <div class="m-appBox_head">
             <div class="m-appBox_headLeft"></div>
             <div class="m-appBox_headTitle">リスト一覧</div>
-            <div class="m-appBox_headRight"></div>
+            <div class="m-appBox_headRight"><a href="/auth/logout"><i class="fa fa-sign-out"></i></a></div>
           </div>
           <div class="m-appBox_content">
             <ul class="m-list">
