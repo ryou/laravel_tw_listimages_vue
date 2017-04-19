@@ -15,17 +15,25 @@ layout rule
 
 .l-mainCol {
   position: absolute;
+  z-index: 10;
   top: 0;
   left: 0;
   bottom: 0;
-  width: 280px;
+  right: 0;
+  .is-split & {
+    width: 280px;
+    right: auto;
+  }
 }
 .l-subCol {
   position: absolute;
-  left: 280px;
+  left: 0;
   top: 0;
   right: 0;
   bottom: 0;
+  .is-split & {
+    left: 280px;
+  }
 }
 
 .l-header {

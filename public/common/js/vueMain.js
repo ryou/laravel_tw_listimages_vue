@@ -234,6 +234,8 @@
   var app = new Vue({
     el: '#app',
     data: {
+      mainColIsVisible: true,
+      isSplitView: true,
       imgListIsVisible: false,
       tweetModalIsVisible: false,
       listData: {
@@ -246,6 +248,20 @@
         index: 0
       }
     },
+    computed: {
+      classObj: function() {
+        return {
+          'is-split': this.isSplitView
+        };
+      }
+    },
+    created: function() {
+      if ($(window).width() >= 768) {
+        this.isSplitView = true;
+      } else {
+        this.isSplitView = false;
+      }
+    },
     methods: {
       setListData: function(data) {
         this.listData.isLoading = false;
@@ -254,6 +270,7 @@
       showList: function(item) {
         this.imgListIsVisible = true;
         this.selectedList = item;
+        if (this.isSplitView === false) this.mainColIsVisible = false;
       },
       showTweetModal: function(status, index) {
         this.tweetModalProps.status = status;

@@ -110,7 +110,7 @@ module rule
       width: 25%;
       padding: 2px;
     }
-    @include mq-tb {
+    @include mq-not-pc {
       width: 33.3333333%;
       padding: 1px;
     }
@@ -314,12 +314,12 @@ module rule
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }
-  &.m-appBox-rightBorder {
+  .is-split & {
     .m-appBox_head {
-      border-right: 1px solid #fff;
+      border-left: 1px solid #fff;
     }
     .m-appBox_content {
-      border-right: 1px solid #ccc;
+      border-left: 1px solid #ccc;
     }
   }
 }

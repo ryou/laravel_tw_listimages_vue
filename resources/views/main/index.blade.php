@@ -2,9 +2,9 @@
 
 @section('body')
   <div class="l-wrapper">
-    <div id="app">
-      <div class="l-mainCol">
-        <div class="m-appBox m-appBox-rightBorder">
+    <div id="app" :class="classObj">
+      <div v-show="mainColIsVisible" class="l-mainCol">
+        <div class="m-appBox">
           <div class="m-appBox_head"></div>
           <div class="m-appBox_content">
             <ul class="m-list">

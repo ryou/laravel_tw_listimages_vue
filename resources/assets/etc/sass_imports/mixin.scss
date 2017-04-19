@@ -6,6 +6,11 @@
     @content
   }
 };
+@mixin mq-not-pc {
+  @media only screen and (max-width: 999px) {
+    @content
+  }
+};
 @mixin mq-tb {
   @media only screen and (min-width: 768px) and (max-width: 999px) {
     @content

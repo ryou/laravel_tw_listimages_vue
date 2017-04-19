@@ -12,8 +12,13 @@ layout rule
 .l-mainCol {
   position: absolute;
   top: 0;
+  right: 0; 
   bottom: 0;
   left: 0;
+  z-index: 10;
+}
+.is-split .l-mainCol {
+  right: auto; 
   width: 280px;
 }
 
@@ -22,6 +27,9 @@ layout rule
   top: 0;
   right: 0;
   bottom: 0; 
+  left: 0;
+}
+.is-split .l-subCol {
   left: 280px;
 }
 
@@ -214,7 +222,7 @@ module rule
     width: 25%;
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 999px) {
+@media only screen and (max-width: 999px) {
   .m-imgList .m-imgList_imgItem {
     padding: 1px; 
     width: 33.3333333%;
@@ -409,11 +417,11 @@ module rule
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
-.m-appBox.m-appBox-rightBorder .m-appBox_head {
-  border-right: 1px solid #ffffff;
+.is-split .m-appBox .m-appBox_head {
+  border-left: 1px solid #ffffff;
 }
-.m-appBox.m-appBox-rightBorder .m-appBox_content {
-  border-right: 1px solid #cccccc;
+.is-split .m-appBox .m-appBox_content {
+  border-left: 1px solid #cccccc;
 }
 
 .fade-enter-active,
