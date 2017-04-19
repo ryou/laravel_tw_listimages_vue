@@ -302,6 +302,27 @@ module rule
     top: 0;
     width: 100%;
     box-sizing: border-box;
+    display: table;
+  }
+  .m-appBox_headLeft {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 50px;
+  }
+  .m-appBox_headTitle {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.0;
+    color: #fff;
+  }
+  .m-appBox_headRight {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 50px;
   }
   .m-appBox_content {
     position: absolute;

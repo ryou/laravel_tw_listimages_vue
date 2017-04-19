@@ -242,7 +242,7 @@
         isLoading: true,
         list: []
       },
-      selectedList: null,
+      selectedList: {name: ''},
       tweetModalProps: {
         status: null,
         index: 0

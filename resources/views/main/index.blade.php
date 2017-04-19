@@ -5,7 +5,11 @@
     <div id="app" :class="classObj">
       <div v-show="mainColIsVisible" class="l-mainCol">
         <div class="m-appBox">
-          <div class="m-appBox_head"></div>
+          <div class="m-appBox_head">
+            <div class="m-appBox_headLeft"></div>
+            <div class="m-appBox_headTitle">リスト一覧</div>
+            <div class="m-appBox_headRight"></div>
+          </div>
           <div class="m-appBox_content">
             <ul class="m-list">
               <li v-for="item in listData.list" class="m-list_item m-list_item-btn" @@click="showList(item)">@{{ item.name }}</li>
@@ -15,7 +19,11 @@
       </div>
       <div class="l-subCol">
         <div class="m-appBox">
-          <div class="m-appBox_head"></div>
+          <div class="m-appBox_head">
+            <div class="m-appBox_headLeft"></div>
+            <div class="m-appBox_headTitle">@{{ selectedList.name }}</div>
+            <div class="m-appBox_headRight"></div>
+          </div>
           <div class="m-appBox_content">
             <img-list-component @@show-modal="showTweetModal" v-if="imgListIsVisible" :list="selectedList"></img-list-component>
           </div>
@@ -31,7 +39,6 @@
   <script type="text/x-template" id="img-list-component-template">
     <transition name="fade">
       <div class="m-imgList">
-        <p class="m-imgList_listName">@{{ list.name }}</p>
         <transition name="fade">
           <div class="m-imgList_content" v-show="dispImages">
             <ul class="m-imgList_images">
