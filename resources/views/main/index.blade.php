@@ -23,9 +23,6 @@
       </div>
       <tweet-modal-component v-if="tweetModalIsVisible" :status="tweetModalProps.status" :index="tweetModalProps.index" @@hide-modal="hideTweetModal"></tweet-modal-component>
       {{--
-      <div class="l-header">
-        <nav-component @@show-list-modal="showListModal"></nav-component>
-      </div>
       <div class="l-content">
         <div class="l-container">
           <img-list-component @@show-modal="showTweetModal" v-if="imgListIsVisible" :list="selectedList"></img-list-component>

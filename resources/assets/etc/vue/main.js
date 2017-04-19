@@ -2,7 +2,6 @@
   var app = new Vue({
     el: '#app',
     data: {
-      listModalIsVisible: true,
       imgListIsVisible: false,
       tweetModalIsVisible: false,
       listData: {
@@ -16,12 +15,6 @@
       }
     },
     methods: {
-      showListModal: function() {
-        this.listModalIsVisible = true;
-      },
-      hideListModal: function() {
-        this.listModalIsVisible = false;
-      },
       setListData: function(data) {
         this.listData.isLoading = false;
         this.listData.list = data;

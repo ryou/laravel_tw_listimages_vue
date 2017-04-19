@@ -1,23 +1,4 @@
 ;(function() {
-  Vue.component('list-modal-component', {
-    data: function() {
-      return {};
-    },
-    props: ['listData'],
-    template: '#list-modal-component-template',
-    methods: {
-      hideModal: function() {
-        this.$emit('hide-modal');
-      },
-      selectList: function(item) {
-        this.$emit('select-list', item);
-        this.$emit('hide-modal');
-      }
-    }
-  });
-})();
-
-;(function() {
   Vue.component('nav-component', {
     data: function() {
       return {
@@ -268,7 +249,6 @@
   var app = new Vue({
     el: '#app',
     data: {
-      listModalIsVisible: true,
       imgListIsVisible: false,
       tweetModalIsVisible: false,
       listData: {
@@ -282,12 +262,6 @@
       }
     },
     methods: {
-      showListModal: function() {
-        this.listModalIsVisible = true;
-      },
-      hideListModal: function() {
-        this.listModalIsVisible = false;
-      },
       setListData: function(data) {
         this.listData.isLoading = false;
         this.listData.list = data;
