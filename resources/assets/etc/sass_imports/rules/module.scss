@@ -81,11 +81,20 @@ module rule
 .m-list {
   background: #fff;
   .m-list_item {
-    padding: 10px;
+    position: relative;
+    padding: 15px 10px;
     border-bottom: 1px solid #ccc;
     &.m-list_item-btn {
       cursor: pointer;
     }
+  }
+  .m-list_arrowIcn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    font-size: 20px;
+    margin-top: -10px;
+    line-height: 1.0;
   }
 }
 
