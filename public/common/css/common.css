@@ -437,7 +437,7 @@ module rule
   background: #3498db;
   color: #ffffff;
   table-layout: fixed; 
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.0;
 }
 .m-appBox .m-appBox_headLeft {
