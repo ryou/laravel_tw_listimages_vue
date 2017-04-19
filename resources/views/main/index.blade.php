@@ -1,19 +1,21 @@
 @extends('layouts.meta')
 
 @section('body')
-  <div id="app">
-    <div class="l-header">
-      <nav-component @@show-list-modal="showListModal"></nav-component>
-    </div>
-    <div class="l-content">
-      <div class="l-container">
-        <img-list-component @@show-modal="showTweetModal" v-if="imgListIsVisible" :list="selectedList"></img-list-component>
+  <div class="l-wrapper">
+    <div id="app">
+      <div class="l-header">
+        <nav-component @@show-list-modal="showListModal"></nav-component>
       </div>
+      <div class="l-content">
+        <div class="l-container">
+          <img-list-component @@show-modal="showTweetModal" v-if="imgListIsVisible" :list="selectedList"></img-list-component>
+        </div>
+      </div>
+      <div class="l-footer">
+      </div>
+      <list-modal-component @@select-list="showList" :list-data="listData" v-show="listModalIsVisible" @@hide-modal="hideListModal"></list-modal-component>
+      <tweet-modal-component v-if="tweetModalIsVisible" :status="tweetModalProps.status" :index="tweetModalProps.index" @@hide-modal="hideTweetModal"></tweet-modal-component>
     </div>
-    <div class="l-footer">
-    </div>
-    <list-modal-component @@select-list="showList" :list-data="listData" v-show="listModalIsVisible" @@hide-modal="hideListModal"></list-modal-component>
-    <tweet-modal-component v-if="tweetModalIsVisible" :status="tweetModalProps.status" :index="tweetModalProps.index" @@hide-modal="hideTweetModal"></tweet-modal-component>
   </div>
 
   {{-- template --}}
