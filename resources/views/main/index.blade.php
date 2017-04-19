@@ -20,7 +20,7 @@
       <div class="l-subCol">
         <div class="m-appBox">
           <div class="m-appBox_head">
-            <div class="m-appBox_headLeft"></div>
+            <div class="m-appBox_headLeft"><i @@click="showListSelector" v-if="!isSplitView" class="fa fa-list"></i></div>
             <div class="m-appBox_headTitle" @@click="scrollToTop">@{{ selectedList.name }}</div>
             <div class="m-appBox_headRight"></div>
           </div>
@@ -112,7 +112,7 @@
     </transition>
   </script>
   <script type="text/x-template" id="ajax-btn01-component-template">
-    <button class="m-btn m-btn-full" @@click="startAjax"><span v-show="!isLoading">読み込み</span><i v-show="isLoading" class="fa fa-circle-o-notch fa-spin"></i></button>
+    <button class="m-btn m-btn-full" @@click="startAjax"><span v-show="!isLoading">更に読み込む</span><i v-show="isLoading" class="fa fa-circle-o-notch fa-spin"></i></button>
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/common/js/lib/jquery.min.js"><\\/script>')</script>

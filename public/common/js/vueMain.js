@@ -283,6 +283,9 @@
         this.selectedList = item;
         if (this.isSplitView === false) this.mainColIsVisible = false;
       },
+      showListSelector: function() {
+        this.mainColIsVisible = true;
+      },
       showTweetModal: function(status, index) {
         this.tweetModalProps.status = status;
         this.tweetModalProps.index = index;
