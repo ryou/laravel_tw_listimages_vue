@@ -122,15 +122,15 @@ module rule
     vertical-align: top;
     box-sizing: border-box;
     @include mq-pc {
-      width: 25%;
-      padding: 2px;
-    }
-    @media only screen and (min-width: 1400px) {
       width: 20%;
       padding: 2px;
     }
+    @media only screen and (min-width: 1400px) {
+      width: 16.6666666%;
+      padding: 2px;
+    }
     @include mq-not-pc {
-      width: 33.3333333%;
+      width: 25%;
       padding: 1px;
     }
   }
@@ -139,7 +139,7 @@ module rule
     background-size: cover;
     padding-top: 100%;
     width: 100%;
-    background: #fff;
+    background-color: #fff;
     position: relative;
   }
   .m-imgList_loadBtn {
@@ -316,7 +316,7 @@ module rule
   bottom: 0;
   .m-appBox_head {
     background: #3498db;
-    height: 50px;
+    height: 45px;
     position: absolute;
     left: 0;
     top: 0;
@@ -333,26 +333,26 @@ module rule
     vertical-align: middle;
     text-align: center;
     width: 50px;
-    height: 50px;
+    height: 45px;
   }
   .m-appBox_headTitle {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     line-height: 1.0;
-    height: 50px;
+    height: 45px;
   }
   .m-appBox_headRight {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
     width: 50px;
-    height: 50px;
+    height: 45px;
   }
   .m-appBox_content {
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 45px;
     right: 0;
     bottom: 0;
     overflow: scroll;
