@@ -125,6 +125,10 @@ module rule
       width: 25%;
       padding: 2px;
     }
+    @media only screen and (min-width: 1400px) {
+      width: 20%;
+      padding: 2px;
+    }
     @include mq-not-pc {
       width: 33.3333333%;
       padding: 1px;

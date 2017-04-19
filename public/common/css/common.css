@@ -239,6 +239,12 @@ module rule
     width: 25%;
   }
 }
+@media only screen and (min-width: 1400px) {
+  .m-imgList .m-imgList_imgItem {
+    padding: 2px; 
+    width: 20%;
+  }
+}
 @media only screen and (max-width: 999px) {
   .m-imgList .m-imgList_imgItem {
     padding: 1px; 
