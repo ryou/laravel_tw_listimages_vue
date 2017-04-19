@@ -21,7 +21,7 @@
         <div class="m-appBox">
           <div class="m-appBox_head">
             <div class="m-appBox_headLeft"></div>
-            <div class="m-appBox_headTitle">@{{ selectedList.name }}</div>
+            <div class="m-appBox_headTitle" @@click="scrollToTop">@{{ selectedList.name }}</div>
             <div class="m-appBox_headRight"></div>
           </div>
           <div class="m-appBox_content">

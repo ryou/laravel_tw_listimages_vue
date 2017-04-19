@@ -290,6 +290,10 @@
       },
       hideTweetModal: function() {
         this.tweetModalIsVisible = false;
+      },
+      scrollToTop: function() {
+        var duration = 300;
+        $('.l-subCol .m-appBox_content').stop().animate({scrollTop:0}, duration, 'swing');
       }
     }
   });
