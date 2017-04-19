@@ -61,7 +61,6 @@
     <transition name="fade">
       <div class="m-imgList">
         <p class="m-imgList_listName">@{{ list.name }}</p>
-        <div v-show="!dispImages" class="m-imgList_loading"><i class="fa fa-3x fa-spinner fa-pulse"></i></div>
         <transition name="fade">
           <div class="m-imgList_content" v-show="dispImages">
             <ul class="m-imgList_images">
@@ -72,6 +71,7 @@
             </div>
           </div>
         </transition>
+        <div v-show="!dispImages" class="m-imgList_loading"><i class="fa fa-3x fa-spinner fa-pulse"></i></div>
       </div>
     </transition>
   </script>
