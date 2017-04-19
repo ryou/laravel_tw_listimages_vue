@@ -3,6 +3,26 @@
 @section('body')
   <div class="l-wrapper">
     <div id="app">
+      <div class="l-mainCol">
+        <div class="m-appBox m-appBox-rightBorder">
+          <div class="m-appBox_head"></div>
+          <div class="m-appBox_content">
+            <ul class="m-list">
+              <li v-for="item in listData.list" class="m-list_item m-list_item-btn" @@click="showList(item)">@{{ item.name }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="l-subCol">
+        <div class="m-appBox">
+          <div class="m-appBox_head"></div>
+          <div class="m-appBox_content">
+            <img-list-component @@show-modal="showTweetModal" v-if="imgListIsVisible" :list="selectedList"></img-list-component>
+          </div>
+        </div>
+      </div>
+      <tweet-modal-component v-if="tweetModalIsVisible" :status="tweetModalProps.status" :index="tweetModalProps.index" @@hide-modal="hideTweetModal"></tweet-modal-component>
+      {{--
       <div class="l-header">
         <nav-component @@show-list-modal="showListModal"></nav-component>
       </div>
@@ -14,11 +34,13 @@
       <div class="l-footer">
       </div>
       <list-modal-component @@select-list="showList" :list-data="listData" v-show="listModalIsVisible" @@hide-modal="hideListModal"></list-modal-component>
-      <tweet-modal-component v-if="tweetModalIsVisible" :status="tweetModalProps.status" :index="tweetModalProps.index" @@hide-modal="hideTweetModal"></tweet-modal-component>
+       --}}
     </div>
   </div>
 
   {{-- template --}}
+  <script type="text/x-template" id="list-component-template">
+  </script>
   <script type="text/x-template" id="nav-component-template">
     <nav class="m-nav">
       <div class="m-nav_main">

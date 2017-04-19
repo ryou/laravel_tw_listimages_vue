@@ -5,12 +5,24 @@ layout rule
   position: absolute;
   top: 0;
   right: 0;
+  bottom: 0; 
+  left: 0;
+}
+
+.l-mainCol {
+  position: absolute;
+  top: 0;
   bottom: 0;
   left: 0;
-  overflow: scroll;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+  width: 280px;
+}
+
+.l-subCol {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0; 
+  left: 280px;
 }
 
 .l-header {
@@ -168,12 +180,10 @@ module rule
 }
 
 .m-list {
-  border: 1px solid #cccccc;
+  background: #ffffff;
 }
 .m-list .m-list_item {
   padding: 10px;
-}
-.m-list .m-list_item:not(:last-child) {
   border-bottom: 1px solid #cccccc;
 }
 .m-list .m-list_item.m-list_item-btn {
@@ -198,13 +208,13 @@ module rule
           box-sizing: border-box; 
   vertical-align: top;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1000px) {
   .m-imgList .m-imgList_imgItem {
     padding: 2px; 
     width: 25%;
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 768px) and (max-width: 999px) {
   .m-imgList .m-imgList_imgItem {
     padding: 1px; 
     width: 33.3333333%;
@@ -369,6 +379,41 @@ module rule
   border-radius: 5px;
   background: #ffffff;
   color: #e74c3c;
+}
+
+.m-appBox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0; 
+  left: 0;
+}
+.m-appBox .m-appBox_head {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; 
+  width: 100%;
+  height: 50px;
+  background: #3498db;
+}
+.m-appBox .m-appBox_content {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.m-appBox.m-appBox-rightBorder .m-appBox_head {
+  border-right: 1px solid #ffffff;
+}
+.m-appBox.m-appBox-rightBorder .m-appBox_content {
+  border-right: 1px solid #cccccc;
 }
 
 .fade-enter-active,

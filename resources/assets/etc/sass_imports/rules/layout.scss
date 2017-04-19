@@ -8,10 +8,24 @@ layout rule
   top: 0;
   right: 0;
   bottom: 0;
-  overflow: scroll;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
+  // overflow: scroll;
+  // overflow-y: scroll;
+  // overflow-x: hidden;
+}
+
+.l-mainCol {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+}
+.l-subCol {
+  position: absolute;
+  left: 280px;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .l-header {
