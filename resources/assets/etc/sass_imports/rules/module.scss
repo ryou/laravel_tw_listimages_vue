@@ -90,6 +90,7 @@ module rule
 }
 
 .m-imgList {
+  padding-bottom: 20px;
   .m-imgList_listName {
     font-size: 2.5rem;
     text-align: center;
@@ -97,6 +98,7 @@ module rule
     margin-bottom: 20px;
   }
   .m-imgList_loading {
+    padding: 20px 0;
     text-align: center;
   }
   .m-imgList_images {
@@ -124,6 +126,7 @@ module rule
     position: relative;
   }
   .m-imgList_loadBtn {
+    padding: 0 10px;
   }
 }
 
@@ -251,7 +254,7 @@ module rule
   border: none;
   border-radius: 5px;
   color: #fff;
-  padding: 1.0rem 2.0rem;
+  padding: 1.5rem 2.0rem;
   font-size: 1.6rem;
   cursor: pointer;
   outline: none;

@@ -198,6 +198,9 @@ module rule
   cursor: pointer;
 }
 
+.m-imgList {
+  padding-bottom: 20px;
+}
 .m-imgList .m-imgList_listName {
   margin-bottom: 20px; 
   text-align: center;
@@ -205,6 +208,7 @@ module rule
   font-size: 2.5rem;
 }
 .m-imgList .m-imgList_loading {
+  padding: 20px 0;
   text-align: center;
 }
 .m-imgList .m-imgList_images {
@@ -236,6 +240,9 @@ module rule
   background-position: center top;
   -webkit-background-size: cover;
           background-size: cover;
+}
+.m-imgList .m-imgList_loadBtn {
+  padding: 0 10px;
 }
 
 .m-tweetModal {
@@ -347,7 +354,7 @@ module rule
 }
 
 .m-btn {
-  padding: 1.0rem 2.0rem;
+  padding: 1.5rem 2.0rem;
   outline: none; 
   border: none;
   border-radius: 5px;
