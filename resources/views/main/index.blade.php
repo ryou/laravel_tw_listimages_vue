@@ -22,61 +22,11 @@
         </div>
       </div>
       <tweet-modal-component v-if="tweetModalIsVisible" :status="tweetModalProps.status" :index="tweetModalProps.index" @@hide-modal="hideTweetModal"></tweet-modal-component>
-      {{--
-      <div class="l-content">
-        <div class="l-container">
-          <img-list-component @@show-modal="showTweetModal" v-if="imgListIsVisible" :list="selectedList"></img-list-component>
-        </div>
-      </div>
-      <div class="l-footer">
-      </div>
-      <list-modal-component @@select-list="showList" :list-data="listData" v-show="listModalIsVisible" @@hide-modal="hideListModal"></list-modal-component>
-       --}}
     </div>
   </div>
 
   {{-- template --}}
   <script type="text/x-template" id="list-component-template">
-  </script>
-  <script type="text/x-template" id="nav-component-template">
-    <nav class="m-nav">
-      <div class="m-nav_main">
-        <div class="l-container">
-          <button class="m-nav_btn m-nav_btn-list" @@click="showListModal">
-            <i class="m-nav_icon fa fa-list"></i><br>
-            リスト
-          </button>
-          @if (config('app.use_test_account') === false)
-          <a class="m-nav_btn m-nav_btn-logout" href="/auth/logout">
-            <i class="m-nav_icon fa fa-sign-out"></i><br>
-            ログアウト
-          </a>
-          @endif
-        </div>
-      </div>
-    </nav>
-  </script>
-  <script type="text/x-template" id="list-modal-component-template">
-    <transition name="fade">
-      <div class="m-modal">
-        <div class="m-modal_filter" @@click="hideModal">
-          <div class="m-modal_mainWrapper">
-            <div class="m-modal_main" @@click.stop>
-              <div class="m-modal_title">
-                表示したいリストを選択して下さい。
-                <div class="m-modal_close" @@click="hideModal"><i class="fa fa-times"></i></div>
-              </div>
-              <div class="m-modal_content">
-                <div v-show="listData.isLoading" class="u-align-center"><i class="fa fa-spinner fa-pulse fa-2x"></i></div>
-                <ul class="m-list" v-show="!listData.isLoading">
-                  <li v-for="item in listData.list" class="m-list_item m-list_item-btn" @@click="selectList(item)">@{{ item.name }}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition>
   </script>
   <script type="text/x-template" id="img-list-component-template">
     <transition name="fade">
