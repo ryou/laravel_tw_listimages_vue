@@ -442,19 +442,22 @@ module rule
 }
 .m-appBox .m-appBox_headLeft {
   display: table-cell;
-  width: 50px; 
+  width: 50px;
+  height: 50px; 
   vertical-align: middle;
   text-align: center;
 }
 .m-appBox .m-appBox_headTitle {
   display: table-cell;
+  height: 50px; 
   vertical-align: middle;
   text-align: center;
   line-height: 1.0;
 }
 .m-appBox .m-appBox_headRight {
   display: table-cell;
-  width: 50px; 
+  width: 50px;
+  height: 50px; 
   vertical-align: middle;
   text-align: center;
 }
