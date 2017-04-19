@@ -198,11 +198,15 @@ module rule
 .m-list .m-list_item.m-list_item-btn {
   cursor: pointer;
 }
+.m-list .m-list_item.is-active {
+  background: #e1f0fa;
+}
 .m-list .m-list_arrowIcn {
   position: absolute;
   top: 50%;
   right: 10px;
   margin-top: -10px;
+  color: #cccccc; 
   font-size: 20px;
   line-height: 1.0;
 }

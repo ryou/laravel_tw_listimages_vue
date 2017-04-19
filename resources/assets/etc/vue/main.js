@@ -33,9 +33,20 @@
     methods: {
       setListData: function(data) {
         this.listData.isLoading = false;
+
+        // 選択状態もデータに持たせるために追加する
+        data.forEach(function(e, i, a) {
+          e.isSelected = false;
+        });
         this.listData.list = data;
       },
       showList: function(item) {
+        // TODO: 選択状態を保持する処理に関して、もっと簡潔に書けるはず
+        this.listData.list.forEach(function(e, i, a) {
+          e.isSelected = false;
+        });
+        item.isSelected = true;
+
         this.imgListIsVisible = true;
         this.selectedList = item;
         if (this.isSplitView === false) this.mainColIsVisible = false;

@@ -87,6 +87,9 @@ module rule
     &.m-list_item-btn {
       cursor: pointer;
     }
+    &.is-active {
+      background: lighten(#3498db, 40%);
+    }
   }
   .m-list_arrowIcn {
     position: absolute;
@@ -95,6 +98,7 @@ module rule
     font-size: 20px;
     margin-top: -10px;
     line-height: 1.0;
+    color: #ccc;
   }
 }
 

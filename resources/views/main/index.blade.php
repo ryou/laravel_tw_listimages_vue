@@ -12,7 +12,7 @@
           </div>
           <div class="m-appBox_content">
             <ul class="m-list">
-              <li v-for="item in listData.list" class="m-list_item m-list_item-btn" @@click="showList(item)">@{{ item.name }}<span class="m-list_arrowIcn"><i class="fa fa-chevron-right"></i></span></li>
+              <li v-for="item in listData.list" class="m-list_item m-list_item-btn" :class="{'is-active': item.isSelected}" @@click="showList(item)">@{{ item.name }}<span class="m-list_arrowIcn"><i class="fa fa-chevron-right"></i></span></li>
             </ul>
           </div>
         </div>
