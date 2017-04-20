@@ -3,7 +3,7 @@
 @section('body')
   <div class="l-wrapper">
     <div id="app" :class="classObj">
-      <transition name="slide">
+      <transition name="slideleft">
         <div v-show="mainColIsVisible" class="l-mainCol">
           <div class="m-appBox">
             <div class="m-appBox_head">
@@ -67,54 +67,62 @@
           <img v-show="!imgIsLoading" :src="img.media_url" class="m-tweetModal_img" @@click.stop="toggleBlob" @@load="completeLoading">
           <i v-show="imgIsLoading" class="m-tweetModal_loading fa fa-spinner fa-pulse"></i>
         </div>
-        <transition name="fade">
-          <div v-show="blobIsVisible" class="m-tweetModal_blob" @@click.stop>
-            <button class="m-tweetModal_close" @@click="hideModal"><i class="fa fa-times"></i></button>
+
+          <div class="m-tweetModal_blob" @@click.stop>
+            <transition name="slideup">
+              <button v-show="blobIsVisible" class="m-tweetModal_close" @@click="hideModal"><i class="fa fa-times"></i></button>
+            </transition>
             <div class="m-tweetModal_nav">
-              <div v-show="prevImgIsExist" class="m-tweetModal_navItem m-tweetModal_navItem-prev" @@click="prevImg"><i class="fa fa-chevron-left"></i></div>
-              <div v-show="nextImgIsExist" class="m-tweetModal_navItem m-tweetModal_navItem-next" @@click="nextImg"><i class="fa fa-chevron-right"></i></div>
+              <transition name="slideleft">
+                <div v-show="prevImgIsExist && blobIsVisible" class="m-tweetModal_navItem m-tweetModal_navItem-prev" @@click="prevImg"><i class="fa fa-chevron-left"></i></div>
+              </transition>
+              <transition name="slideright">
+                <div v-show="nextImgIsExist && blobIsVisible" class="m-tweetModal_navItem m-tweetModal_navItem-next" @@click="nextImg"><i class="fa fa-chevron-right"></i></div>
+              </transition>
             </div>
-            <div class="m-tweetModal_textContainer">
-              <div class="l-container">
-                <div class="m-tweet01 m-tweet01-textWhite">
-                  <div v-if="status.retweet_user" class="m-tweet01_row">
-                    <div class="m-tweet01_leftCol u-align-right">
-                      <i class="fa fa-retweet u-color-green"></i>
-                    </div>
-                    <div class="m-tweet01_rightCol">
-                      <p class="u-font-small"><a :href="'https://twitter.com/' + status.retweet_user.screen_name" target="_blank">@{{ status.retweet_user.name }}</a>さんがリツイート</p>
-                    </div>
-                  </div>
-                  <div class="m-tweet01_row">
-                    <div class="m-tweet01_leftCol">
-                      <div class="m-tweet01_icon"><a :href="'https://twitter.com/' + status.user.screen_name"><img :src="status.user.profile_image_url"></a></div>
-                    </div>
-                    <div class="m-tweet01_rightCol">
-                      <div class="m-tweet01_userInfo">
-                        <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_name">@{{ status.user.name }}</a>
-                        <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_screenName">@@{{ status.user.screen_name }}</a><!--
-                        -->・<a :href="'https://twitter.com/' + status.user.screen_name + '/status/' + status.id_str" target="_blank" class="m-tweet01_date">@{{ dateStr }}</a>
+            <transition name="slidedown">
+              <div v-show="blobIsVisible" class="m-tweetModal_textContainer">
+                <div class="l-container">
+                  <div class="m-tweet01 m-tweet01-textWhite">
+                    <div v-if="status.retweet_user" class="m-tweet01_row">
+                      <div class="m-tweet01_leftCol u-align-right">
+                        <i class="fa fa-retweet u-color-green"></i>
                       </div>
-                      <p class="m-tweet01_text">@{{ status.text }}</p>
+                      <div class="m-tweet01_rightCol">
+                        <p class="u-font-small"><a :href="'https://twitter.com/' + status.retweet_user.screen_name" target="_blank">@{{ status.retweet_user.name }}</a>さんがリツイート</p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="m-tweet01_row">
-                    <div class="m-tweet01_leftCol"></div>
-                    <div class="m-tweet01_rightCol">
-                      <ul class="m-tweet01_actionBtns">
-                        <li class="m-tweet01_actionBtn"><action-btn-component icon="fa-retweet" :initial-state="status.retweeted" :activate-url="retweetUrl" :deactivate-url="unretweetUrl" text="リツイート"></action-btn-component></li>
-                        <li class="m-tweet01_actionBtn"><action-btn-component icon="fa-heart" :initial-state="status.favorited" :activate-url="createFavUrl" :deactivate-url="destroyFavUrl" text="いいね"></action-btn-component></li>
-                        <li class="m-tweet01_actionBtn">
-                          <a :href="img.media_url + ':orig'" target="_blank" class="m-actionBtn"><i class="fa fa-picture-o"></i><br>オリジナル画像</a>
-                        </li>
-                      </ul>
+                    <div class="m-tweet01_row">
+                      <div class="m-tweet01_leftCol">
+                        <div class="m-tweet01_icon"><a :href="'https://twitter.com/' + status.user.screen_name"><img :src="status.user.profile_image_url"></a></div>
+                      </div>
+                      <div class="m-tweet01_rightCol">
+                        <div class="m-tweet01_userInfo">
+                          <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_name">@{{ status.user.name }}</a>
+                          <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_screenName">@@{{ status.user.screen_name }}</a><!--
+                          -->・<a :href="'https://twitter.com/' + status.user.screen_name + '/status/' + status.id_str" target="_blank" class="m-tweet01_date">@{{ dateStr }}</a>
+                        </div>
+                        <p class="m-tweet01_text">@{{ status.text }}</p>
+                      </div>
+                    </div>
+                    <div class="m-tweet01_row">
+                      <div class="m-tweet01_leftCol"></div>
+                      <div class="m-tweet01_rightCol">
+                        <ul class="m-tweet01_actionBtns">
+                          <li class="m-tweet01_actionBtn"><action-btn-component icon="fa-retweet" :initial-state="status.retweeted" :activate-url="retweetUrl" :deactivate-url="unretweetUrl" text="リツイート"></action-btn-component></li>
+                          <li class="m-tweet01_actionBtn"><action-btn-component icon="fa-heart" :initial-state="status.favorited" :activate-url="createFavUrl" :deactivate-url="destroyFavUrl" text="いいね"></action-btn-component></li>
+                          <li class="m-tweet01_actionBtn">
+                            <a :href="img.media_url + ':orig'" target="_blank" class="m-actionBtn"><i class="fa fa-picture-o"></i><br>オリジナル画像</a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </transition>
           </div>
-        </transition>
+
       </div>
     </transition>
   </script>

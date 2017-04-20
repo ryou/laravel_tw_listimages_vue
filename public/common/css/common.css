@@ -521,16 +521,52 @@ module rule
 
 /* slide
 ----------------------------------------------------------*/
-.slide-enter-active,
-.slide-leave-active {
+.slideleft-enter-active,
+.slideleft-leave-active {
   -webkit-transition: .2s;
           transition: .2s;
 }
 
-.slide-enter,
-.slide-leave-to {
+.slideleft-enter,
+.slideleft-leave-to {
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
+}
+
+.slideright-enter-active,
+.slideright-leave-active {
+  -webkit-transition: .2s;
+          transition: .2s;
+}
+
+.slideright-enter,
+.slideright-leave-to {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.slideup-enter-active,
+.slideup-leave-active {
+  -webkit-transition: .2s;
+          transition: .2s;
+}
+
+.slideup-enter,
+.slideup-leave-to {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
+
+.slidedown-enter-active,
+.slidedown-leave-active {
+  -webkit-transition: .2s;
+          transition: .2s;
+}
+
+.slidedown-enter,
+.slidedown-leave-to {
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
 }
 
 /* zoom
