@@ -497,11 +497,10 @@ module rule
   display: table;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, .8);
+  background: #ffffff;
 }
 .m-wholeLoading .m-wholeLoading_loading {
   display: table-cell;
-  color: #ffffff;
   vertical-align: middle;
   text-align: center;
   font-size: 40px;
@@ -532,6 +531,20 @@ module rule
 .slide-leave-to {
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
+}
+
+/* zoom
+----------------------------------------------------------*/
+.zoom-enter-active,
+.zoom-leave-active {
+  -webkit-transition: .2s;
+          transition: .2s;
+}
+
+.zoom-enter,
+.zoom-leave-to {
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
 
 /***********************************************************************

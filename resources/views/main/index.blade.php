@@ -43,8 +43,6 @@
   </div>
 
   {{-- template --}}
-  <script type="text/x-template" id="list-component-template">
-  </script>
   <script type="text/x-template" id="img-list-component-template">
     <transition name="fade">
       <div class="m-imgList">

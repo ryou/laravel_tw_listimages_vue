@@ -387,13 +387,12 @@ module rule
     display: table;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
+    background: #fff;
   }
   .m-wholeLoading_loading {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    color: #fff;
     font-size: 40px;
   }
 }
@@ -420,4 +419,16 @@ module rule
 .slide-enter,
 .slide-leave-to {
   transform: translateX(-100%);
+}
+
+/* zoom
+----------------------------------------------------------*/
+.zoom-enter-active,
+.zoom-leave-active {
+  transition: .2s;
+}
+
+.zoom-enter,
+.zoom-leave-to {
+  transform: scale(0);
 }
