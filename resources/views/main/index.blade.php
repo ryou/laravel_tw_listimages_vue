@@ -9,7 +9,11 @@
             <div class="m-appBox_head">
               <div class="m-appBox_headLeft"></div>
               <div class="m-appBox_headTitle">リスト一覧</div>
-              <div class="m-appBox_headRight"><a href="/auth/logout"><i class="fa fa-sign-out"></i></a></div>
+              <div class="m-appBox_headRight">
+                @if (config('app.use_test_account') === false)
+                <a href="/auth/logout"><i class="fa fa-sign-out"></i></a>
+                @endif
+              </div>
             </div>
             <div class="m-appBox_content">
               <ul class="m-list">
