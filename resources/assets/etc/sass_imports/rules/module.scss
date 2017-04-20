@@ -376,6 +376,8 @@ module rule
   }
 }
 
+/* fade
+----------------------------------------------------------*/
 .fade-enter-active,
 .fade-leave-active {
   transition: .2s;
@@ -384,4 +386,16 @@ module rule
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* slide
+----------------------------------------------------------*/
+.slide-enter-active,
+.slide-leave-active {
+  transition: .2s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(-100%);
 }

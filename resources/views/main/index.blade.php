@@ -3,20 +3,22 @@
 @section('body')
   <div class="l-wrapper">
     <div id="app" :class="classObj">
-      <div v-show="mainColIsVisible" class="l-mainCol">
-        <div class="m-appBox">
-          <div class="m-appBox_head">
-            <div class="m-appBox_headLeft"></div>
-            <div class="m-appBox_headTitle">リスト一覧</div>
-            <div class="m-appBox_headRight"><a href="/auth/logout"><i class="fa fa-sign-out"></i></a></div>
-          </div>
-          <div class="m-appBox_content">
-            <ul class="m-list">
-              <li v-for="item in listData.list" class="m-list_item m-list_item-btn" :class="{'is-active': item.isSelected}" @@click="showList(item)">@{{ item.name }}<span class="m-list_arrowIcn"><i class="fa fa-chevron-right"></i></span></li>
-            </ul>
+      <transition name="slide">
+        <div v-show="mainColIsVisible" class="l-mainCol">
+          <div class="m-appBox">
+            <div class="m-appBox_head">
+              <div class="m-appBox_headLeft"></div>
+              <div class="m-appBox_headTitle">リスト一覧</div>
+              <div class="m-appBox_headRight"><a href="/auth/logout"><i class="fa fa-sign-out"></i></a></div>
+            </div>
+            <div class="m-appBox_content">
+              <ul class="m-list">
+                <li v-for="item in listData.list" class="m-list_item m-list_item-btn" :class="{'is-active': item.isSelected}" @@click="showList(item)">@{{ item.name }}<span class="m-list_arrowIcn"><i class="fa fa-chevron-right"></i></span></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      </transition>
       <div class="l-subCol">
         <div class="m-appBox">
           <div class="m-appBox_head">
