@@ -274,6 +274,7 @@ module rule
   bottom: 0;
   left: 0;
   z-index: 20;
+  overflow: hidden; 
   background-color: #000000;
 }
 .m-tweetModal .m-tweetModal_imgWrapper {

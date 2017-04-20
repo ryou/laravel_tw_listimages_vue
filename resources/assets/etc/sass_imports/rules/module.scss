@@ -155,6 +155,7 @@ module rule
   right: 0;
   bottom: 0;
   background-color: #000;
+  overflow: hidden;
 
   .m-tweetModal_imgWrapper {
     display: flex;
