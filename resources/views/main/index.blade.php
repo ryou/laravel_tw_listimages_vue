@@ -32,6 +32,13 @@
         </div>
       </div>
       <tweet-modal-component v-if="tweetModalIsVisible" :status="tweetModalProps.status" :index="tweetModalProps.index" @@hide-modal="hideTweetModal"></tweet-modal-component>
+      <transition name="fade">
+        <div v-show="listData.isLoading" class="m-wholeLoading">
+          <div class="m-wholeLoading_filter">
+            <div class="m-wholeLoading_loading"><i class="fa fa-spinner fa-pulse"></i></div>
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 
