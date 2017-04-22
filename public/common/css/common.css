@@ -303,7 +303,7 @@ module rule
   padding: 10px;
   outline: none; 
   border: none;
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, .6);
   color: #ffffff;
   font-size: 3.0rem;
   line-height: 1.0;
@@ -314,7 +314,7 @@ module rule
   top: 50%;
   margin-top: -3.5rem;
   padding: 1.5rem;
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, .6);
   color: #ffffff;
   font-size: 4.0rem;
   line-height: 1.0;
@@ -366,6 +366,12 @@ module rule
 }
 .m-tweet01 .m-tweet01_text {
   font-size: 1.4rem;
+}
+@media only screen and (max-width: 767px) {
+  .m-tweet01 .m-tweet01_text {
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
 }
 .m-tweet01 .m-tweet01_actionBtns {
   padding-top: 7px;

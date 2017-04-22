@@ -182,7 +182,7 @@ module rule
     position: absolute;
     right: 0;
     top: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
     border: none;
     cursor: pointer;
     outline: none;
@@ -197,7 +197,7 @@ module rule
     margin-top: -3.5rem;
     line-height: 1.0;
     color: #fff;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
     padding: 1.5rem;
     cursor: pointer;
     &.m-tweetModal_navItem-prev {
@@ -256,6 +256,10 @@ module rule
   }
   .m-tweet01_text {
     font-size: 1.4rem;
+    @include mq-sp {
+      font-size: 1.3rem;
+      line-height: 1.4;
+    }
   }
   .m-tweet01_actionBtns {
     padding-top: 7px;
