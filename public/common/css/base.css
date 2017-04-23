@@ -181,15 +181,8 @@ textarea {
 /* link
 ----------------------------------------------------------------------*/
 a {
-  color: #3498db;
-}
-a:link,
-a:visited {
+  color: inherit;
   text-decoration: none;
-}
-a:hover,
-a:active {
-  text-decoration: underline;
 }
 
 body {

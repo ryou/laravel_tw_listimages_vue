@@ -41,3 +41,12 @@ utility rule
 .u-font-small {
   font-size: 1.2rem;
 }
+
+
+.u-link-text01 {
+  @include linkStyle01;
+}
+
+.u-link-text02 {
+  @include linkStyle02;
+}

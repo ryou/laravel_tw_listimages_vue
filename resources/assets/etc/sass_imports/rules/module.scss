@@ -87,6 +87,7 @@ module rule
     &.m-list_item-btn {
       cursor: pointer;
     }
+    &:hover,
     &.is-active {
       background: lighten(#3498db, 40%);
     }
@@ -141,6 +142,8 @@ module rule
     width: 100%;
     background-color: #fff;
     position: relative;
+    cursor: pointer;
+    @include ov;
   }
   .m-imgList_loadBtn {
     padding: 0 10px;
@@ -186,6 +189,7 @@ module rule
     border: none;
     cursor: pointer;
     outline: none;
+    @include ov;
   }
   .m-tweetModal_nav {
 
@@ -200,6 +204,7 @@ module rule
     background: rgba(0, 0, 0, 0.6);
     padding: 1.5rem;
     cursor: pointer;
+    @include ov;
     &.m-tweetModal_navItem-prev {
     }
     &.m-tweetModal_navItem-next {
@@ -218,12 +223,6 @@ module rule
 }
 
 .m-tweet01 {
-  &.m-tweet01-textWhite {
-    color: #fff;
-    a {
-      color: inherit;
-    }
-  }
   .m-tweet01_row {
     display: table;
   }
@@ -270,6 +269,11 @@ module rule
     vertical-align: top;
   }
 }
+.m-tweet01-textWhite {
+  color: #fff;
+}
+
+
 
 .m-btn {
   background: $linkColor;
@@ -284,6 +288,9 @@ module rule
     display: block;
     width: 100%;
     box-sizing: border-box;
+  }
+  &:hover {
+    @include ov;
   }
 }
 
@@ -300,6 +307,7 @@ module rule
   i {
     font-size: 1.8rem;
   }
+  &:hover,
   &.is-active {
     color: $linkColor;
   }
@@ -314,13 +322,14 @@ module rule
 }
 
 .m-appBox {
+  $tmpColor: #3498db;
   position: absolute;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
   .m-appBox_head {
-    background: #3498db;
+    background: $tmpColor;
     height: 45px;
     position: absolute;
     left: 0;
@@ -359,6 +368,16 @@ module rule
     text-align: center;
     width: 45px;
     height: 45px;
+  }
+  .m-appBox_headBtn {
+    display: inline-block;
+    cursor: pointer;
+    padding: 6px 7px 4px;
+    border-radius: 5px;
+    line-height: 1.0;
+    &:hover {
+      background: lighten($tmpColor, 10%);
+    }
   }
   .m-appBox_content {
     position: absolute;

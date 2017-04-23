@@ -32,4 +32,24 @@
     display: block;
     clear: both;
   }
-}
+};
+
+@mixin ov {
+  &:hover {
+    opacity: .7;
+  }
+};
+
+@mixin linkStyle01 {
+  color: $linkColor;
+  &:hover {
+    text-decoration: underline;
+  }
+};
+
+@mixin linkStyle02 {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+};

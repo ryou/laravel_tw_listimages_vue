@@ -11,7 +11,7 @@
               <div class="m-appBox_headTitle">リスト一覧</div>
               <div class="m-appBox_headRight">
                 @if (config('app.use_test_account') === false)
-                <a href="/auth/logout"><i class="fa fa-sign-out"></i></a>
+                <div class="m-appBox_headBtn"><a href="/auth/logout"><i class="fa fa-sign-out"></i></a></div>
                 @endif
               </div>
             </div>
@@ -26,7 +26,9 @@
       <div class="l-subCol">
         <div class="m-appBox">
           <div class="m-appBox_head">
-            <div class="m-appBox_headLeft"><i @@click="showListSelector" v-if="!isSplitView" class="fa fa-list"></i></div>
+            <div class="m-appBox_headLeft">
+              <div class="m-appBox_headBtn"><i @@click="showListSelector" v-if="!isSplitView" class="fa fa-list"></i></div>
+            </div>
             <div class="m-appBox_headTitle" @@click="scrollToTop">@{{ selectedList.name }}</div>
             <div class="m-appBox_headRight"></div>
           </div>
@@ -93,18 +95,18 @@
                         <i class="fa fa-retweet u-color-green"></i>
                       </div>
                       <div class="m-tweet01_rightCol">
-                        <p class="u-font-small"><a :href="'https://twitter.com/' + status.retweet_user.screen_name" target="_blank">@{{ status.retweet_user.name }}</a>さんがリツイート</p>
+                        <p class="u-font-small"><a :href="'https://twitter.com/' + status.retweet_user.screen_name" target="_blank" class="u-link-text02">@{{ status.retweet_user.name }}</a>さんがリツイート</p>
                       </div>
                     </div>
                     <div class="m-tweet01_row">
                       <div class="m-tweet01_leftCol">
-                        <div class="m-tweet01_icon"><a :href="'https://twitter.com/' + status.user.screen_name"><img :src="status.user.profile_image_url"></a></div>
+                        <div class="m-tweet01_icon"><a :href="'https://twitter.com/' + status.user.screen_name" class="u-ov"><img :src="status.user.profile_image_url"></a></div>
                       </div>
                       <div class="m-tweet01_rightCol">
                         <div class="m-tweet01_userInfo">
-                          <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_name">@{{ status.user.name }}</a>
-                          <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_screenName">@@{{ status.user.screen_name }}</a><!--
-                          -->・<a :href="'https://twitter.com/' + status.user.screen_name + '/status/' + status.id_str" target="_blank" class="m-tweet01_date">@{{ dateStr }}</a>
+                          <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_name u-link-text02">@{{ status.user.name }}</a>
+                          <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_screenName u-link-text02">@@{{ status.user.screen_name }}</a><!--
+                          -->・<a :href="'https://twitter.com/' + status.user.screen_name + '/status/' + status.id_str" target="_blank" class="m-tweet01_date u-link-text02">@{{ dateStr }}</a>
                         </div>
                         <p class="m-tweet01_text">@{{ status.text }}</p>
                       </div>
