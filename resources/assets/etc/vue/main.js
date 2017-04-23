@@ -57,6 +57,14 @@
       } else {
         this.isSplitView = false;
       }
+
+      var self = this;
+      $.getJSON('/api/get_lists', function(data) {
+        self.setListData(data);
+      })
+      .fail(function() {
+        alert('データの読み込みに失敗しました。ページを再読込して下さい。');
+      });
     },
     methods: {
       setListData: function(data) {
@@ -86,10 +94,4 @@
     }
   });
 
-  $.getJSON('/api/get_lists', function(data) {
-    app.setListData(data);
-  })
-  .fail(function() {
-    alert('データの読み込みに失敗しました。ページを再読込して下さい。');
-  });
 })();
