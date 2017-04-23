@@ -231,6 +231,28 @@
 })();
 
 ;(function() {
+  var listItemComponent = {
+    data: function() {
+      return {};
+    },
+    props: ['itemData', 'selectedList'],
+    template: '<li class="m-list_item m-list_item-btn" :class="classObj" @click="showList">' +
+              '{{ itemData.name }}<span class="m-list_arrowIcn"><i class="fa fa-chevron-right"></i></span>' +
+              '</li>',
+    methods: {
+      showList: function() {
+        this.$emit('show-list', this.itemData);
+      }
+    },
+    computed: {
+      classObj: function() {
+        return {
+          'is-active': (this.itemData.id_str === this.selectedList.id_str)
+        };
+      }
+    }
+  };
+
   var app = new Vue({
     el: '#app',
     data: {
@@ -247,6 +269,9 @@
         status: null,
         index: 0
       }
+    },
+    components: {
+      'list-item-component': listItemComponent
     },
     computed: {
       classObj: function() {
@@ -265,20 +290,9 @@
     methods: {
       setListData: function(data) {
         this.listData.isLoading = false;
-
-        // 選択状態もデータに持たせるために追加する
-        data.forEach(function(e, i, a) {
-          e.isSelected = false;
-        });
         this.listData.list = data;
       },
       showList: function(item) {
-        // TODO: 選択状態を保持する処理に関して、もっと簡潔に書けるはず
-        this.listData.list.forEach(function(e, i, a) {
-          e.isSelected = false;
-        });
-        item.isSelected = true;
-
         this.imgListIsVisible = true;
         this.selectedList = item;
         if (this.isSplitView === false) this.mainColIsVisible = false;
