@@ -256,19 +256,22 @@
   var app = new Vue({
     el: '#app',
     data: {
+      // 表示・非表示管理用変数
+      initialLoaderIsVisible: true,
       mainColIsVisible: true,
-      isSplitView: true,
       imgListIsVisible: false,
       tweetModalIsVisible: false,
-      listData: {
-        isLoading: true,
-        list: []
-      },
+
+      // 各種データ
+      list: [],
       selectedList: {name: ''},
       tweetModalProps: {
         status: null,
         index: 0
-      }
+      },
+
+      // その他
+      isSplitView: true
     },
     components: {
       'list-item-component': listItemComponent
@@ -289,8 +292,8 @@
     },
     methods: {
       setListData: function(data) {
-        this.listData.isLoading = false;
-        this.listData.list = data;
+        this.initialLoaderIsVisible = false;
+        this.list = data;
       },
       showList: function(item) {
         this.imgListIsVisible = true;

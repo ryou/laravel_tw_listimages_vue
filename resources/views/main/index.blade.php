@@ -17,7 +17,7 @@
             </div>
             <div class="m-appBox_content">
               <ul class="m-list">
-                <list-item-component v-for="item in listData.list" :item-data="item" :selected-list="selectedList" @@show-list="showList"></list-item-component>
+                <list-item-component v-for="item in list" :item-data="item" :selected-list="selectedList" @@show-list="showList"></list-item-component>
               </ul>
             </div>
           </div>
@@ -37,7 +37,7 @@
       </div>
       <tweet-modal-component v-if="tweetModalIsVisible" :status="tweetModalProps.status" :index="tweetModalProps.index" @@hide-modal="hideTweetModal"></tweet-modal-component>
       <transition name="fade">
-        <div v-show="listData.isLoading" class="m-wholeLoading">
+        <div v-show="initialLoaderIsVisible" class="m-wholeLoading">
           <div class="m-wholeLoading_filter">
             <div class="m-wholeLoading_loading"><i class="fa fa-spinner fa-pulse"></i></div>
           </div>
