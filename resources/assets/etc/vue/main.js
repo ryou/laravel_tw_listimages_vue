@@ -25,7 +25,6 @@
     el: '#app',
     data: {
       // 表示・非表示管理用変数
-      initialLoaderIsVisible: true,
       mainColIsVisible: true,
       imgListIsVisible: false,
       tweetModalIsVisible: false,
@@ -49,6 +48,9 @@
         return {
           'is-split': this.isSplitView
         };
+      },
+      initialLoaderIsVisible: function() {
+        return (this.list.length <= 0);
       }
     },
     created: function() {
@@ -60,7 +62,11 @@
 
       var self = this;
       $.getJSON('/api/get_lists', function(data) {
-        self.setListData(data);
+        if (data.length <= 0) {
+          alert('認証したアカウントに保存されているリストが見つかりませんでした。');
+        } else {
+          self.setListData(data);
+        }
       })
       .fail(function() {
         alert('データの読み込みに失敗しました。ページを再読込して下さい。');
@@ -68,7 +74,6 @@
     },
     methods: {
       setListData: function(data) {
-        this.initialLoaderIsVisible = false;
         this.list = data;
       },
       showList: function(item) {
