@@ -47,7 +47,6 @@
   Vue.component('tweet-modal-component', {
     data: function() {
       return {
-        imgIsLoading: true,
         blobIsVisible: true,
         dispIndex: null
       };
@@ -60,6 +59,11 @@
     computed: {
       img: function() {
         return this.status.extended_entities.media[this.dispIndex];
+      },
+      imgListStyleObj: function() {
+        return {
+          'transform': 'translateX(-' + this.dispIndex * 100 + 'vw)'
+        };
       },
       prevImgIsExist: function() {
         return (this.dispIndex > 0);
@@ -89,6 +93,9 @@
       this.dispIndex = this.index;
     },
     methods: {
+      getMediaData: function(index) {
+        return this.status.extended_entities.media[index];
+      },
       toggleBlob: function() {
         this.blobIsVisible = !this.blobIsVisible;
       },
@@ -99,16 +106,11 @@
         if (this.nextItemIsExist === false) return;
 
         this.dispIndex++;
-        this.imgIsLoading = true;
       },
       prevImg: function() {
         if (this.prevItemIsExist === false) return;
 
         this.dispIndex--;
-        this.imgIsLoading = true;
-      },
-      completeLoading: function() {
-        this.imgIsLoading = false;
       }
     }
   });

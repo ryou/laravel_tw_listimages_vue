@@ -69,10 +69,11 @@
   <script type="text/x-template" id="tweet-modal-component-template">
     <transition name="fade">
       <div class="m-tweetModal" @@click="hideModal">
-        <div class="m-tweetModal_imgWrapper">
-          <img v-show="!imgIsLoading" :src="img.media_url" class="m-tweetModal_img" @@click.stop="toggleBlob" @@load="completeLoading">
-          <i v-show="imgIsLoading" class="m-tweetModal_loading fa fa-spinner fa-pulse"></i>
-        </div>
+        <ul class="m-tweetModal_imgList" :style="imgListStyleObj">
+          <li v-for="(image, index) in status.extended_entities.media" class="m-tweetModal_imgWrapper">
+            <img :src="getMediaData(index).media_url" class="m-tweetModal_img" @@click.stop="toggleBlob">
+          </li>
+        </ul>
 
           <div class="m-tweetModal_blob" @@click.stop>
             <transition name="slideup">
