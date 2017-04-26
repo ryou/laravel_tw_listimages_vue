@@ -118,7 +118,6 @@
         });
       },
       onTouchEnd: function(e) {
-        console.log('touch end');
 
         this.pushNewTouch({
           x: e.changedTouches[0].pageX,
@@ -134,7 +133,6 @@
         tmpTouches.forEach(function(e, i, a) {
           if (currentTime - e.time < 100) {
             tmpTouch = e;
-            console.log('tmp touch time: ' + e.time);
           }
         });
         var tmpX = this.touches[this.touches.length - 1].x - tmpTouch.x;
