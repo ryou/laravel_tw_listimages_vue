@@ -47,14 +47,7 @@
   var imgListComponent = {
     data: function() {
       return {
-        touchStart: {
-          x: 0,
-          y: 0
-        },
-        currentTouch: {
-          x: 0,
-          y: 0
-        },
+        touches: [],
         isMoveAnimation: false
       };
     },
@@ -76,9 +69,13 @@
         return style;
       },
       touchMove: function() {
+        if (this.touches.length <= 0) {
+          return {x: 0, y: 0};
+        }
+
         return {
-          x: this.currentTouch.x - this.touchStart.x,
-          y: this.currentTouch.y - this.touchStart.y
+          x: this.touches[this.touches.length - 1].x - this.touches[0].x,
+          y: this.touches[this.touches.length - 1].y - this.touches[0].y
         };
       }
     },
@@ -94,36 +91,69 @@
       }
     },
     methods: {
+      getCurrentUTime: function() {
+        var date = new Date();
+        return date.getTime();
+      },
+      pushNewTouch: function(touch) {
+        this.touches.push(touch);
+      },
       onClickImg: function() {
         this.$emit('on-click-img');
       },
       onTouchStart: function(e) {
         if (this.isMoveAnimation) return;
 
-        this.touchStart.x = this.currentTouch.x = e.changedTouches[0].pageX;
-        this.touchStart.y = this.currentTouch.y = e.changedTouches[0].pageY;
+        this.pushNewTouch({
+          x: e.changedTouches[0].pageX,
+          y: e.changedTouches[0].pageY,
+          time: this.getCurrentUTime()
+        });
       },
       onTouchMove: function(e) {
-        this.currentTouch.x = e.changedTouches[0].pageX;
-        this.currentTouch.y = e.changedTouches[0].pageY;
+        this.pushNewTouch({
+          x: e.changedTouches[0].pageX,
+          y: e.changedTouches[0].pageY,
+          time: this.getCurrentUTime()
+        });
       },
       onTouchEnd: function(e) {
         console.log('touch end');
 
-        this.currentTouch.x = e.changedTouches[0].pageX;
-        this.currentTouch.y = e.changedTouches[0].pageY;
-        if (this.touchMove.x > 0) {
-          this.$emit('img-to-right');
-        } else if (this.touchMove.x < 0) {
-          this.$emit('img-to-left');
+        this.pushNewTouch({
+          x: e.changedTouches[0].pageX,
+          y: e.changedTouches[0].pageY,
+          time: this.getCurrentUTime()
+        });
+
+        // TODO:ここの実装かなり雑なので整える
+        var currentTime = this.getCurrentUTime();
+        var tmpTouches = this.touches.slice();
+        tmpTouches.reverse();
+        var tmpTouch;
+        tmpTouches.forEach(function(e, i, a) {
+          if (currentTime - e.time < 100) {
+            tmpTouch = e;
+            console.log('tmp touch time: ' + e.time);
+          }
+        });
+        var tmpX = this.touches[this.touches.length - 1].x - tmpTouch.x;
+        if (Math.abs(tmpX) > 20) {
+          // 遷移条件
+          if (tmpX > 0) {
+            this.$emit('img-to-right');
+          } else if (tmpX < 0) {
+            this.$emit('img-to-left');
+          }
         }
+
         if (this.touchMove.x === 0) {
           this.$emit('on-click-img');
+          this.touches = [];
           return;
         }
         this.isMoveAnimation = true;
-        this.touchStart.x = this.currentTouch.x = 0;
-        this.touchStart.y = this.currentTouch.y = 0;
+        this.touches = [];
 
         var self = this;
         setTimeout(function() {
