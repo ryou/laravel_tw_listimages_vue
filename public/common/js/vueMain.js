@@ -117,7 +117,10 @@
         } else if (this.touchMove.x < 0) {
           this.$emit('img-to-left');
         }
-        if (this.touchMove.x === 0) return;
+        if (this.touchMove.x === 0) {
+          this.$emit('on-click-img');
+          return;
+        }
         this.isMoveAnimation = true;
         this.touchStart.x = this.currentTouch.x = 0;
         this.touchStart.y = this.currentTouch.y = 0;
