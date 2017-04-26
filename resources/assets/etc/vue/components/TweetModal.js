@@ -117,10 +117,10 @@
         } else if (this.touchMove.x < 0) {
           this.$emit('img-to-left');
         }
-        this.touchStart.x = this.currentTouch.x = 0;
-        this.touchStart.y = this.currentTouch.y = 0;
         if (this.touchMove.x === 0) return;
         this.isMoveAnimation = true;
+        this.touchStart.x = this.currentTouch.x = 0;
+        this.touchStart.y = this.currentTouch.y = 0;
 
         var self = this;
         setTimeout(function() {
@@ -185,12 +185,12 @@
         this.$emit('hide-modal');
       },
       nextImg: function() {
-        if (this.nextItemIsExist === false) return;
+        if (this.nextImgIsExist === false) return;
 
         this.dispIndex++;
       },
       prevImg: function() {
-        if (this.prevItemIsExist === false) return;
+        if (this.prevImgIsExist === false) return;
 
         this.dispIndex--;
       }
