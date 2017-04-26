@@ -297,10 +297,8 @@ module rule
   background-color: #000000;
 }
 .m-tweetModal .m-tweetModal_imgList {
-  width: 10000px;
+  width: 10000px; 
   height: 100%;
-  -webkit-transition: .2s;
-          transition: .2s;
 }
 .m-tweetModal .m-tweetModal_imgWrapper {
   display: -webkit-box;

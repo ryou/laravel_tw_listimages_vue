@@ -46,24 +46,86 @@
 
   var imgListComponent = {
     data: function() {
-      return {};
+      return {
+        touchStart: {
+          x: 0,
+          y: 0
+        },
+        currentTouch: {
+          x: 0,
+          y: 0
+        },
+        isMoveAnimation: false
+      };
     },
     props: ['images', 'dispIndex'],
-    template: '<ul class="m-tweetModal_imgList" :style="styleObj">' +
+    template: '<ul class="m-tweetModal_imgList" :style="styleObj" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">' +
                 '<li v-for="image in images" class="m-tweetModal_imgWrapper">' +
                   '<img :src="image.media_url" class="m-tweetModal_img" @click.stop="onClickImg">' +
                 '</li>' +
               '</ul>',
     computed: {
       styleObj: function() {
-        return {
-          'transform': 'translateX(-' + this.dispIndex * 100 + 'vw)'
+        var style = {
+          'transform': 'translateX(calc(-' + this.dispIndex * 100 + 'vw + ' + this.touchMove.x + 'px))'
         };
+        if (this.isMoveAnimation) {
+          style.transition = '.2s';
+        }
+
+        return style;
+      },
+      touchMove: function() {
+        return {
+          x: this.currentTouch.x - this.touchStart.x,
+          y: this.currentTouch.y - this.touchStart.y
+        };
+      }
+    },
+    watch: {
+      dispIndex: function() {
+        this.isMoveAnimation = true;
+
+        // TODO:ここらへんのアニメーション終了検知無理矢理過ぎるのでなおす
+        var self = this;
+        setTimeout(function() {
+          self.isMoveAnimation = false;
+        }, 200);
       }
     },
     methods: {
       onClickImg: function() {
         this.$emit('on-click-img');
+      },
+      onTouchStart: function(e) {
+        if (this.isMoveAnimation) return;
+
+        this.touchStart.x = this.currentTouch.x = e.changedTouches[0].pageX;
+        this.touchStart.y = this.currentTouch.y = e.changedTouches[0].pageY;
+      },
+      onTouchMove: function(e) {
+        this.currentTouch.x = e.changedTouches[0].pageX;
+        this.currentTouch.y = e.changedTouches[0].pageY;
+      },
+      onTouchEnd: function(e) {
+        console.log('touch end');
+
+        this.currentTouch.x = e.changedTouches[0].pageX;
+        this.currentTouch.y = e.changedTouches[0].pageY;
+        if (this.touchMove.x > 0) {
+          this.$emit('img-to-right');
+        } else if (this.touchMove.x < 0) {
+          this.$emit('img-to-left');
+        }
+        this.touchStart.x = this.currentTouch.x = 0;
+        this.touchStart.y = this.currentTouch.y = 0;
+        if (this.touchMove.x === 0) return;
+        this.isMoveAnimation = true;
+
+        var self = this;
+        setTimeout(function() {
+          self.isMoveAnimation = false;
+        }, 200);
       }
     }
   };

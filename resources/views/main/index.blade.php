@@ -69,7 +69,7 @@
   <script type="text/x-template" id="tweet-modal-component-template">
     <transition name="fade">
       <div class="m-tweetModal" @@click="hideModal">
-        <local-img-list-component :images="status.extended_entities.media" :disp-index="dispIndex" @@on-click-img="toggleBlob"></local-img-list-component>
+        <local-img-list-component :images="status.extended_entities.media" :disp-index="dispIndex" @@on-click-img="toggleBlob" @@img-to-right="prevImg" @@img-to-left="nextImg"></local-img-list-component>
 
           <div class="m-tweetModal_blob" @@click.stop>
             <transition name="slideup">
