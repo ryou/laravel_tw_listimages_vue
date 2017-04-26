@@ -69,11 +69,7 @@
   <script type="text/x-template" id="tweet-modal-component-template">
     <transition name="fade">
       <div class="m-tweetModal" @@click="hideModal">
-        <ul class="m-tweetModal_imgList" :style="imgListStyleObj">
-          <li v-for="(image, index) in status.extended_entities.media" class="m-tweetModal_imgWrapper">
-            <img :src="getMediaData(index).media_url" class="m-tweetModal_img" @@click.stop="toggleBlob">
-          </li>
-        </ul>
+        <local-img-list-component :images="status.extended_entities.media" :disp-index="dispIndex" @@on-click-img="toggleBlob"></local-img-list-component>
 
           <div class="m-tweetModal_blob" @@click.stop>
             <transition name="slideup">

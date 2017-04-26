@@ -44,6 +44,30 @@
     }
   };
 
+  var imgListComponent = {
+    data: function() {
+      return {};
+    },
+    props: ['images', 'dispIndex'],
+    template: '<ul class="m-tweetModal_imgList" :style="styleObj">' +
+                '<li v-for="image in images" class="m-tweetModal_imgWrapper">' +
+                  '<img :src="image.media_url" class="m-tweetModal_img" @click.stop="onClickImg">' +
+                '</li>' +
+              '</ul>',
+    computed: {
+      styleObj: function() {
+        return {
+          'transform': 'translateX(-' + this.dispIndex * 100 + 'vw)'
+        };
+      }
+    },
+    methods: {
+      onClickImg: function() {
+        this.$emit('on-click-img');
+      }
+    }
+  };
+
   Vue.component('tweet-modal-component', {
     data: function() {
       return {
@@ -54,16 +78,12 @@
     props: ['status', 'index'],
     template: '#tweet-modal-component-template',
     components: {
-      'action-btn-component': actionBtn
+      'action-btn-component': actionBtn,
+      'local-img-list-component': imgListComponent
     },
     computed: {
       img: function() {
         return this.status.extended_entities.media[this.dispIndex];
-      },
-      imgListStyleObj: function() {
-        return {
-          'transform': 'translateX(-' + this.dispIndex * 100 + 'vw)'
-        };
       },
       prevImgIsExist: function() {
         return (this.dispIndex > 0);
