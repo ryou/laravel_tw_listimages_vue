@@ -7,6 +7,10 @@ var notify  = require('gulp-notify');
 var watch   = require('gulp-watch');
 var del     = require('del');
 
+// js関係
+var browserify = require('browserify');
+var source     = require('vinyl-source-stream');
+
 // css関係
 var sass         = require('gulp-ruby-sass');
 var csscomb      = require('gulp-csscomb');
@@ -24,21 +28,19 @@ var concat = require('gulp-concat');
 var paths = {
   sass: './resources/assets/dist_root/**/*.scss',
   png: './resources/assets/dist_root/**/*.png',
+  js: './resources/assets/etc/browserify',
   cp: [
     './resources/assets/dist_root/**/*',
     '!./resources/assets/dist_root/**/{*.scss,*.png}'
   ],
-  vue: [
-    './resources/assets/etc/vue/components/*.js',
-    './resources/assets/etc/vue/main.js'
-  ],
   dest: './public'
 };
 
-gulp.task('vue', function() {
-  return gulp.src(paths.vue)
-    .pipe(concat('vueMain.js'))
-    .pipe(gulp.dest(paths.dest + '/common/js'));
+gulp.task('js', function() {
+  return browserify(paths.js + '/main.js')
+          .bundle()
+          .pipe(source('bundle.js'))
+          .pipe(gulp.dest(paths.dest + '/common/js'));
 });
 
 gulp.task('sass', function() {
@@ -103,7 +105,7 @@ gulp.task('cp', function() {
 // });
 
 gulp.task('build', /*['clean'], */function() {
-  gulp.start(['cp', 'sass', 'img', 'vue']);
+  gulp.start(['cp', 'sass', 'img', 'js']);
 });
 
 gulp.task('default', ['build'], function() {
@@ -124,7 +126,7 @@ gulp.task('default', ['build'], function() {
   watch(paths.cp, function(event) {
     gulp.start('cp');
   });
-  watch('./resources/assets/etc/vue/**/*.js', function(event) {
-    gulp.start('vue');
+  watch(paths.js + '/**/*.js', function(event) {
+    gulp.start('js');
   });
 });

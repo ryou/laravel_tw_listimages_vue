@@ -132,12 +132,5 @@
   <script type="text/x-template" id="ajax-btn01-component-template">
     <button class="m-btn m-btn-full" @@click="startAjax"><span v-show="!isLoading">更に読み込む</span><i v-show="isLoading" class="fa fa-circle-o-notch fa-spin"></i></button>
   </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="/common/js/lib/jquery.min.js"><\\/script>')</script>
-  @if (config('app.debug'))
-    <script src="https://unpkg.com/vue"></script>
-  @else
-    <script src="/common/js/lib/vue.min.js"></script>
-  @endif
-  @loadLocalJS(/common/js/vueMain.js)
+  @loadLocalJS(/common/js/bundle.js)
 @endsection
