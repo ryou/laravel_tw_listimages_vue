@@ -12,7 +12,7 @@ var browserify = require('browserify');
 var source     = require('vinyl-source-stream');
 
 // css関係
-var sass         = require('gulp-ruby-sass');
+var sass         = require('gulp-sass');
 var csscomb      = require('gulp-csscomb');
 var autoprefixer = require('gulp-autoprefixer');
 
@@ -44,17 +44,19 @@ gulp.task('js', function() {
 });
 
 gulp.task('sass', function() {
-  return sass('resources/assets/dist_root/', {
-    loadPath: './resources/assets/etc/sass_imports',
-    style: 'nested'
-  })
-  .pipe(autoprefixer({
-    browsers: ['android 2.3'],
-    remove: false
-  }))
-  .pipe(csscomb())
-  .pipe(gulp.dest(paths.dest))
-  .pipe(browserSync.stream());
+
+  return gulp.src('resources/assets/dist_root/')
+              .pipe(sass({
+                includePaths: './resources/assets/etc/sass_imports',
+                outputStyle: 'nested'
+              }).on('error', sass.logError))
+              .pipe(autoprefixer({
+                browsers: ['android 2.3'],
+                remove: false
+              }))
+              .pipe(csscomb())
+              .pipe(gulp.dest(paths.dest))
+              .pipe(browserSync.stream());
 });
 
 gulp.task('img', function(){
