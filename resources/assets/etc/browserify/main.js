@@ -88,6 +88,11 @@ var app = new Vue({
       this.selectedList = item;
       if (this.isSplitView === false) this.mainColIsVisible = false;
     },
+    showHome: function() {
+      this.imgListIsVisible = true;
+      this.selectedList = { id_str: 'home' };
+      if (this.isSplitView === false) this.mainColIsVisible = false;
+    },
     showListSelector: function() {
       this.mainColIsVisible = true;
     },

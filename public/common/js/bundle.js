@@ -20376,7 +20376,13 @@ module.exports = {
     this.currentPage = null;
 
     var self = this;
-    $.getJSON('/api/get_list_images/' + self.list.id_str + '/1', function(data) {
+    var url = '';
+    if (this.list.id_str === 'home') {
+      url = '/api/get_home_images/1';
+    } else {
+      url = '/api/get_list_images/' + this.list.id_str + '/1';
+    }
+    $.getJSON(url, function(data) {
       self.images = data;
       self.dispImages = true;
       self.currentPage = 1;
@@ -20392,7 +20398,13 @@ module.exports = {
       this.currentPage = 1;
 
       var self = this;
-      $.getJSON('/api/get_list_images/' + newList.id_str + '/1', function(data) {
+      var url = '';
+      if (newList.id_str === 'home') {
+        url = '/api/get_home_images/1';
+      } else {
+        url = '/api/get_list_images/' + newList.id_str + '/1';
+      }
+      $.getJSON(url, function(data) {
         self.images = data;
         self.dispImages = true;
       })
@@ -20407,7 +20419,13 @@ module.exports = {
   },
   computed: {
     ajaxUrl: function() {
-      return '/api/get_list_images/' + this.list.id_str + '/' + (this.currentPage+1);
+      var url = '';
+      if (this.list.id_str === 'home') {
+        url = '/api/get_home_images/' + (this.currentPage+1);
+      } else {
+        url = '/api/get_list_images/' + this.list.id_str + '/' + (this.currentPage+1);
+      }
+      return url;
     }
   },
   methods: {
@@ -20511,6 +20529,11 @@ var app = new Vue({
     showList: function(item) {
       this.imgListIsVisible = true;
       this.selectedList = item;
+      if (this.isSplitView === false) this.mainColIsVisible = false;
+    },
+    showHome: function() {
+      this.imgListIsVisible = true;
+      this.selectedList = { id_str: 'home' };
       if (this.isSplitView === false) this.mainColIsVisible = false;
     },
     showListSelector: function() {

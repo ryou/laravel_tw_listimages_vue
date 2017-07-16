@@ -17,6 +17,9 @@
             </div>
             <div class="m-appBox_content">
               <ul class="m-list">
+                <li class="m-list_item m-list_item-btn" @@click="showHome">
+                  ホームタイムライン<span class="m-list_arrowIcn"><i class="fa fa-chevron-right"></i></span>
+                </li>
                 <list-item-component v-for="item in list" :item-data="item" :selected-list="selectedList" @@show-list="showList"></list-item-component>
               </ul>
             </div>
