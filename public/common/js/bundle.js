@@ -20423,6 +20423,15 @@ module.exports = {
 };
 
 },{"./ajaxBtn01":5,"jquery":1}],7:[function(require,module,exports){
+/* service worker
+----------------------------------------------------------*/
+if ('serviceWorker' in navigator) {
+  // register service worker
+  navigator.serviceWorker.register('/common/js/service-worker.js');
+}
+
+/* vue
+----------------------------------------------------------*/
 var Vue = require('vue');
 var $ = require('jquery');
 var ajaxBtn01Component = require('./components/ajaxBtn01');

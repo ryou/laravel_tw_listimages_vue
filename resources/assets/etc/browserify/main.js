@@ -1,3 +1,12 @@
+/* service worker
+----------------------------------------------------------*/
+if ('serviceWorker' in navigator) {
+  // register service worker
+  navigator.serviceWorker.register('/common/js/service-worker.js');
+}
+
+/* vue
+----------------------------------------------------------*/
 var Vue = require('vue');
 var $ = require('jquery');
 var ajaxBtn01Component = require('./components/ajaxBtn01');
