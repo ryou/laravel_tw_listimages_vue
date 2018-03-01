@@ -3,7 +3,7 @@
   "short_name"        : "TwListImage",
   "description"       : "Twitter List Image Viewer",
   "start_url"         : "/",
-  "display"           : "fullscreen",
+  "display"           : "standalone",
   "orientation"       : "portrait",
   "background_color"  : "#ACE",
   "theme_color"       : "#ACE",
