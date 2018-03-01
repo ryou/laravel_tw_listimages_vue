@@ -15,9 +15,7 @@ class HttpsProtocol
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->secure()) {
-            return redirect()->secure($request->getRequestUri());
-        }
+        \URL::forceScheme('https');
 
         return $next($request);
     }
