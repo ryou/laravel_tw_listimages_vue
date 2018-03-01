@@ -1,10 +1,16 @@
 {
-  "name"              : "Twitterのリストの画像だけ見るやつ",
-  "short_name"        : "TwListImages",
-  "description"       : "Twitterのリストの画像だけ見るやつ",
+  "name"              : "Twitter List Image Viewer",
+  "short_name"        : "TwListImage",
+  "description"       : "Twitter List Image Viewer",
   "start_url"         : "/",
-  "display"           : "standalone",
-  "orientation"       : "any",
+  "display"           : "fullscreen",
+  "orientation"       : "portrait",
   "background_color"  : "#ACE",
-  "theme_color"       : "#ACE"
+  "theme_color"       : "#ACE",
+  "icons": [
+    {
+      "src": "icon/icon.png",
+      "sizes": "512x512"
+    }
+  ]
 }
