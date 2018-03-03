@@ -1,34 +1,38 @@
 {
-  "name": "html",
+  "name": "gulp_webpack_test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "gulp": "gulp"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --hot",
+    "build": "gulp build && cross-env NODE_ENV=production webpack"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.10.0",
-    "browserify": "^14.3.0",
-    "del": "^2.2.1",
-    "gulp": "^3.8.11",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-csscomb": "^3.0.3",
-    "gulp-imagemin": "^2.4.0",
-    "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-ruby-sass": "^1.0.5",
-    "gulp-sass": "^3.1.0",
-    "gulp-watch": "^4.3.5",
-    "imagemin-pngquant": "^4.2.0",
-    "jquery": "2.x",
-    "vinyl-source-stream": "^1.1.0",
-    "vue": "^2.3.3"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "del": "^3.0.0",
+    "eslint": "^4.14.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "file-loader": "^1.1.4",
+    "gulp": "^3.9.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   },
-  "browser": {
-    "vue": "vue/dist/vue.common.js"
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "vue": "^2.4.4",
+    "vuetify": "^0.17.6",
+    "vuex": "^3.0.1"
   }
 }
