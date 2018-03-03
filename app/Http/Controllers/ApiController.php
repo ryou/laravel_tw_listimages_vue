@@ -15,12 +15,20 @@ class ApiController extends Controller
 
     public function getLists()
     {
+        if (env('USE_FRONT_MOCK', false)) {
+            return view('mock.api.get_lists');
+        }
+
         $lists = Twitter::getLists();
         echo json_encode($lists);
     }
 
     public function getListImages($id, $page)
     {
+        if (env('USE_FRONT_MOCK', false)) {
+            return view('mock.api.get_list_images');
+        }
+
         $timeline = Twitter::getListsStatuses([
             'list_id' => $id,
             'count' => 200,
