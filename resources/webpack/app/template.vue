@@ -6,7 +6,11 @@
       app
     >
       <v-list dense>
-        <v-list-tile v-for="list in lists" @click="initImages(list)" highlight>
+        <v-list-tile v-for="list in lists" @click="initImages(list)"
+          :class="{
+            'list__tile-wrapper--current': currentList !== null && currentList.id_str === list.id_str,
+          }"
+        >
           <v-list-tile-content>
             <v-list-tile-title>{{ list.name }}</v-list-tile-title>
           </v-list-tile-content>
@@ -71,6 +75,11 @@
 <script src="./script.js"></script>
 <style src="../../../node_modules/vuetify/dist/vuetify.min.css"></style>
 
+<style>
+.list__tile-wrapper--current .list__tile {
+  background-color: rgba(0,0,0,.12);
+}
+</style>
 <style scoped>
 .fullLoader {
   position: fixed;

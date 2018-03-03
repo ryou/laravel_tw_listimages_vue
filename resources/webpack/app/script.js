@@ -32,6 +32,7 @@ export default {
 
       this.isVisible.fullLoader = true;
       this.images = [];
+      this.currentList = list;
 
       fetch(`/api/get_list_images/${id}/1`, {
         credentials: 'include',
@@ -41,9 +42,7 @@ export default {
         console.log(json);
         this.images = json;
 
-        this.currentList = list;
         this.nextPage = 2;
-
         this.isVisible.fullLoader = false;
       });
     },
