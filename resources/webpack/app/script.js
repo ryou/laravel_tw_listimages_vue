@@ -31,6 +31,7 @@ export default {
       const id = list.id_str;
 
       this.isVisible.fullLoader = true;
+      this.images = [];
 
       fetch(`/api/get_list_images/${id}/1`, {
         credentials: 'include',

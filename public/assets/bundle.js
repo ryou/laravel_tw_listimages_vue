@@ -26971,6 +26971,7 @@ exports.push([module.i, "\n.fullLoader[data-v-c310530c] {\n  position: fixed;\n 
       const id = list.id_str;
 
       this.isVisible.fullLoader = true;
+      this.images = [];
 
       fetch(`/api/get_list_images/${id}/1`, {
         credentials: 'include'
@@ -27062,6 +27063,7 @@ var render = function() {
               return _c(
                 "v-list-tile",
                 {
+                  attrs: { highlight: "" },
                   on: {
                     click: function($event) {
                       _vm.initImages(list)
@@ -27096,7 +27098,7 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("v-toolbar-title", [_vm._v("Application")])
+          _c("v-toolbar-title", [_vm._v("Twitter List Images Viewer")])
         ],
         1
       ),
@@ -27106,7 +27108,7 @@ var render = function() {
         [
           _c(
             "v-container",
-            { attrs: { fluid: "", "grid-list-sm": "" } },
+            { attrs: { fluid: "", "grid-list-sm": "", "mb-2": "" } },
             [
               _c(
                 "v-layout",
@@ -27147,22 +27149,45 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "v-btn",
-            {
-              attrs: {
-                block: "",
-                large: "",
-                color: "secondary",
-                loading: _vm.isLoading.addImage,
-                disabled: _vm.isLoading.addImage
-              },
-              nativeOn: {
-                click: function($event) {
-                  _vm.addImages($event)
-                }
-              }
-            },
-            [_vm._v("\n      もっと見る\n    ")]
+            "v-container",
+            { attrs: { fluid: "", "grid-list-sm": "", "pb-3": "" } },
+            [
+              _c(
+                "v-layout",
+                { attrs: { row: "", wrap: "" } },
+                [
+                  _c(
+                    "v-flex",
+                    { attrs: { xs12: "", "offset-lg3": "", lg6: "" } },
+                    [
+                      _vm.images.length > 0
+                        ? _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                block: "",
+                                large: "",
+                                color: "secondary",
+                                loading: _vm.isLoading.addImage,
+                                disabled: _vm.isLoading.addImage
+                              },
+                              nativeOn: {
+                                click: function($event) {
+                                  _vm.addImages($event)
+                                }
+                              }
+                            },
+                            [_vm._v("\n            もっと見る\n          ")]
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
           )
         ],
         1

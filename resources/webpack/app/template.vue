@@ -6,7 +6,7 @@
       app
     >
       <v-list dense>
-        <v-list-tile v-for="list in lists" @click="initImages(list)">
+        <v-list-tile v-for="list in lists" @click="initImages(list)" highlight>
           <v-list-tile-content>
             <v-list-tile-title>{{ list.name }}</v-list-tile-title>
           </v-list-tile-content>
@@ -15,10 +15,10 @@
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>Twitter List Images Viewer</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <v-container fluid grid-list-sm>
+      <v-container fluid grid-list-sm mb-2>
         <v-layout row wrap>
           <v-flex
             lg2
@@ -36,16 +36,27 @@
           </v-flex>
         </v-layout>
       </v-container>
-      <v-btn
-        block
-        large
-        color="secondary"
-        :loading="isLoading.addImage"
-        @click.native="addImages"
-        :disabled="isLoading.addImage"
-      >
-        もっと見る
-      </v-btn>
+      <v-container fluid grid-list-sm pb-3>
+        <v-layout row wrap>
+          <v-flex
+            xs12
+            offset-lg3
+            lg6
+          >
+            <v-btn
+              v-if="images.length > 0"
+              block
+              large
+              color="secondary"
+              :loading="isLoading.addImage"
+              @click.native="addImages"
+              :disabled="isLoading.addImage"
+            >
+              もっと見る
+            </v-btn>
+          </v-flex>
+        </v-layout>
+      </v-container>
     </v-content>
 
     <tweet-modal-component v-if="isVisible.tweetModal" :status="tweetModalProps.status" :index="tweetModalProps.index" @hide-modal="hideModal"></tweet-modal-component>
