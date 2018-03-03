@@ -3,6 +3,9 @@ import Vuetify from 'vuetify';
 import store from './store';
 
 import AppComponent from './app/template.vue';
+import TweetModalComponent from './components/TweetModal/template.vue';
+
+Vue.component('tweet-modal-component', TweetModalComponent);
 
 Vue.use(Vuetify);
 

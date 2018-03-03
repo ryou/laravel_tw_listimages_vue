@@ -6,28 +6,9 @@
       app
     >
       <v-list dense>
-        <v-list-tile @click="pushView('top')">
-          <v-list-tile-action>
-            <v-icon>home</v-icon>
-          </v-list-tile-action>
+        <v-list-tile v-for="list in lists" @click="initImages(list)">
           <v-list-tile-content>
-            <v-list-tile-title>トップ</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile @click="pushView('about')">
-          <v-list-tile-action>
-            <v-icon>info</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>このサイトについて</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile @click="pushView('posts')">
-          <v-list-tile-action>
-            <v-icon>format_list_bulleted</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>記事一覧</v-list-tile-title>
+            <v-list-tile-title>{{ list.name }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -37,65 +18,59 @@
       <v-toolbar-title>Application</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <transition :name="$store.state.transitionName" mode="out-in">
-        <component :is="$store.state.currentView.instance"></component>
-      </transition>
+      <v-container fluid grid-list-sm>
+        <v-layout row wrap>
+          <v-flex
+            lg2
+            xs3
+            v-for="image in images"
+          >
+            <v-card flat tile>
+              <v-card-media
+                :src="image.status.extended_entities.media[image.index].media_url_https"
+                style="padding-top: 100%;"
+                @click="showModal(image)"
+              >
+              </v-card-media>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+      <v-btn
+        block
+        large
+        color="secondary"
+        :loading="isLoading.addImage"
+        @click.native="addImages"
+        :disabled="isLoading.addImage"
+      >
+        もっと見る
+      </v-btn>
     </v-content>
-    <v-footer color="indigo" app>
-      <span class="white--text">&copy; 2017</span>
-    </v-footer>
+
+    <tweet-modal-component v-if="isVisible.tweetModal" :status="tweetModalProps.status" :index="tweetModalProps.index" @hide-modal="hideModal"></tweet-modal-component>
+
+    <div class="fullLoader" v-show="isVisible.fullLoader" @click.stop>
+      <v-progress-circular indeterminate v-bind:size="50" color="primary"></v-progress-circular>
+    </div>
+
   </v-app>
 </template>
 
 <script src="./script.js"></script>
 <style src="../../../node_modules/vuetify/dist/vuetify.min.css"></style>
-<style>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .25s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
 
+<style scoped>
+.fullLoader {
+  position: fixed;
+  z-index: 5000;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
 
-.slideleft-enter-active, .slideleft-leave-active {
-  transition: transform .3s, opacity .3s;
-}
-.slideleft-leave {
-  transform: translateX(0);
-  opacity: 1;
-}
-.slideleft-leave-to {
-  transform: translateX(-50%);
-  opacity: 0;
-}
-.slideleft-enter {
-  transform: translateX(50%);
-  opacity: 0;
-}
-.slideleft-enter-to {
-  transform: translateX(0);
-  opacity: 1;
-}
+  background: rgba(0, 0, 0, .5);
 
-
-.slideright-enter-active, .slideright-leave-active {
-  transition: transform .3s, opacity .3s;
-}
-.slideright-leave {
-  transform: translateX(0);
-  opacity: 1;
-}
-.slideright-leave-to {
-  transform: translateX(50%);
-  opacity: 0;
-}
-.slideright-enter {
-  transform: translateX(-50%);
-  opacity: 0;
-}
-.slideright-enter-to {
-  transform: translateX(0);
-  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

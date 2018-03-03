@@ -11,12 +11,6 @@
     <link rel="manifest" href="/manifest.json">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- COMMON CSS-->
-    @loadLocalCSS(/common/css/font-awesome.min.css)
-    @loadLocalCSS(/common/css/base.css)
-    @loadLocalCSS(/common/css/common.css)
-    <!-- PAGE ONLY CSS-->
   </head>
   <body>
 

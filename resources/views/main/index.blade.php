@@ -6,7 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Vue Application</title>
 
+  <link rel="manifest" href="/manifest.json">
+
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  @loadLocalCSS(/assets/fontawesome.min.css)
 </head>
 <body>
   <div id="app"></div>
