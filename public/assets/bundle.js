@@ -27159,15 +27159,22 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.isVisible.tweetModal
-        ? _c("tweet-modal-component", {
-            attrs: {
-              status: _vm.tweetModalProps.status,
-              index: _vm.tweetModalProps.index
-            },
-            on: { "hide-modal": _vm.hideModal }
-          })
-        : _vm._e(),
+      _c(
+        "transition",
+        { attrs: { name: "fade" } },
+        [
+          _vm.isVisible.tweetModal
+            ? _c("tweet-modal-component", {
+                attrs: {
+                  status: _vm.tweetModalProps.status,
+                  index: _vm.tweetModalProps.index
+                },
+                on: { "hide-modal": _vm.hideModal }
+              })
+            : _vm._e()
+        ],
+        1
+      ),
       _vm._v(" "),
       _c(
         "div",
@@ -27296,7 +27303,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;\n  width: 960px;\n}\n.m-tweetModal {\n  position: fixed;\n  z-index: 200;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  overflow: hidden;\n\n  -webkit-font-smoothing: initial;\n}\n.m-tweetModal * {\n  box-sizing: content-box;\n}\n.m-tweetModal a {\n  color: inherit;\n  text-decoration: none;\n}\n.m-tweetModal a:hover {\n  text-decoration: underline;\n}\n.m-tweetModal_imgList {\n  height: 100%;\n  width: 10000px;\n}\n.m-tweetModal_imgWrapper {\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100vw;\n  height: 100%;\n}\n.m-tweetModal_img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.m-tweetModal_loading {\n  font-size: 40px;\n  color: #fff;\n}\n.m-tweetModal_blob {\n}\n.m-tweetModal_close {\n  color: #fff;\n  font-size: 30px;\n  line-height: 1.0;\n  padding: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.6);\n  border: none;\n  cursor: pointer;\n  outline: none;\n}\n.m-tweetModal_nav {\n}\n.m-tweetModal_navItem {\n  position: absolute;\n  top: 50%;\n  font-size: 40px;\n  margin-top: -35px;\n  line-height: 1.0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  padding: 15px;\n  cursor: pointer;\n}\n.m-tweetModal_navItem-next {\n  right: 0;\n}\n.m-tweetModal_textContainer {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.5));\n  color: #fff;\n  padding: 40px 0 10px;\n}\n.m-tweet01 {\n}\n.m-tweet01_row {\n  display: table;\n}\n.m-tweet01_leftCol {\n  display: table-cell;\n  vertical-align: top;\n  padding-right: 10px;\n  width: 48px;\n}\n.m-tweet01_rightCol {\n  display: table-cell;\n  vertical-align: top;\n}\n.m-tweet01_icon img {\n  border-radius: 5px;\n  width: 48px;\n  height: 48px;\n}\n.m-tweet01_userInfo {\n}\n.m-tweet01_name {\n  font-weight: bold;\n}\n.m-tweet01_screenName {\n  font-size: 12px;\n}\n.m-tweet01_date {\n  font-size: 11px;\n}\n.m-tweet01_text {\n  font-size: 14px;\n}\n.m-tweet01_actionBtns {\n  padding-top: 7px;\n}\n.m-tweet01_actionBtn {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: top;\n}\n.m-tweet01-textWhite {\n  color: #fff;\n}\n.m-actionBtn {\n  display: inline-block;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  outline: none;\n  color: #fff;\n  font-size: 10px;\n  text-align: center;\n  vertical-align: top;\n}\n.u-align-right {\n  text-align: right;\n}\n.u-color-green {\n  color: #2ecc71;\n}\n", ""]);
+exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;\n  width: 960px;\n}\n.m-tweetModal {\n  position: fixed;\n  z-index: 200;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  overflow: hidden;\n\n  -webkit-font-smoothing: initial;\n}\n.m-tweetModal * {\n  box-sizing: content-box;\n}\n.m-tweetModal a {\n  color: inherit;\n  text-decoration: none;\n}\n.m-tweetModal a:hover {\n  text-decoration: underline;\n}\n.m-tweetModal_imgList {\n  height: 100%;\n  width: 10000px;\n}\n.m-tweetModal_imgWrapper {\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100vw;\n  height: 100%;\n}\n.m-tweetModal_img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.m-tweetModal_loading {\n  font-size: 40px;\n  color: #fff;\n}\n.m-tweetModal_blob {\n}\n.m-tweetModal_close {\n  color: #fff;\n  font-size: 30px;\n  line-height: 1.0;\n  padding: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.6);\n  border: none;\n  cursor: pointer;\n  outline: none;\n}\n.m-tweetModal_nav {\n}\n.m-tweetModal_navItem {\n  position: absolute;\n  top: 50%;\n  font-size: 40px;\n  margin-top: -35px;\n  line-height: 1.0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  padding: 15px;\n  cursor: pointer;\n}\n.m-tweetModal_navItem-next {\n  right: 0;\n}\n.m-tweetModal_textContainer {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.5));\n  color: #fff;\n  padding: 40px 0 10px;\n}\n.m-tweet01 {\n}\n.m-tweet01_row {\n  display: table;\n}\n.m-tweet01_leftCol {\n  display: table-cell;\n  vertical-align: top;\n  padding-right: 10px;\n  width: 48px;\n}\n.m-tweet01_rightCol {\n  display: table-cell;\n  vertical-align: top;\n}\n.m-tweet01_icon img {\n  border-radius: 5px;\n  width: 48px;\n  height: 48px;\n}\n.m-tweet01_userInfo {\n}\n.m-tweet01_name {\n  font-weight: bold;\n}\n.m-tweet01_screenName {\n  font-size: 12px;\n}\n.m-tweet01_date {\n  font-size: 11px;\n}\n.m-tweet01_text {\n  font-size: 14px;\n}\n.m-tweet01_actionBtns {\n  padding-top: 7px;\n}\n.m-tweet01_actionBtn {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: top;\n}\n.m-tweet01-textWhite {\n  color: #fff;\n}\n.m-actionBtn {\n  display: inline-block;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  outline: none;\n  color: #fff;\n  font-size: 10px;\n  text-align: center;\n  vertical-align: top;\n}\n.u-align-right {\n  text-align: right;\n}\n.u-color-green {\n  color: #2ecc71;\n}\n\n\n/* slide\n----------------------------------------------------------*/\n.slideleft-enter-active,\n.slideleft-leave-active {\n  transition: .2s;\n}\n.slideleft-enter,\n.slideleft-leave-to {\n  transform: translateX(-100%);\n}\n.slideright-enter-active,\n.slideright-leave-active {\n  transition: .2s;\n}\n.slideright-enter,\n.slideright-leave-to {\n  transform: translateX(100%);\n}\n.slideup-enter-active,\n.slideup-leave-active {\n  transition: .2s;\n}\n.slideup-enter,\n.slideup-leave-to {\n  transform: translateY(-100%);\n}\n.slidedown-enter-active,\n.slidedown-leave-active {\n  transition: .2s;\n}\n.slidedown-enter,\n.slidedown-leave-to {\n  transform: translateY(100%);\n}\n\n", ""]);
 
 // exports
 
@@ -38519,7 +38526,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.fullLoader[data-v-c310530c] {\n  position: fixed;\n  z-index: 5000;\n  top: 0; bottom: 0;\n  left: 0; right: 0;\n\n  background: rgba(255, 255, 255, .5);\n\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n", ""]);
+exports.push([module.i, "\n.fullLoader[data-v-c310530c] {\n  position: fixed;\n  z-index: 5000;\n  top: 0; bottom: 0;\n  left: 0; right: 0;\n\n  background: rgba(255, 255, 255, .5);\n\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n/* fade\n----------------------------------------------------------*/\n.fade-enter-active[data-v-c310530c],\n.fade-leave-active[data-v-c310530c] {\n  transition: .2s;\n}\n.fade-enter[data-v-c310530c],\n.fade-leave-to[data-v-c310530c] {\n  opacity: 0;\n}\n", ""]);
 
 // exports
 

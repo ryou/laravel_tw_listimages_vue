@@ -221,4 +221,48 @@
 .u-color-green {
   color: #2ecc71;
 }
+
+
+/* slide
+----------------------------------------------------------*/
+.slideleft-enter-active,
+.slideleft-leave-active {
+  transition: .2s;
+}
+
+.slideleft-enter,
+.slideleft-leave-to {
+  transform: translateX(-100%);
+}
+
+.slideright-enter-active,
+.slideright-leave-active {
+  transition: .2s;
+}
+
+.slideright-enter,
+.slideright-leave-to {
+  transform: translateX(100%);
+}
+
+.slideup-enter-active,
+.slideup-leave-active {
+  transition: .2s;
+}
+
+.slideup-enter,
+.slideup-leave-to {
+  transform: translateY(-100%);
+}
+
+.slidedown-enter-active,
+.slidedown-leave-active {
+  transition: .2s;
+}
+
+.slidedown-enter,
+.slidedown-leave-to {
+  transform: translateY(100%);
+}
+
 </style>

@@ -63,7 +63,9 @@
       </v-container>
     </v-content>
 
-    <tweet-modal-component v-if="isVisible.tweetModal" :status="tweetModalProps.status" :index="tweetModalProps.index" @hide-modal="hideModal"></tweet-modal-component>
+    <transition name="fade">
+      <tweet-modal-component v-if="isVisible.tweetModal" :status="tweetModalProps.status" :index="tweetModalProps.index" @hide-modal="hideModal"></tweet-modal-component>
+    </transition>
 
     <div class="fullLoader" v-show="isVisible.fullLoader" @click.stop>
       <v-progress-circular indeterminate v-bind:size="50" color="primary"></v-progress-circular>
@@ -92,5 +94,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* fade
+----------------------------------------------------------*/
+.fade-enter-active,
+.fade-leave-active {
+  transition: .2s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
