@@ -26936,6 +26936,7 @@ exports.push([module.i, "/*!\n* Vuetify v0.17.6\n* Forged by John Leider\n* Rele
       this.isVisible.fullLoader = true;
       this.images = [];
       this.currentList = list;
+      this.drawer = false;
 
       fetch(`/api/get_list_images/${id}/1`, {
         credentials: 'include'

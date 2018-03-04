@@ -33,6 +33,7 @@ export default {
       this.isVisible.fullLoader = true;
       this.images = [];
       this.currentList = list;
+      this.drawer = false;
 
       fetch(`/api/get_list_images/${id}/1`, {
         credentials: 'include',
