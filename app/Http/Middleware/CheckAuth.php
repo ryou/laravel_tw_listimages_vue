@@ -22,6 +22,6 @@ class CheckAuth
             return $next($request);
         }
 
-        return Redirect::route('auth.index');
+        return response('', 401);
     }
 }

@@ -23,7 +23,7 @@
                     <i class="fa fa-retweet u-color-green"></i>
                   </div>
                   <div class="m-tweet01_rightCol">
-                    <div class="u-font-small"><a :href="'https://twitter.com/' + status.retweet_user.screen_name" target="_blank" class="u-link-text02">@{{ status.retweet_user.name }}</a>さんがリツイート</div>
+                    <div class="u-font-small"><a :href="'https://twitter.com/' + status.retweet_user.screen_name" target="_blank" class="u-link-text02">{{ status.retweet_user.name }}</a>さんがリツイート</div>
                   </div>
                 </div>
                 <div class="m-tweet01_row">
@@ -32,11 +32,11 @@
                   </div>
                   <div class="m-tweet01_rightCol">
                     <div class="m-tweet01_userInfo">
-                      <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_name u-link-text02">@{{ status.user.name }}</a>
-                      <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_screenName u-link-text02">@{{ status.user.screen_name }}</a><!--
-                      -->・<a :href="'https://twitter.com/' + status.user.screen_name + '/status/' + status.id_str" target="_blank" class="m-tweet01_date u-link-text02">@{{ dateStr }}</a>
+                      <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_name u-link-text02">{{ status.user.name }}</a>
+                      <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_screenName u-link-text02">{{ status.user.screen_name }}</a><!--
+                      -->・<a :href="'https://twitter.com/' + status.user.screen_name + '/status/' + status.id_str" target="_blank" class="m-tweet01_date u-link-text02">{{ dateStr }}</a>
                     </div>
-                    <div class="m-tweet01_text">@{{ status.text }}</div>
+                    <div class="m-tweet01_text">{{ status.text }}</div>
                   </div>
                 </div>
                 <div class="m-tweet01_row">

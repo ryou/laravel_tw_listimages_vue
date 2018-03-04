@@ -31,7 +31,7 @@
           >
             <v-card flat tile>
               <v-card-media
-                :src="image.status.extended_entities.media[image.index].media_url_https"
+                :src="`${image.status.extended_entities.media[image.index].media_url_https}:small`"
                 style="padding-top: 100%;"
                 @click="showModal(image)"
               >
@@ -61,6 +61,21 @@
           </v-flex>
         </v-layout>
       </v-container>
+      <v-dialog
+        v-model="isVisible.loginModal"
+        max-width="500px"
+        persistent
+      >
+        <v-card>
+          <v-card-title>ログイン</v-card-title>
+          <v-card-text>
+          </v-card-text>
+        <v-card-actions>
+          <v-btn color="primary" flat href="/auth/login">Login</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
     </v-content>
 
     <transition name="fade">

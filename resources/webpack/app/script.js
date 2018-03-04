@@ -1,3 +1,5 @@
+import Utils from '../libs/Utils';
+
 export default {
   data() {
     return {
@@ -10,6 +12,7 @@ export default {
       isVisible: {
         tweetModal: false,
         fullLoader: true,
+        loginModal: false,
       },
       currentList: null,
       nextPage: 0,
@@ -35,11 +38,14 @@ export default {
       this.currentList = list;
       this.drawer = false;
 
-      fetch(`/api/get_list_images/${id}/1`, {
+      Utils.fetchJSON(`/api/get_list_images/${id}/1`, {
         credentials: 'include',
-      }).then((response) => {
-        return response.json();
-      }).then((json) => {
+      })
+      .catch(() => {
+        this.isVisible.loginModal = true;
+      })
+      .then((json) => {
+        console.log(json);
         this.images = json;
 
         this.nextPage = 2;
@@ -50,11 +56,13 @@ export default {
       const id = this.currentList.id_str;
       this.isLoading.addImage = true;
 
-      fetch(`/api/get_list_images/${id}/${this.nextPage}`, {
+      Utils.fetchJSON(`/api/get_list_images/${id}/${this.nextPage}`, {
         credentials: 'include',
-      }).then((response) => {
-        return response.json();
-      }).then((json) => {
+      })
+      .catch(() => {
+        this.isVisible.loginModal = true;
+      })
+      .then((json) => {
         this.images = this.images.concat(json);
 
         this.nextPage += 1;
@@ -75,11 +83,13 @@ export default {
       this.$store.commit('popView');
     });
 
-    fetch('/api/get_lists', {
+    Utils.fetchJSON('/api/get_lists', {
       credentials: 'include',
-    }).then((response) => {
-      return response.json();
-    }).then((json) => {
+    })
+    .catch(() => {
+      this.isVisible.loginModal = true;
+    })
+    .then((json) => {
       this.lists = json;
 
       this.isVisible.fullLoader = false;
