@@ -40,7 +40,6 @@ export default {
       }).then((response) => {
         return response.json();
       }).then((json) => {
-        console.log(json);
         this.images = json;
 
         this.nextPage = 2;
@@ -56,7 +55,6 @@ export default {
       }).then((response) => {
         return response.json();
       }).then((json) => {
-        console.log(json);
         this.images = this.images.concat(json);
 
         this.nextPage += 1;
@@ -82,7 +80,6 @@ export default {
     }).then((response) => {
       return response.json();
     }).then((json) => {
-      console.log(json);
       this.lists = json;
 
       this.isVisible.fullLoader = false;
