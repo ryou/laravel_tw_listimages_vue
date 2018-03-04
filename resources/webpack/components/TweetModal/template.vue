@@ -4,14 +4,14 @@
 
       <div class="m-tweetModal_blob" @click.stop>
         <transition name="slideup">
-          <button v-show="blobIsVisible" class="m-tweetModal_close" @click="hideModal"><i class="fa fa-times"></i></button>
+          <button v-show="blobIsVisible" class="m-tweetModal_close" @click="hideModal"><v-icon dark>fa-times</v-icon></button>
         </transition>
         <div class="m-tweetModal_nav">
           <transition name="slideleft">
-            <div v-show="prevImgIsExist && blobIsVisible" class="m-tweetModal_navItem m-tweetModal_navItem-prev" @click="prevImg"><i class="fa fa-chevron-left"></i></div>
+            <div v-show="prevImgIsExist && blobIsVisible" class="m-tweetModal_navItem m-tweetModal_navItem-prev" @click="prevImg"><v-icon dark>fa-chevron-left</v-icon></div>
           </transition>
           <transition name="slideright">
-            <div v-show="nextImgIsExist && blobIsVisible" class="m-tweetModal_navItem m-tweetModal_navItem-next" @click="nextImg"><i class="fa fa-chevron-right"></i></div>
+            <div v-show="nextImgIsExist && blobIsVisible" class="m-tweetModal_navItem m-tweetModal_navItem-next" @click="nextImg"><v-icon dark>fa-chevron-right</v-icon></div>
           </transition>
         </div>
         <transition name="slidedown">
@@ -23,7 +23,7 @@
                     <i class="fa fa-retweet u-color-green"></i>
                   </div>
                   <div class="m-tweet01_rightCol">
-                    <p class="u-font-small"><a :href="'https://twitter.com/' + status.retweet_user.screen_name" target="_blank" class="u-link-text02">@{{ status.retweet_user.name }}</a>さんがリツイート</p>
+                    <div class="u-font-small"><a :href="'https://twitter.com/' + status.retweet_user.screen_name" target="_blank" class="u-link-text02">@{{ status.retweet_user.name }}</a>さんがリツイート</div>
                   </div>
                 </div>
                 <div class="m-tweet01_row">
@@ -36,7 +36,7 @@
                       <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_screenName u-link-text02">@{{ status.user.screen_name }}</a><!--
                       -->・<a :href="'https://twitter.com/' + status.user.screen_name + '/status/' + status.id_str" target="_blank" class="m-tweet01_date u-link-text02">@{{ dateStr }}</a>
                     </div>
-                    <p class="m-tweet01_text">@{{ status.text }}</p>
+                    <div class="m-tweet01_text">@{{ status.text }}</div>
                   </div>
                 </div>
                 <div class="m-tweet01_row">
@@ -46,7 +46,7 @@
                       <li class="m-tweet01_actionBtn"><action-btn-component icon="fa-retweet" :initial-state="status.retweeted" :activate-url="retweetUrl" :deactivate-url="unretweetUrl" text="リツイート"></action-btn-component></li>
                       <li class="m-tweet01_actionBtn"><action-btn-component icon="fa-heart" :initial-state="status.favorited" :activate-url="createFavUrl" :deactivate-url="destroyFavUrl" text="いいね"></action-btn-component></li>
                       <li class="m-tweet01_actionBtn">
-                        <a :href="img.media_url + ':orig'" target="_blank" class="m-actionBtn"><i class="fa fa-picture-o"></i><br>オリジナル画像</a>
+                        <a :href="img.media_url + ':orig'" target="_blank" class="m-actionBtn"><v-icon dark>fa-image</v-icon><br>オリジナル画像</a>
                       </li>
                     </ul>
                   </div>
@@ -78,6 +78,18 @@
   bottom: 0;
   background-color: #000;
   overflow: hidden;
+
+  -webkit-font-smoothing: initial;
+}
+.m-tweetModal * {
+  box-sizing: content-box;
+}
+.m-tweetModal a {
+  color: inherit;
+  text-decoration: none;
+}
+.m-tweetModal a:hover {
+  text-decoration: underline;
 }
 .m-tweetModal_imgList {
   height: 100%;
@@ -96,14 +108,14 @@
   max-height: 100%;
 }
 .m-tweetModal_loading {
-  font-size: 4.0rem;
+  font-size: 40px;
   color: #fff;
 }
 .m-tweetModal_blob {
 }
 .m-tweetModal_close {
   color: #fff;
-  font-size: 3.0rem;
+  font-size: 30px;
   line-height: 1.0;
   padding: 10px;
   position: absolute;
@@ -120,12 +132,12 @@
 .m-tweetModal_navItem {
   position: absolute;
   top: 50%;
-  font-size: 4.0rem;
-  margin-top: -3.5rem;
+  font-size: 40px;
+  margin-top: -35px;
   line-height: 1.0;
   color: #fff;
   background: rgba(0, 0, 0, 0.6);
-  padding: 1.5rem;
+  padding: 15px;
   cursor: pointer;
 }
 .m-tweetModal_navItem-next {
@@ -150,11 +162,13 @@
 }
 .m-tweet01_leftCol {
   display: table-cell;
+  vertical-align: top;
   padding-right: 10px;
   width: 48px;
 }
 .m-tweet01_rightCol {
   display: table-cell;
+  vertical-align: top;
 }
 .m-tweet01_icon img {
   border-radius: 5px;
@@ -168,17 +182,13 @@
   font-weight: bold;
 }
 .m-tweet01_screenName {
-  font-size: 1.2rem;
+  font-size: 12px;
 }
 .m-tweet01_date {
-  font-size: 1.1rem;
+  font-size: 11px;
 }
 .m-tweet01_text {
-  font-size: 1.4rem;
-  @include mq-sp {
-    font-size: 1.3rem;
-    line-height: 1.4;
-  }
+  font-size: 14px;
 }
 .m-tweet01_actionBtns {
   padding-top: 7px;
@@ -200,8 +210,15 @@
   cursor: pointer;
   outline: none;
   color: #fff;
-  font-size: 1.0rem;
+  font-size: 10px;
   text-align: center;
   vertical-align: top;
+}
+
+.u-align-right {
+  text-align: right;
+}
+.u-color-green {
+  color: #2ecc71;
 }
 </style>

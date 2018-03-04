@@ -1,5 +1,5 @@
 <template>
-  <button class="m-actionBtn" :class="classObj" @click="changeState"><i class="fa" :class="icon"></i><br>{{ text }}</button>
+  <button class="m-actionBtn" :class="classObj" @click="changeState"><v-icon dark>{{ icon }}</v-icon><br>{{ text }}</button>
 </template>
 
 <script>

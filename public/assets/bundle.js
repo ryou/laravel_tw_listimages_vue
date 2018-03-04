@@ -27296,7 +27296,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;\n  width: 960px;\n}\n.m-tweetModal {\n  position: fixed;\n  z-index: 200;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  overflow: hidden;\n}\n.m-tweetModal_imgList {\n  height: 100%;\n  width: 10000px;\n}\n.m-tweetModal_imgWrapper {\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100vw;\n  height: 100%;\n}\n.m-tweetModal_img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.m-tweetModal_loading {\n  font-size: 4.0rem;\n  color: #fff;\n}\n.m-tweetModal_blob {\n}\n.m-tweetModal_close {\n  color: #fff;\n  font-size: 3.0rem;\n  line-height: 1.0;\n  padding: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.6);\n  border: none;\n  cursor: pointer;\n  outline: none;\n}\n.m-tweetModal_nav {\n}\n.m-tweetModal_navItem {\n  position: absolute;\n  top: 50%;\n  font-size: 4.0rem;\n  margin-top: -3.5rem;\n  line-height: 1.0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  padding: 1.5rem;\n  cursor: pointer;\n}\n.m-tweetModal_navItem-next {\n  right: 0;\n}\n.m-tweetModal_textContainer {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.5));\n  color: #fff;\n  padding: 40px 0 10px;\n}\n.m-tweet01 {\n}\n.m-tweet01_row {\n  display: table;\n}\n.m-tweet01_leftCol {\n  display: table-cell;\n  padding-right: 10px;\n  width: 48px;\n}\n.m-tweet01_rightCol {\n  display: table-cell;\n}\n.m-tweet01_icon img {\n  border-radius: 5px;\n  width: 48px;\n  height: 48px;\n}\n.m-tweet01_userInfo {\n}\n.m-tweet01_name {\n  font-weight: bold;\n}\n.m-tweet01_screenName {\n  font-size: 1.2rem;\n}\n.m-tweet01_date {\n  font-size: 1.1rem;\n}\n.m-tweet01_text {\n  font-size: 1.4rem;\n@include mq-sp {\n    font-size: 1.3rem;\n    line-height: 1.4;\n}\n}\n.m-tweet01_actionBtns {\n  padding-top: 7px;\n}\n.m-tweet01_actionBtn {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: top;\n}\n.m-tweet01-textWhite {\n  color: #fff;\n}\n.m-actionBtn {\n  display: inline-block;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  outline: none;\n  color: #fff;\n  font-size: 1.0rem;\n  text-align: center;\n  vertical-align: top;\n}\n", ""]);
+exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;\n  width: 960px;\n}\n.m-tweetModal {\n  position: fixed;\n  z-index: 200;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  overflow: hidden;\n\n  -webkit-font-smoothing: initial;\n}\n.m-tweetModal * {\n  box-sizing: content-box;\n}\n.m-tweetModal a {\n  color: inherit;\n  text-decoration: none;\n}\n.m-tweetModal a:hover {\n  text-decoration: underline;\n}\n.m-tweetModal_imgList {\n  height: 100%;\n  width: 10000px;\n}\n.m-tweetModal_imgWrapper {\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100vw;\n  height: 100%;\n}\n.m-tweetModal_img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.m-tweetModal_loading {\n  font-size: 40px;\n  color: #fff;\n}\n.m-tweetModal_blob {\n}\n.m-tweetModal_close {\n  color: #fff;\n  font-size: 30px;\n  line-height: 1.0;\n  padding: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.6);\n  border: none;\n  cursor: pointer;\n  outline: none;\n}\n.m-tweetModal_nav {\n}\n.m-tweetModal_navItem {\n  position: absolute;\n  top: 50%;\n  font-size: 40px;\n  margin-top: -35px;\n  line-height: 1.0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  padding: 15px;\n  cursor: pointer;\n}\n.m-tweetModal_navItem-next {\n  right: 0;\n}\n.m-tweetModal_textContainer {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.5));\n  color: #fff;\n  padding: 40px 0 10px;\n}\n.m-tweet01 {\n}\n.m-tweet01_row {\n  display: table;\n}\n.m-tweet01_leftCol {\n  display: table-cell;\n  vertical-align: top;\n  padding-right: 10px;\n  width: 48px;\n}\n.m-tweet01_rightCol {\n  display: table-cell;\n  vertical-align: top;\n}\n.m-tweet01_icon img {\n  border-radius: 5px;\n  width: 48px;\n  height: 48px;\n}\n.m-tweet01_userInfo {\n}\n.m-tweet01_name {\n  font-weight: bold;\n}\n.m-tweet01_screenName {\n  font-size: 12px;\n}\n.m-tweet01_date {\n  font-size: 11px;\n}\n.m-tweet01_text {\n  font-size: 14px;\n}\n.m-tweet01_actionBtns {\n  padding-top: 7px;\n}\n.m-tweet01_actionBtn {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: top;\n}\n.m-tweet01-textWhite {\n  color: #fff;\n}\n.m-actionBtn {\n  display: inline-block;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  outline: none;\n  color: #fff;\n  font-size: 10px;\n  text-align: center;\n  vertical-align: top;\n}\n.u-align-right {\n  text-align: right;\n}\n.u-color-green {\n  color: #2ecc71;\n}\n", ""]);
 
 // exports
 
@@ -38097,10 +38097,11 @@ var render = function() {
       on: { click: _vm.changeState }
     },
     [
-      _c("i", { staticClass: "fa", class: _vm.icon }),
+      _c("v-icon", { attrs: { dark: "" } }, [_vm._v(_vm._s(_vm.icon))]),
       _c("br"),
       _vm._v(_vm._s(_vm.text))
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -38165,7 +38166,8 @@ var render = function() {
                 staticClass: "m-tweetModal_close",
                 on: { click: _vm.hideModal }
               },
-              [_c("i", { staticClass: "fa fa-times" })]
+              [_c("v-icon", { attrs: { dark: "" } }, [_vm._v("fa-times")])],
+              1
             )
           ]),
           _vm._v(" "),
@@ -38189,7 +38191,12 @@ var render = function() {
                       "m-tweetModal_navItem m-tweetModal_navItem-prev",
                     on: { click: _vm.prevImg }
                   },
-                  [_c("i", { staticClass: "fa fa-chevron-left" })]
+                  [
+                    _c("v-icon", { attrs: { dark: "" } }, [
+                      _vm._v("fa-chevron-left")
+                    ])
+                  ],
+                  1
                 )
               ]),
               _vm._v(" "),
@@ -38209,7 +38216,12 @@ var render = function() {
                       "m-tweetModal_navItem m-tweetModal_navItem-next",
                     on: { click: _vm.nextImg }
                   },
-                  [_c("i", { staticClass: "fa fa-chevron-right" })]
+                  [
+                    _c("v-icon", { attrs: { dark: "" } }, [
+                      _vm._v("fa-chevron-right")
+                    ])
+                  ],
+                  1
                 )
               ])
             ],
@@ -38246,7 +38258,7 @@ var render = function() {
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "m-tweet01_rightCol" }, [
-                            _c("p", { staticClass: "u-font-small" }, [
+                            _c("div", { staticClass: "u-font-small" }, [
                               _c(
                                 "a",
                                 {
@@ -38341,7 +38353,7 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _c("p", { staticClass: "m-tweet01_text" }, [
+                        _c("div", { staticClass: "m-tweet01_text" }, [
                           _vm._v("@" + _vm._s(_vm.status.text))
                         ])
                       ])
@@ -38397,10 +38409,13 @@ var render = function() {
                                 }
                               },
                               [
-                                _c("i", { staticClass: "fa fa-picture-o" }),
+                                _c("v-icon", { attrs: { dark: "" } }, [
+                                  _vm._v("fa-image")
+                                ]),
                                 _c("br"),
                                 _vm._v("オリジナル画像")
-                              ]
+                              ],
+                              1
                             )
                           ])
                         ])
