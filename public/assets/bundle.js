@@ -27573,7 +27573,7 @@ var render = function() {
       return _c("li", { staticClass: "m-tweetModal_imgWrapper" }, [
         _c("img", {
           staticClass: "m-tweetModal_img",
-          attrs: { src: image.media_url },
+          attrs: { src: image.media_url_https },
           on: {
             click: function($event) {
               $event.stopPropagation()
@@ -38303,7 +38303,7 @@ var render = function() {
                             [
                               _c("img", {
                                 attrs: {
-                                  src: _vm.status.user.profile_image_url
+                                  src: _vm.status.user.profile_image_url_https
                                 }
                               })
                             ]

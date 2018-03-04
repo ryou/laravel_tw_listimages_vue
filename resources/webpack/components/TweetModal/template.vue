@@ -28,7 +28,7 @@
                 </div>
                 <div class="m-tweet01_row">
                   <div class="m-tweet01_leftCol">
-                    <div class="m-tweet01_icon"><a :href="'https://twitter.com/' + status.user.screen_name" class="u-ov"><img :src="status.user.profile_image_url"></a></div>
+                    <div class="m-tweet01_icon"><a :href="'https://twitter.com/' + status.user.screen_name" class="u-ov"><img :src="status.user.profile_image_url_https"></a></div>
                   </div>
                   <div class="m-tweet01_rightCol">
                     <div class="m-tweet01_userInfo">
