@@ -8233,7 +8233,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuetify__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_template_vue__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_TweetModal_template_vue__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_TweetModal_template_vue__ = __webpack_require__(35);
 
 
 
@@ -26806,7 +26806,7 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c310530c_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c310530c_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(34);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -26979,14 +26979,23 @@ exports.push([module.i, "\n.fullLoader[data-v-c310530c] {\n  position: fixed;\n 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Utils__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Utils__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Utils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__libs_Utils__);
 
+
+const LAYOUT_CODE = {
+  xs: 0,
+  sm: 1,
+  md: 2,
+  lg: 3,
+  xl: 4
+};
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data() {
     return {
       drawer: true,
+      layoutCode: '',
       lists: [],
       images: [],
       isLoading: {
@@ -27013,20 +27022,35 @@ exports.push([module.i, "\n.fullLoader[data-v-c310530c] {\n  position: fixed;\n 
       });
       this.drawer = false;
     },
+    updateLayoutCode() {
+      const w = window.innerWidth;
+      if (w < 600) {
+        this.layoutCode = LAYOUT_CODE.xs;
+      } else if (w < 960) {
+        this.layoutCode = LAYOUT_CODE.sm;
+      } else if (w < 1264) {
+        this.layoutCode = LAYOUT_CODE.md;
+      } else if (w < 1904) {
+        this.layoutCode = LAYOUT_CODE.lg;
+      } else {
+        this.layoutCode = LAYOUT_CODE.xl;
+      }
+    },
     initImages(list) {
       const id = list.id_str;
 
       this.isVisible.fullLoader = true;
       this.images = [];
       this.currentList = list;
-      this.drawer = false;
+      if (this.layoutCode < LAYOUT_CODE.lg) {
+        this.drawer = false;
+      }
 
       __WEBPACK_IMPORTED_MODULE_0__libs_Utils___default.a.fetchJSON(`/api/get_list_images/${id}/1`, {
         credentials: 'include'
       }).catch(() => {
         this.isVisible.loginModal = true;
       }).then(json => {
-        console.log(json);
         this.images = json;
 
         this.nextPage = 2;
@@ -27071,11 +27095,36 @@ exports.push([module.i, "\n.fullLoader[data-v-c310530c] {\n  position: fixed;\n 
 
       this.isVisible.fullLoader = false;
     });
+
+    this.updateLayoutCode();
   }
 });
 
 /***/ }),
 /* 33 */
+/***/ (function(module, exports) {
+
+class Utils {
+  // fetch APIは4xxエラーをrejectしてくれないので以下を参考に
+  // JSONのfetch用関数作成
+  // http://blog.mudatobunka.org/entry/2016/04/26/092518
+  static fetchJSON(url, options) {
+    const promise = fetch(url, options).then(response => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+
+      return response;
+    }).then(response => response.json());
+
+    return promise;
+  }
+};
+
+module.exports = Utils;
+
+/***/ }),
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27085,7 +27134,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-app",
-    { attrs: { id: "inspire" } },
+    {
+      directives: [
+        {
+          name: "resize",
+          rawName: "v-resize",
+          value: _vm.updateLayoutCode,
+          expression: "updateLayoutCode"
+        }
+      ],
+      attrs: { id: "inspire" }
+    },
     [
       _c(
         "v-navigation-drawer",
@@ -27343,16 +27402,16 @@ if (false) {
 }
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_419c49b4_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_419c49b4_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(46);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(35)
+  __webpack_require__(36)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -27395,13 +27454,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(36);
+var content = __webpack_require__(37);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -27421,7 +27480,7 @@ if(false) {
 }
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -27435,12 +27494,12 @@ exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ImgList_template_vue__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ActionBtn_template_vue__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ImgList_template_vue__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ActionBtn_template_vue__ = __webpack_require__(42);
 
 
 
@@ -27511,12 +27570,12 @@ exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;
 });
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_template_vue__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_75f00e45_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_template_vue__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_75f00e45_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(41);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -27560,7 +27619,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27686,7 +27745,7 @@ if (false) {(function () {
 });
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27740,12 +27799,12 @@ if (false) {
 }
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_template_vue__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f2fb2040_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_template_vue__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f2fb2040_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(45);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -27789,7 +27848,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27798,7 +27857,7 @@ if (false) {(function () {
 //
 //
 
-var $ = __webpack_require__(43);
+var $ = __webpack_require__(44);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function () {
@@ -27843,7 +27902,7 @@ var $ = __webpack_require__(43);
 });
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -38214,7 +38273,7 @@ return jQuery;
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38249,7 +38308,7 @@ if (false) {
 }
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38572,29 +38631,6 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-419c49b4", esExports)
   }
 }
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports) {
-
-class Utils {
-  // fetch APIは4xxエラーをrejectしてくれないので以下を参考に
-  // JSONのfetch用関数作成
-  // http://blog.mudatobunka.org/entry/2016/04/26/092518
-  static fetchJSON(url, options) {
-    const promise = fetch(url, options).then(response => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-
-      return response;
-    }).then(response => response.json());
-
-    return promise;
-  }
-};
-
-module.exports = Utils;
 
 /***/ })
 /******/ ]);

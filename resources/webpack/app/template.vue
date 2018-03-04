@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="inspire" v-resize="updateLayoutCode">
     <v-navigation-drawer
       fixed
       v-model="drawer"

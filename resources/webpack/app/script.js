@@ -1,9 +1,18 @@
 import Utils from '../libs/Utils';
 
+const LAYOUT_CODE = {
+  xs: 0,
+  sm: 1,
+  md: 2,
+  lg: 3,
+  xl: 4,
+};
+
 export default {
   data() {
     return {
       drawer: true,
+      layoutCode: '',
       lists: [],
       images: [],
       isLoading: {
@@ -30,13 +39,29 @@ export default {
       });
       this.drawer = false;
     },
+    updateLayoutCode() {
+      const w = window.innerWidth;
+      if (w < 600) {
+        this.layoutCode = LAYOUT_CODE.xs;
+      } else if(w < 960) {
+        this.layoutCode = LAYOUT_CODE.sm;
+      } else if (w < 1264) {
+        this.layoutCode = LAYOUT_CODE.md;
+      } else if (w < 1904) {
+        this.layoutCode = LAYOUT_CODE.lg;
+      } else {
+        this.layoutCode = LAYOUT_CODE.xl;
+      }
+    },
     initImages(list) {
       const id = list.id_str;
 
       this.isVisible.fullLoader = true;
       this.images = [];
       this.currentList = list;
-      this.drawer = false;
+      if (this.layoutCode < LAYOUT_CODE.lg) {
+        this.drawer = false;
+      }
 
       Utils.fetchJSON(`/api/get_list_images/${id}/1`, {
         credentials: 'include',
@@ -45,7 +70,6 @@ export default {
         this.isVisible.loginModal = true;
       })
       .then((json) => {
-        console.log(json);
         this.images = json;
 
         this.nextPage = 2;
@@ -94,5 +118,7 @@ export default {
 
       this.isVisible.fullLoader = false;
     });
+
+    this.updateLayoutCode();
   },
 };
