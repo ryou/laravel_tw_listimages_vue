@@ -20,6 +20,10 @@
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Twitter List Images Viewer</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon @click="isVisible.settingModal = true">
+        <v-icon>settings</v-icon>
+      </v-btn>
     </v-toolbar>
     <v-content>
       <v-container fluid grid-list-sm mb-2>
@@ -27,7 +31,7 @@
           <v-flex
             lg2
             xs3
-            v-for="image in images"
+            v-for="image in displayImages"
           >
             <v-card flat tile>
               <v-card-media
@@ -61,6 +65,7 @@
           </v-flex>
         </v-layout>
       </v-container>
+
       <v-dialog
         v-model="isVisible.loginModal"
         max-width="500px"
@@ -72,6 +77,22 @@
           </v-card-text>
         <v-card-actions>
           <v-btn color="primary" flat href="/auth/login">Login</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
+      <v-dialog
+        v-model="isVisible.settingModal"
+        max-width="500px"
+        persistent
+      >
+        <v-card>
+          <v-card-title>設定</v-card-title>
+          <v-card-text>
+            <v-switch label="リツイートを表示する" v-model="includeRts"></v-switch>
+          </v-card-text>
+        <v-card-actions>
+          <v-btn flat @click="isVisible.settingModal = false">閉じる</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>

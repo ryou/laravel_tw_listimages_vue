@@ -27005,15 +27005,27 @@ const LAYOUT_CODE = {
         tweetModal: false,
         fullLoader: true,
         loginModal: false,
-        moreBtn: false
+        moreBtn: false,
+        settingModal: false
       },
       currentList: null,
       nextPage: 0,
       tweetModalProps: {
         status: null,
         index: 0
-      }
+      },
+      includeRts: true
     };
+  },
+  computed: {
+    displayImages() {
+      let images = this.images;
+      if (this.includeRts === false) {
+        images = images.filter(image => !image.status.retweet_user);
+      }
+
+      return images;
+    }
   },
   methods: {
     pushView(id, params = {}) {
@@ -27211,7 +27223,23 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("v-toolbar-title", [_vm._v("Twitter List Images Viewer")])
+          _c("v-toolbar-title", [_vm._v("Twitter List Images Viewer")]),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            {
+              attrs: { icon: "" },
+              on: {
+                click: function($event) {
+                  _vm.isVisible.settingModal = true
+                }
+              }
+            },
+            [_c("v-icon", [_vm._v("settings")])],
+            1
+          )
         ],
         1
       ),
@@ -27226,7 +27254,7 @@ var render = function() {
               _c(
                 "v-layout",
                 { attrs: { row: "", wrap: "" } },
-                _vm._l(_vm.images, function(image) {
+                _vm._l(_vm.displayImages, function(image) {
                   return _c(
                     "v-flex",
                     { attrs: { lg2: "", xs3: "" } },
@@ -27336,6 +27364,66 @@ var render = function() {
                           }
                         },
                         [_vm._v("Login")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-dialog",
+            {
+              attrs: { "max-width": "500px", persistent: "" },
+              model: {
+                value: _vm.isVisible.settingModal,
+                callback: function($$v) {
+                  _vm.isVisible.settingModal = $$v
+                },
+                expression: "isVisible.settingModal"
+              }
+            },
+            [
+              _c(
+                "v-card",
+                [
+                  _c("v-card-title", [_vm._v("設定")]),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-text",
+                    [
+                      _c("v-switch", {
+                        attrs: { label: "リツイートを表示する" },
+                        model: {
+                          value: _vm.includeRts,
+                          callback: function($$v) {
+                            _vm.includeRts = $$v
+                          },
+                          expression: "includeRts"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-card-actions",
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { flat: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.isVisible.settingModal = false
+                            }
+                          }
+                        },
+                        [_vm._v("閉じる")]
                       )
                     ],
                     1

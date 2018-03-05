@@ -23,6 +23,7 @@ export default {
         fullLoader: true,
         loginModal: false,
         moreBtn: false,
+        settingModal: false,
       },
       currentList: null,
       nextPage: 0,
@@ -30,7 +31,18 @@ export default {
         status: null,
         index: 0,
       },
+      includeRts: true,
     };
+  },
+  computed: {
+    displayImages() {
+      let images = this.images;
+      if (this.includeRts === false) {
+        images = images.filter(image => !image.status.retweet_user);
+      }
+
+      return images;
+    },
   },
   methods: {
     pushView(id, params = {}) {
