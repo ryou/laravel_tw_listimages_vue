@@ -1,5 +1,10 @@
 <template>
-  <button class="m-actionBtn" :class="classObj" @click="changeState"><v-icon dark>{{ icon }}</v-icon><br>{{ text }}</button>
+  <button class="m-actionBtn" @click="changeState">
+    <i
+      class="material-icons"
+      :class="classObj"
+    >{{ icon }}</i><br>{{ text }}
+  </button>
 </template>
 
 <script>
@@ -11,13 +16,16 @@
         isActive: null
       };
     },
-    props: ['activateUrl', 'deactivateUrl', 'icon', 'initialState', 'text'],
+    props: ['activateUrl', 'deactivateUrl', 'icon', 'initialState', 'text', 'activeColor'],
     computed: {
-      classObj: function() {
-        return {
-          'is-active': this.isActive
-        };
-      }
+      classObj() {
+        const classArray = [];
+        if (this.isActive) {
+          classArray.push(`${this.activeColor}--text lighten-3`);
+        }
+
+        return classArray;
+      },
     },
     created: function() {
       this.isActive = this.initialState;

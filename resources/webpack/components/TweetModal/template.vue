@@ -43,10 +43,10 @@
                   <div class="m-tweet01_leftCol"></div>
                   <div class="m-tweet01_rightCol">
                     <ul class="m-tweet01_actionBtns">
-                      <li class="m-tweet01_actionBtn"><action-btn-component icon="fa-retweet" :initial-state="status.retweeted" :activate-url="retweetUrl" :deactivate-url="unretweetUrl" text="リツイート"></action-btn-component></li>
-                      <li class="m-tweet01_actionBtn"><action-btn-component icon="fa-heart" :initial-state="status.favorited" :activate-url="createFavUrl" :deactivate-url="destroyFavUrl" text="いいね"></action-btn-component></li>
+                      <li class="m-tweet01_actionBtn"><action-btn-component icon="repeat" :initial-state="status.retweeted" :activate-url="retweetUrl" :deactivate-url="unretweetUrl" text="リツイート" active-color="green"></action-btn-component></li>
+                      <li class="m-tweet01_actionBtn"><action-btn-component icon="favorite" :initial-state="status.favorited" :activate-url="createFavUrl" :deactivate-url="destroyFavUrl" text="いいね" active-color="pink"></action-btn-component></li>
                       <li class="m-tweet01_actionBtn">
-                        <a :href="img.media_url + ':orig'" target="_blank" class="m-actionBtn"><v-icon dark>fa-image</v-icon><br>オリジナル画像</a>
+                        <a :href="img.media_url + ':orig'" target="_blank" class="m-actionBtn"><i class="material-icons">photo</i><br>オリジナル画像</a>
                       </li>
                     </ul>
                   </div>

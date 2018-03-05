@@ -27856,6 +27856,11 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
 
 var $ = __webpack_require__(44);
 
@@ -27865,12 +27870,15 @@ var $ = __webpack_require__(44);
       isActive: null
     };
   },
-  props: ['activateUrl', 'deactivateUrl', 'icon', 'initialState', 'text'],
+  props: ['activateUrl', 'deactivateUrl', 'icon', 'initialState', 'text', 'activeColor'],
   computed: {
-    classObj: function () {
-      return {
-        'is-active': this.isActive
-      };
+    classObj() {
+      const classArray = [];
+      if (this.isActive) {
+        classArray.push(`${this.activeColor}--text lighten-3`);
+      }
+
+      return classArray;
     }
   },
   created: function () {
@@ -38283,17 +38291,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "button",
-    {
-      staticClass: "m-actionBtn",
-      class: _vm.classObj,
-      on: { click: _vm.changeState }
-    },
+    { staticClass: "m-actionBtn", on: { click: _vm.changeState } },
     [
-      _c("v-icon", { attrs: { dark: "" } }, [_vm._v(_vm._s(_vm.icon))]),
+      _c("i", { staticClass: "material-icons", class: _vm.classObj }, [
+        _vm._v(_vm._s(_vm.icon))
+      ]),
       _c("br"),
-      _vm._v(_vm._s(_vm.text))
-    ],
-    1
+      _vm._v(_vm._s(_vm.text) + "\n")
+    ]
   )
 }
 var staticRenderFns = []
@@ -38558,11 +38563,12 @@ var render = function() {
                             [
                               _c("action-btn-component", {
                                 attrs: {
-                                  icon: "fa-retweet",
+                                  icon: "repeat",
                                   "initial-state": _vm.status.retweeted,
                                   "activate-url": _vm.retweetUrl,
                                   "deactivate-url": _vm.unretweetUrl,
-                                  text: "リツイート"
+                                  text: "リツイート",
+                                  "active-color": "green"
                                 }
                               })
                             ],
@@ -38575,11 +38581,12 @@ var render = function() {
                             [
                               _c("action-btn-component", {
                                 attrs: {
-                                  icon: "fa-heart",
+                                  icon: "favorite",
                                   "initial-state": _vm.status.favorited,
                                   "activate-url": _vm.createFavUrl,
                                   "deactivate-url": _vm.destroyFavUrl,
-                                  text: "いいね"
+                                  text: "いいね",
+                                  "active-color": "pink"
                                 }
                               })
                             ],
@@ -38597,13 +38604,12 @@ var render = function() {
                                 }
                               },
                               [
-                                _c("v-icon", { attrs: { dark: "" } }, [
-                                  _vm._v("fa-image")
+                                _c("i", { staticClass: "material-icons" }, [
+                                  _vm._v("photo")
                                 ]),
                                 _c("br"),
                                 _vm._v("オリジナル画像")
-                              ],
-                              1
+                              ]
                             )
                           ])
                         ])
