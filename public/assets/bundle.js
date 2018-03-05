@@ -27004,7 +27004,8 @@ const LAYOUT_CODE = {
       isVisible: {
         tweetModal: false,
         fullLoader: true,
-        loginModal: false
+        loginModal: false,
+        moreBtn: false
       },
       currentList: null,
       nextPage: 0,
@@ -27055,6 +27056,7 @@ const LAYOUT_CODE = {
 
         this.nextPage = 2;
         this.isVisible.fullLoader = false;
+        this.isVisible.moreBtn = true;
       });
     },
     addImages() {
@@ -27066,9 +27068,13 @@ const LAYOUT_CODE = {
       }).catch(() => {
         this.isVisible.loginModal = true;
       }).then(json => {
-        this.images = this.images.concat(json);
+        if (json.length > 0) {
+          this.images = this.images.concat(json);
+          this.nextPage += 1;
+        } else {
+          this.isVisible.moreBtn = false;
+        }
 
-        this.nextPage += 1;
         this.isLoading.addImage = false;
       });
     },
@@ -27267,7 +27273,7 @@ var render = function() {
                     "v-flex",
                     { attrs: { xs12: "", "offset-lg3": "", lg6: "" } },
                     [
-                      _vm.images.length > 0
+                      _vm.isVisible.moreBtn
                         ? _c(
                             "v-btn",
                             {
@@ -27408,13 +27414,13 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_419c49b4_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_419c49b4_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(48);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(47)
-  __webpack_require__(49)
+  __webpack_require__(36)
+  __webpack_require__(38)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -27457,14 +27463,92 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 36 */,
-/* 37 */,
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(37);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("c0f55438", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":true,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./template.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":true,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./template.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\nimg[data-v-419c49b4] {\n  vertical-align: top;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(39);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("0f17aba2", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":false,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./template.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":false,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./template.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;\n  max-width: 960px;\n}\n.m-tweetModal {\n  position: fixed;\n  z-index: 200;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  overflow: hidden;\n\n  -webkit-font-smoothing: initial;\n}\n.m-tweetModal * {\n  box-sizing: content-box;\n}\n.m-tweetModal a {\n  color: inherit;\n  text-decoration: none;\n}\n.m-tweetModal a:hover {\n  text-decoration: underline;\n}\n.m-tweetModal_imgList {\n  height: 100%;\n  width: 10000px;\n}\n.m-tweetModal_imgWrapper {\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100vw;\n  height: 100%;\n}\n.m-tweetModal_img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.m-tweetModal_loading {\n  font-size: 40px;\n  color: #fff;\n}\n.m-tweetModal_blob {\n}\n.m-tweetModal_close {\n  color: #fff;\n  font-size: 30px;\n  line-height: 1.0;\n  padding: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.6);\n  border: none;\n  cursor: pointer;\n  outline: none;\n}\n.m-tweetModal_nav {\n}\n.m-tweetModal_navItem {\n  position: absolute;\n  top: 50%;\n  font-size: 40px;\n  margin-top: -35px;\n  line-height: 1.0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  padding: 15px;\n  cursor: pointer;\n}\n.m-tweetModal_navItem-next {\n  right: 0;\n}\n.m-tweetModal_textContainer {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.5));\n  color: #fff;\n  padding: 40px 0 10px;\n}\n.m-tweet01 {\n}\n.m-tweet01_row {\n  display: table;\n}\n.m-tweet01_leftCol {\n  display: table-cell;\n  vertical-align: top;\n  padding-right: 10px;\n  width: 48px;\n}\n.m-tweet01_rightCol {\n  display: table-cell;\n  vertical-align: top;\n}\n.m-tweet01_icon img {\n  border-radius: 5px;\n  width: 48px;\n  height: 48px;\n}\n.m-tweet01_userInfo {\n}\n.m-tweet01_name {\n  font-weight: bold;\n}\n.m-tweet01_screenName {\n  font-size: 12px;\n}\n.m-tweet01_date {\n  font-size: 11px;\n}\n.m-tweet01_text {\n  font-size: 14px;\n}\n.m-tweet01_actionBtns {\n  padding-top: 7px;\n}\n.m-tweet01_actionBtn {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: top;\n}\n.m-tweet01-textWhite {\n  color: #fff;\n}\n.m-actionBtn {\n  display: inline-block;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  outline: none;\n  color: #fff;\n  font-size: 10px;\n  text-align: center;\n  vertical-align: top;\n}\n.u-align-right {\n  text-align: right;\n}\n.u-color-green {\n  color: #2ecc71;\n}\n\n\n/* slide\n----------------------------------------------------------*/\n.slideleft-enter-active,\n.slideleft-leave-active {\n  transition: .2s;\n}\n.slideleft-enter,\n.slideleft-leave-to {\n  transform: translateX(-100%);\n}\n.slideright-enter-active,\n.slideright-leave-active {\n  transition: .2s;\n}\n.slideright-enter,\n.slideright-leave-to {\n  transform: translateX(100%);\n}\n.slideup-enter-active,\n.slideup-leave-active {\n  transition: .2s;\n}\n.slideup-enter,\n.slideup-leave-to {\n  transform: translateY(-100%);\n}\n.slidedown-enter-active,\n.slidedown-leave-active {\n  transition: .2s;\n}\n.slidedown-enter,\n.slidedown-leave-to {\n  transform: translateY(100%);\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 40 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ImgList_template_vue__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ActionBtn_template_vue__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ImgList_template_vue__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ActionBtn_template_vue__ = __webpack_require__(44);
 
 
 
@@ -27535,12 +27619,12 @@ if (false) {(function () {
 });
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_template_vue__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_75f00e45_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_template_vue__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_75f00e45_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(43);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -27584,7 +27668,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27710,7 +27794,7 @@ if (false) {(function () {
 });
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27764,12 +27848,12 @@ if (false) {
 }
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_template_vue__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f2fb2040_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_template_vue__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f2fb2040_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(47);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -27813,7 +27897,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27827,7 +27911,7 @@ if (false) {(function () {
 //
 //
 
-var $ = __webpack_require__(44);
+var $ = __webpack_require__(46);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function () {
@@ -27875,7 +27959,7 @@ var $ = __webpack_require__(44);
 });
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -38246,7 +38330,7 @@ return jQuery;
 
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38278,88 +38362,7 @@ if (false) {
 }
 
 /***/ }),
-/* 46 */,
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(48);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("c0f55438", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":true,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./template.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":true,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./template.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
 /* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\nimg[data-v-419c49b4] {\n  vertical-align: top;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(50);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("0f17aba2", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":false,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./template.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":false,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./template.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;\n  max-width: 960px;\n}\n.m-tweetModal {\n  position: fixed;\n  z-index: 200;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  overflow: hidden;\n\n  -webkit-font-smoothing: initial;\n}\n.m-tweetModal * {\n  box-sizing: content-box;\n}\n.m-tweetModal a {\n  color: inherit;\n  text-decoration: none;\n}\n.m-tweetModal a:hover {\n  text-decoration: underline;\n}\n.m-tweetModal_imgList {\n  height: 100%;\n  width: 10000px;\n}\n.m-tweetModal_imgWrapper {\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100vw;\n  height: 100%;\n}\n.m-tweetModal_img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.m-tweetModal_loading {\n  font-size: 40px;\n  color: #fff;\n}\n.m-tweetModal_blob {\n}\n.m-tweetModal_close {\n  color: #fff;\n  font-size: 30px;\n  line-height: 1.0;\n  padding: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.6);\n  border: none;\n  cursor: pointer;\n  outline: none;\n}\n.m-tweetModal_nav {\n}\n.m-tweetModal_navItem {\n  position: absolute;\n  top: 50%;\n  font-size: 40px;\n  margin-top: -35px;\n  line-height: 1.0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  padding: 15px;\n  cursor: pointer;\n}\n.m-tweetModal_navItem-next {\n  right: 0;\n}\n.m-tweetModal_textContainer {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.5));\n  color: #fff;\n  padding: 40px 0 10px;\n}\n.m-tweet01 {\n}\n.m-tweet01_row {\n  display: table;\n}\n.m-tweet01_leftCol {\n  display: table-cell;\n  vertical-align: top;\n  padding-right: 10px;\n  width: 48px;\n}\n.m-tweet01_rightCol {\n  display: table-cell;\n  vertical-align: top;\n}\n.m-tweet01_icon img {\n  border-radius: 5px;\n  width: 48px;\n  height: 48px;\n}\n.m-tweet01_userInfo {\n}\n.m-tweet01_name {\n  font-weight: bold;\n}\n.m-tweet01_screenName {\n  font-size: 12px;\n}\n.m-tweet01_date {\n  font-size: 11px;\n}\n.m-tweet01_text {\n  font-size: 14px;\n}\n.m-tweet01_actionBtns {\n  padding-top: 7px;\n}\n.m-tweet01_actionBtn {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: top;\n}\n.m-tweet01-textWhite {\n  color: #fff;\n}\n.m-actionBtn {\n  display: inline-block;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  outline: none;\n  color: #fff;\n  font-size: 10px;\n  text-align: center;\n  vertical-align: top;\n}\n.u-align-right {\n  text-align: right;\n}\n.u-color-green {\n  color: #2ecc71;\n}\n\n\n/* slide\n----------------------------------------------------------*/\n.slideleft-enter-active,\n.slideleft-leave-active {\n  transition: .2s;\n}\n.slideleft-enter,\n.slideleft-leave-to {\n  transform: translateX(-100%);\n}\n.slideright-enter-active,\n.slideright-leave-active {\n  transition: .2s;\n}\n.slideright-enter,\n.slideright-leave-to {\n  transform: translateX(100%);\n}\n.slideup-enter-active,\n.slideup-leave-active {\n  transition: .2s;\n}\n.slideup-enter,\n.slideup-leave-to {\n  transform: translateY(-100%);\n}\n.slidedown-enter-active,\n.slidedown-leave-active {\n  transition: .2s;\n}\n.slidedown-enter,\n.slidedown-leave-to {\n  transform: translateY(100%);\n}\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

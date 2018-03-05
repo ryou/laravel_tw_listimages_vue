@@ -22,6 +22,7 @@ export default {
         tweetModal: false,
         fullLoader: true,
         loginModal: false,
+        moreBtn: false,
       },
       currentList: null,
       nextPage: 0,
@@ -74,6 +75,7 @@ export default {
 
         this.nextPage = 2;
         this.isVisible.fullLoader = false;
+        this.isVisible.moreBtn = true;
       });
     },
     addImages() {
@@ -87,9 +89,13 @@ export default {
         this.isVisible.loginModal = true;
       })
       .then((json) => {
-        this.images = this.images.concat(json);
+        if (json.length > 0) {
+          this.images = this.images.concat(json);
+          this.nextPage += 1;
+        } else {
+          this.isVisible.moreBtn = false;
+        }
 
-        this.nextPage += 1;
         this.isLoading.addImage = false;
       });
     },

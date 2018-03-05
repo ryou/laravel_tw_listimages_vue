@@ -48,7 +48,7 @@
             lg6
           >
             <v-btn
-              v-if="images.length > 0"
+              v-if="isVisible.moreBtn"
               block
               large
               color="secondary"
