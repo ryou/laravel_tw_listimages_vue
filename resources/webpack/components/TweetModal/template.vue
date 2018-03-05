@@ -66,7 +66,7 @@
 .l-container {
   margin: 0 auto;
   padding: 0 10px;
-  width: 960px;
+  max-width: 960px;
 }
 
 .m-tweetModal {
