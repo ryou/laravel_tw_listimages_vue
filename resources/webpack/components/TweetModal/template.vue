@@ -1,6 +1,6 @@
 <template>
   <div class="m-tweetModal" @click="hideModal">
-    <local-img-list-component :images="status.extended_entities.media" :disp-index="dispIndex" @on-click-img="toggleBlob" @img-to-right="prevImg" @img-to-left="nextImg"></local-img-list-component>
+    <local-img-list-component :images="status.extended_entities.media" :disp-index="dispIndex" @on-click-img="toggleBlob" @img-to-right="prevImg" @img-to-left="nextImg" @img-to-up="hideModal" @img-to-down="hideModal"></local-img-list-component>
 
       <div class="m-tweetModal_blob" @click.stop>
         <transition name="slideup">
@@ -200,11 +200,20 @@ img {
 }
 .m-tweet01_actionBtn {
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 10px;
   vertical-align: top;
 }
 .m-tweet01-textWhite {
   color: #fff;
+}
+@media only screen and (max-width: 375px) {
+  .m-tweet01_text {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+  .m-actionBtn .material-icons {
+    font-size: 18px;
+  }
 }
 
 
@@ -225,6 +234,9 @@ img {
 }
 .u-color-green {
   color: #2ecc71;
+}
+.u-font-small {
+  font-size: 12px;
 }
 
 

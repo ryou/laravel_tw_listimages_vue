@@ -27137,6 +27137,27 @@ class Utils {
 
     return promise;
   }
+
+  static calcVectorDirection(vector) {
+    let direction;
+    const rad = Math.atan2(vector.y, vector.x);
+    let theta = rad / (2 * Math.PI) * 360; // -179.9999 ~ 180
+    theta = theta < 0 ? 360 + theta : theta; // 0 ~ 359.9999
+
+    if (theta < 45) {
+      direction = 'right';
+    } else if (theta < 135) {
+      direction = 'down';
+    } else if (theta < 225) {
+      direction = 'left';
+    } else if (theta < 315) {
+      direction = 'up';
+    } else {
+      direction = 'right';
+    }
+
+    return direction;
+  }
 };
 
 module.exports = Utils;
@@ -27625,7 +27646,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;\n  max-width: 960px;\n}\n.m-tweetModal {\n  position: fixed;\n  z-index: 200;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  overflow: hidden;\n\n  -webkit-font-smoothing: initial;\n}\n.m-tweetModal * {\n  box-sizing: content-box;\n}\n.m-tweetModal a {\n  color: inherit;\n  text-decoration: none;\n}\n.m-tweetModal a:hover {\n  text-decoration: underline;\n}\n.m-tweetModal_imgList {\n  height: 100%;\n  width: 10000px;\n}\n.m-tweetModal_imgWrapper {\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100vw;\n  height: 100%;\n}\n.m-tweetModal_img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.m-tweetModal_loading {\n  font-size: 40px;\n  color: #fff;\n}\n.m-tweetModal_blob {\n}\n.m-tweetModal_close {\n  color: #fff;\n  font-size: 30px;\n  line-height: 1.0;\n  padding: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.6);\n  border: none;\n  cursor: pointer;\n  outline: none;\n}\n.m-tweetModal_nav {\n}\n.m-tweetModal_navItem {\n  position: absolute;\n  top: 50%;\n  font-size: 40px;\n  margin-top: -35px;\n  line-height: 1.0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  padding: 15px;\n  cursor: pointer;\n}\n.m-tweetModal_navItem-next {\n  right: 0;\n}\n.m-tweetModal_textContainer {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.5));\n  color: #fff;\n  padding: 40px 0 10px;\n}\n.m-tweet01 {\n}\n.m-tweet01_row {\n  display: table;\n}\n.m-tweet01_leftCol {\n  display: table-cell;\n  vertical-align: top;\n  padding-right: 10px;\n  width: 48px;\n}\n.m-tweet01_rightCol {\n  display: table-cell;\n  vertical-align: top;\n}\n.m-tweet01_icon img {\n  border-radius: 5px;\n  width: 48px;\n  height: 48px;\n}\n.m-tweet01_userInfo {\n}\n.m-tweet01_name {\n  font-weight: bold;\n}\n.m-tweet01_screenName {\n  font-size: 12px;\n}\n.m-tweet01_date {\n  font-size: 11px;\n}\n.m-tweet01_text {\n  font-size: 14px;\n}\n.m-tweet01_actionBtns {\n  padding-top: 7px;\n}\n.m-tweet01_actionBtn {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: top;\n}\n.m-tweet01-textWhite {\n  color: #fff;\n}\n.m-actionBtn {\n  display: inline-block;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  outline: none;\n  color: #fff;\n  font-size: 10px;\n  text-align: center;\n  vertical-align: top;\n}\n.u-align-right {\n  text-align: right;\n}\n.u-color-green {\n  color: #2ecc71;\n}\n\n\n/* slide\n----------------------------------------------------------*/\n.slideleft-enter-active,\n.slideleft-leave-active {\n  transition: .2s;\n}\n.slideleft-enter,\n.slideleft-leave-to {\n  transform: translateX(-100%);\n}\n.slideright-enter-active,\n.slideright-leave-active {\n  transition: .2s;\n}\n.slideright-enter,\n.slideright-leave-to {\n  transform: translateX(100%);\n}\n.slideup-enter-active,\n.slideup-leave-active {\n  transition: .2s;\n}\n.slideup-enter,\n.slideup-leave-to {\n  transform: translateY(-100%);\n}\n.slidedown-enter-active,\n.slidedown-leave-active {\n  transition: .2s;\n}\n.slidedown-enter,\n.slidedown-leave-to {\n  transform: translateY(100%);\n}\n\n", ""]);
+exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;\n  max-width: 960px;\n}\n.m-tweetModal {\n  position: fixed;\n  z-index: 200;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  overflow: hidden;\n\n  -webkit-font-smoothing: initial;\n}\n.m-tweetModal * {\n  box-sizing: content-box;\n}\n.m-tweetModal a {\n  color: inherit;\n  text-decoration: none;\n}\n.m-tweetModal a:hover {\n  text-decoration: underline;\n}\n.m-tweetModal_imgList {\n  height: 100%;\n  width: 10000px;\n}\n.m-tweetModal_imgWrapper {\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100vw;\n  height: 100%;\n}\n.m-tweetModal_img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.m-tweetModal_loading {\n  font-size: 40px;\n  color: #fff;\n}\n.m-tweetModal_blob {\n}\n.m-tweetModal_close {\n  color: #fff;\n  font-size: 30px;\n  line-height: 1.0;\n  padding: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.6);\n  border: none;\n  cursor: pointer;\n  outline: none;\n}\n.m-tweetModal_nav {\n}\n.m-tweetModal_navItem {\n  position: absolute;\n  top: 50%;\n  font-size: 40px;\n  margin-top: -35px;\n  line-height: 1.0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  padding: 15px;\n  cursor: pointer;\n}\n.m-tweetModal_navItem-next {\n  right: 0;\n}\n.m-tweetModal_textContainer {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.5));\n  color: #fff;\n  padding: 40px 0 10px;\n}\n.m-tweet01 {\n}\n.m-tweet01_row {\n  display: table;\n}\n.m-tweet01_leftCol {\n  display: table-cell;\n  vertical-align: top;\n  padding-right: 10px;\n  width: 48px;\n}\n.m-tweet01_rightCol {\n  display: table-cell;\n  vertical-align: top;\n}\n.m-tweet01_icon img {\n  border-radius: 5px;\n  width: 48px;\n  height: 48px;\n}\n.m-tweet01_userInfo {\n}\n.m-tweet01_name {\n  font-weight: bold;\n}\n.m-tweet01_screenName {\n  font-size: 12px;\n}\n.m-tweet01_date {\n  font-size: 11px;\n}\n.m-tweet01_text {\n  font-size: 14px;\n}\n.m-tweet01_actionBtns {\n  padding-top: 7px;\n}\n.m-tweet01_actionBtn {\n  display: inline-block;\n  margin-right: 10px;\n  vertical-align: top;\n}\n.m-tweet01-textWhite {\n  color: #fff;\n}\n@media only screen and (max-width: 375px) {\n.m-tweet01_text {\n    font-size: 12px;\n    line-height: 1.3;\n}\n.m-actionBtn .material-icons {\n    font-size: 18px;\n}\n}\n.m-actionBtn {\n  display: inline-block;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  outline: none;\n  color: #fff;\n  font-size: 10px;\n  text-align: center;\n  vertical-align: top;\n}\n.u-align-right {\n  text-align: right;\n}\n.u-color-green {\n  color: #2ecc71;\n}\n.u-font-small {\n  font-size: 12px;\n}\n\n\n/* slide\n----------------------------------------------------------*/\n.slideleft-enter-active,\n.slideleft-leave-active {\n  transition: .2s;\n}\n.slideleft-enter,\n.slideleft-leave-to {\n  transform: translateX(-100%);\n}\n.slideright-enter-active,\n.slideright-leave-active {\n  transition: .2s;\n}\n.slideright-enter,\n.slideright-leave-to {\n  transform: translateX(100%);\n}\n.slideup-enter-active,\n.slideup-leave-active {\n  transition: .2s;\n}\n.slideup-enter,\n.slideup-leave-to {\n  transform: translateY(-100%);\n}\n.slidedown-enter-active,\n.slidedown-leave-active {\n  transition: .2s;\n}\n.slidedown-enter,\n.slidedown-leave-to {\n  transform: translateY(100%);\n}\n\n", ""]);
 
 // exports
 
@@ -27711,12 +27732,11 @@ exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_template_vue__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_75f00e45_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(43);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-
 /* template */
 
 /* styles */
@@ -27726,7 +27746,7 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_template_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__["a" /* default */],
   __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_75f00e45_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
@@ -27756,132 +27776,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 42 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  data: function () {
-    return {
-      touches: [],
-      isMoveAnimation: false
-    };
-  },
-  props: ['images', 'dispIndex'],
-  computed: {
-    styleObj: function () {
-      var style = {
-        'transform': 'translateX(calc(-' + this.dispIndex * 100 + 'vw + ' + this.touchMove.x + 'px))'
-      };
-      if (this.isMoveAnimation) {
-        style.transition = '.2s';
-      }
-
-      return style;
-    },
-    touchMove: function () {
-      if (this.touches.length <= 0) {
-        return { x: 0, y: 0 };
-      }
-
-      return {
-        x: this.touches[this.touches.length - 1].x - this.touches[0].x,
-        y: this.touches[this.touches.length - 1].y - this.touches[0].y
-      };
-    }
-  },
-  watch: {
-    dispIndex: function () {
-      this.isMoveAnimation = true;
-
-      // TODO:ここらへんのアニメーション終了検知無理矢理過ぎるのでなおす
-      var self = this;
-      setTimeout(function () {
-        self.isMoveAnimation = false;
-      }, 200);
-    }
-  },
-  methods: {
-    getCurrentUTime: function () {
-      var date = new Date();
-      return date.getTime();
-    },
-    pushNewTouch: function (touch) {
-      this.touches.push(touch);
-    },
-    onClickImg: function () {
-      this.$emit('on-click-img');
-    },
-    onTouchStart: function (e) {
-      if (this.isMoveAnimation) return;
-
-      this.pushNewTouch({
-        x: e.changedTouches[0].pageX,
-        y: e.changedTouches[0].pageY,
-        time: this.getCurrentUTime()
-      });
-    },
-    onTouchMove: function (e) {
-      this.pushNewTouch({
-        x: e.changedTouches[0].pageX,
-        y: e.changedTouches[0].pageY,
-        time: this.getCurrentUTime()
-      });
-    },
-    onTouchEnd: function (e) {
-
-      this.pushNewTouch({
-        x: e.changedTouches[0].pageX,
-        y: e.changedTouches[0].pageY,
-        time: this.getCurrentUTime()
-      });
-
-      // TODO:ここの実装かなり雑なので整える
-      var currentTime = this.getCurrentUTime();
-      var tmpTouches = this.touches.slice();
-      tmpTouches.reverse();
-      var tmpTouch;
-      tmpTouches.forEach(function (e, i, a) {
-        if (currentTime - e.time < 100) {
-          tmpTouch = e;
-        }
-      });
-      var tmpX = this.touches[this.touches.length - 1].x - tmpTouch.x;
-      if (Math.abs(tmpX) > 20) {
-        // 遷移条件
-        if (tmpX > 0) {
-          this.$emit('img-to-right');
-        } else if (tmpX < 0) {
-          this.$emit('img-to-left');
-        }
-      }
-
-      if (this.touchMove.x === 0) {
-        this.$emit('on-click-img');
-        this.touches = [];
-        return;
-      }
-      this.isMoveAnimation = true;
-      this.touches = [];
-
-      var self = this;
-      setTimeout(function () {
-        self.isMoveAnimation = false;
-      }, 200);
-    }
-  }
-});
-
-/***/ }),
+/* 42 */,
 /* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -38470,7 +38365,9 @@ var render = function() {
         on: {
           "on-click-img": _vm.toggleBlob,
           "img-to-right": _vm.prevImg,
-          "img-to-left": _vm.nextImg
+          "img-to-left": _vm.nextImg,
+          "img-to-up": _vm.hideModal,
+          "img-to-down": _vm.hideModal
         }
       }),
       _vm._v(" "),
@@ -38774,6 +38671,180 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-419c49b4", esExports)
   }
 }
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const Utils = __webpack_require__(33);
+
+const STATE = {
+  NORMAL: 0,
+  MOVE: 1,
+  ANIMATE: 2
+};
+
+const MOVE_DIR = {
+  VERTICAL: 0,
+  HORIZONTAL: 1
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  data: function () {
+    return {
+      touchStart: {
+        x: 0,
+        y: 0
+      },
+      currentTouch: {
+        x: 0,
+        y: 0
+      },
+
+      state: STATE.NORMAL,
+
+      touches: [],
+
+      // horizontal/vertical
+      moveDir: null,
+
+      isMoveAnimation: false
+    };
+  },
+  props: ['images', 'dispIndex'],
+  computed: {
+    styleObj() {
+      const style = {};
+
+      const base = {
+        x: -1 * this.dispIndex * window.innerWidth,
+        y: 0
+      };
+      const add = {
+        x: 0,
+        y: 0
+      };
+
+      if (this.moveDir === MOVE_DIR.VERTICAL) {
+        add.y = this.touchVector.y;
+      } else if (this.moveDir === MOVE_DIR.HORIZONTAL) {
+        add.x = this.touchVector.x;
+      }
+
+      style.transform = `translate(${base.x + add.x}px, ${base.y + add.y}px)`;
+
+      if (this.isMoveAnimation) {
+        style.transition = '.2s';
+      }
+
+      return style;
+    },
+    touchVector() {
+      return {
+        x: this.currentTouch.x - this.touchStart.x,
+        y: this.currentTouch.y - this.touchStart.y
+      };
+    },
+    touchMove: function () {
+      if (this.touches.length <= 0) {
+        return { x: 0, y: 0 };
+      }
+
+      return {
+        x: this.touches[this.touches.length - 1].x - this.touches[0].x,
+        y: this.touches[this.touches.length - 1].y - this.touches[0].y
+      };
+    }
+  },
+  watch: {
+    dispIndex: function () {
+      this.isMoveAnimation = true;
+
+      // TODO:ここらへんのアニメーション終了検知無理矢理過ぎるのでなおす
+      var self = this;
+      setTimeout(function () {
+        self.isMoveAnimation = false;
+      }, 200);
+    }
+  },
+  methods: {
+    getCurrentUTime: function () {
+      var date = new Date();
+      return date.getTime();
+    },
+    pushNewTouch: function (touch) {
+      this.touches.push(touch);
+    },
+    onClickImg: function () {
+      this.$emit('on-click-img');
+    },
+    onTouchStart: function (e) {
+      // TODO:アニメーション時の処理とか、ご動作起きないような例外処理を追加
+
+      const touch = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+
+      this.touchStart = touch;
+      this.currentTouch = touch;
+    },
+    onTouchMove: function (e) {
+      this.currentTouch = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+
+      if (this.moveDir === null) {
+        const direction = Utils.calcVectorDirection(this.touchVector);
+
+        if (direction === 'up' || direction === 'down') {
+          this.moveDir = MOVE_DIR.VERTICAL;
+        } else {
+          this.moveDir = MOVE_DIR.HORIZONTAL;
+        }
+      }
+    },
+    onTouchEnd: function (e) {
+      const vectorLength = Math.sqrt(Math.pow(this.touchVector.x, 2) + Math.pow(this.touchVector.y, 2));
+
+      if (vectorLength < 10) {
+        this.$emit('on-click-img');
+      }
+
+      switch (this.moveDir) {
+        case MOVE_DIR.VERTICAL:
+          if (Math.abs(this.touchVector.y) > 50) {
+            if (this.touchVector.y > 0) {
+              this.$emit('img-to-down');
+            } else {
+              this.$emit('img-to-up');
+            }
+          }
+          break;
+        case MOVE_DIR.HORIZONTAL:
+          if (Math.abs(this.touchVector.x) > 50) {
+            if (this.touchVector.x > 0) {
+              this.$emit('img-to-right');
+            } else {
+              this.$emit('img-to-left');
+            }
+          }
+          break;
+        default:
+          break;
+      }
+
+      this.isMoveAnimation = true;
+      this.moveDir = null;
+
+      setTimeout(() => {
+        this.isMoveAnimation = false;
+      }, 200);
+    }
+  }
+});
 
 /***/ })
 /******/ ]);
