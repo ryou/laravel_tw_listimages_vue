@@ -26969,7 +26969,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.fullLoader[data-v-c310530c] {\n  position: fixed;\n  z-index: 5000;\n  top: 0; bottom: 0;\n  left: 0; right: 0;\n\n  background: rgba(255, 255, 255, .5);\n\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n/* fade\n----------------------------------------------------------*/\n.fade-enter-active[data-v-c310530c],\n.fade-leave-active[data-v-c310530c] {\n  transition: .2s;\n}\n.fade-enter[data-v-c310530c],\n.fade-leave-to[data-v-c310530c] {\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.fullLoader[data-v-c310530c] {\n  position: fixed;\n  z-index: 7;\n  top: 0; bottom: 0;\n  left: 0; right: 0;\n\n  background: rgba(255, 255, 255, .8);\n\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n/* fade\n----------------------------------------------------------*/\n.fade-enter-active[data-v-c310530c],\n.fade-leave-active[data-v-c310530c] {\n  transition: .2s;\n}\n.fade-enter[data-v-c310530c],\n.fade-leave-to[data-v-c310530c] {\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -27361,31 +27361,33 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.isVisible.fullLoader,
-              expression: "isVisible.fullLoader"
+      _c("transition", { attrs: { name: "fade" } }, [
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.isVisible.fullLoader,
+                expression: "isVisible.fullLoader"
+              }
+            ],
+            staticClass: "fullLoader",
+            on: {
+              click: function($event) {
+                $event.stopPropagation()
+              }
             }
+          },
+          [
+            _c("v-progress-circular", {
+              attrs: { indeterminate: "", size: 50, color: "primary" }
+            })
           ],
-          staticClass: "fullLoader",
-          on: {
-            click: function($event) {
-              $event.stopPropagation()
-            }
-          }
-        },
-        [
-          _c("v-progress-circular", {
-            attrs: { indeterminate: "", size: 50, color: "primary" }
-          })
-        ],
-        1
-      )
+          1
+        )
+      ])
     ],
     1
   )
@@ -27407,11 +27409,12 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_419c49b4_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_419c49b4_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(51);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(36)
+  __webpack_require__(47)
+  __webpack_require__(49)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -27420,12 +27423,12 @@ var normalizeComponent = __webpack_require__(0)
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-419c49b4"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_419c49b4_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_419c49b4_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
@@ -27454,46 +27457,8 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(37);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("832464be", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":false,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./template.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":false,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./template.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;\n  max-width: 960px;\n}\n.m-tweetModal {\n  position: fixed;\n  z-index: 200;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  overflow: hidden;\n\n  -webkit-font-smoothing: initial;\n}\n.m-tweetModal * {\n  box-sizing: content-box;\n}\n.m-tweetModal a {\n  color: inherit;\n  text-decoration: none;\n}\n.m-tweetModal a:hover {\n  text-decoration: underline;\n}\n.m-tweetModal_imgList {\n  height: 100%;\n  width: 10000px;\n}\n.m-tweetModal_imgWrapper {\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100vw;\n  height: 100%;\n}\n.m-tweetModal_img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.m-tweetModal_loading {\n  font-size: 40px;\n  color: #fff;\n}\n.m-tweetModal_blob {\n}\n.m-tweetModal_close {\n  color: #fff;\n  font-size: 30px;\n  line-height: 1.0;\n  padding: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.6);\n  border: none;\n  cursor: pointer;\n  outline: none;\n}\n.m-tweetModal_nav {\n}\n.m-tweetModal_navItem {\n  position: absolute;\n  top: 50%;\n  font-size: 40px;\n  margin-top: -35px;\n  line-height: 1.0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  padding: 15px;\n  cursor: pointer;\n}\n.m-tweetModal_navItem-next {\n  right: 0;\n}\n.m-tweetModal_textContainer {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.5));\n  color: #fff;\n  padding: 40px 0 10px;\n}\n.m-tweet01 {\n}\n.m-tweet01_row {\n  display: table;\n}\n.m-tweet01_leftCol {\n  display: table-cell;\n  vertical-align: top;\n  padding-right: 10px;\n  width: 48px;\n}\n.m-tweet01_rightCol {\n  display: table-cell;\n  vertical-align: top;\n}\n.m-tweet01_icon img {\n  border-radius: 5px;\n  width: 48px;\n  height: 48px;\n}\n.m-tweet01_userInfo {\n}\n.m-tweet01_name {\n  font-weight: bold;\n}\n.m-tweet01_screenName {\n  font-size: 12px;\n}\n.m-tweet01_date {\n  font-size: 11px;\n}\n.m-tweet01_text {\n  font-size: 14px;\n}\n.m-tweet01_actionBtns {\n  padding-top: 7px;\n}\n.m-tweet01_actionBtn {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: top;\n}\n.m-tweet01-textWhite {\n  color: #fff;\n}\n.m-actionBtn {\n  display: inline-block;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  outline: none;\n  color: #fff;\n  font-size: 10px;\n  text-align: center;\n  vertical-align: top;\n}\n.u-align-right {\n  text-align: right;\n}\n.u-color-green {\n  color: #2ecc71;\n}\n\n\n/* slide\n----------------------------------------------------------*/\n.slideleft-enter-active,\n.slideleft-leave-active {\n  transition: .2s;\n}\n.slideleft-enter,\n.slideleft-leave-to {\n  transform: translateX(-100%);\n}\n.slideright-enter-active,\n.slideright-leave-active {\n  transition: .2s;\n}\n.slideright-enter,\n.slideright-leave-to {\n  transform: translateX(100%);\n}\n.slideup-enter-active,\n.slideup-leave-active {\n  transition: .2s;\n}\n.slideup-enter,\n.slideup-leave-to {\n  transform: translateY(-100%);\n}\n.slidedown-enter-active,\n.slidedown-leave-active {\n  transition: .2s;\n}\n.slidedown-enter,\n.slidedown-leave-to {\n  transform: translateY(100%);\n}\n\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 36 */,
+/* 37 */,
 /* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -38313,7 +38278,88 @@ if (false) {
 }
 
 /***/ }),
-/* 46 */
+/* 46 */,
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(48);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("c0f55438", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":true,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./template.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":true,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./template.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\nimg[data-v-419c49b4] {\n  vertical-align: top;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(50);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("0f17aba2", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":false,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./template.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-419c49b4\",\"scoped\":false,\"hasInlineConfig\":false}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=1!./template.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;\n  max-width: 960px;\n}\n.m-tweetModal {\n  position: fixed;\n  z-index: 200;\n  left: 0;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #000;\n  overflow: hidden;\n\n  -webkit-font-smoothing: initial;\n}\n.m-tweetModal * {\n  box-sizing: content-box;\n}\n.m-tweetModal a {\n  color: inherit;\n  text-decoration: none;\n}\n.m-tweetModal a:hover {\n  text-decoration: underline;\n}\n.m-tweetModal_imgList {\n  height: 100%;\n  width: 10000px;\n}\n.m-tweetModal_imgWrapper {\n  float: left;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100vw;\n  height: 100%;\n}\n.m-tweetModal_img {\n  max-width: 100%;\n  max-height: 100%;\n}\n.m-tweetModal_loading {\n  font-size: 40px;\n  color: #fff;\n}\n.m-tweetModal_blob {\n}\n.m-tweetModal_close {\n  color: #fff;\n  font-size: 30px;\n  line-height: 1.0;\n  padding: 10px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: rgba(0, 0, 0, 0.6);\n  border: none;\n  cursor: pointer;\n  outline: none;\n}\n.m-tweetModal_nav {\n}\n.m-tweetModal_navItem {\n  position: absolute;\n  top: 50%;\n  font-size: 40px;\n  margin-top: -35px;\n  line-height: 1.0;\n  color: #fff;\n  background: rgba(0, 0, 0, 0.6);\n  padding: 15px;\n  cursor: pointer;\n}\n.m-tweetModal_navItem-next {\n  right: 0;\n}\n.m-tweetModal_textContainer {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.5));\n  color: #fff;\n  padding: 40px 0 10px;\n}\n.m-tweet01 {\n}\n.m-tweet01_row {\n  display: table;\n}\n.m-tweet01_leftCol {\n  display: table-cell;\n  vertical-align: top;\n  padding-right: 10px;\n  width: 48px;\n}\n.m-tweet01_rightCol {\n  display: table-cell;\n  vertical-align: top;\n}\n.m-tweet01_icon img {\n  border-radius: 5px;\n  width: 48px;\n  height: 48px;\n}\n.m-tweet01_userInfo {\n}\n.m-tweet01_name {\n  font-weight: bold;\n}\n.m-tweet01_screenName {\n  font-size: 12px;\n}\n.m-tweet01_date {\n  font-size: 11px;\n}\n.m-tweet01_text {\n  font-size: 14px;\n}\n.m-tweet01_actionBtns {\n  padding-top: 7px;\n}\n.m-tweet01_actionBtn {\n  display: inline-block;\n  margin-right: 5px;\n  vertical-align: top;\n}\n.m-tweet01-textWhite {\n  color: #fff;\n}\n.m-actionBtn {\n  display: inline-block;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  outline: none;\n  color: #fff;\n  font-size: 10px;\n  text-align: center;\n  vertical-align: top;\n}\n.u-align-right {\n  text-align: right;\n}\n.u-color-green {\n  color: #2ecc71;\n}\n\n\n/* slide\n----------------------------------------------------------*/\n.slideleft-enter-active,\n.slideleft-leave-active {\n  transition: .2s;\n}\n.slideleft-enter,\n.slideleft-leave-to {\n  transform: translateX(-100%);\n}\n.slideright-enter-active,\n.slideright-leave-active {\n  transition: .2s;\n}\n.slideright-enter,\n.slideright-leave-to {\n  transform: translateX(100%);\n}\n.slideup-enter-active,\n.slideup-leave-active {\n  transition: .2s;\n}\n.slideup-enter,\n.slideup-leave-to {\n  transform: translateY(-100%);\n}\n.slidedown-enter-active,\n.slidedown-leave-active {\n  transition: .2s;\n}\n.slidedown-enter,\n.slidedown-leave-to {\n  transform: translateY(100%);\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38526,7 +38572,7 @@ var render = function() {
                                 target: "_blank"
                               }
                             },
-                            [_vm._v(_vm._s(_vm.status.user.screen_name))]
+                            [_vm._v("@" + _vm._s(_vm.status.user.screen_name))]
                           ),
                           _vm._v("・"),
                           _c(

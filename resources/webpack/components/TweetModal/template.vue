@@ -33,7 +33,7 @@
                   <div class="m-tweet01_rightCol">
                     <div class="m-tweet01_userInfo">
                       <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_name u-link-text02">{{ status.user.name }}</a>
-                      <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_screenName u-link-text02">{{ status.user.screen_name }}</a><!--
+                      <a :href="'https://twitter.com/' + status.user.screen_name" target="_blank" class="m-tweet01_screenName u-link-text02">@{{ status.user.screen_name }}</a><!--
                       -->・<a :href="'https://twitter.com/' + status.user.screen_name + '/status/' + status.id_str" target="_blank" class="m-tweet01_date u-link-text02">{{ dateStr }}</a>
                     </div>
                     <div class="m-tweet01_text">{{ status.text }}</div>
@@ -61,6 +61,11 @@
 </template>
 
 <script src="./script.js"></script>
+<style scoped>
+img {
+  vertical-align: top;
+}
+</style>
 <style>
 
 .l-container {

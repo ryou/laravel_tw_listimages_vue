@@ -82,9 +82,11 @@
       <tweet-modal-component v-if="isVisible.tweetModal" :status="tweetModalProps.status" :index="tweetModalProps.index" @hide-modal="hideModal"></tweet-modal-component>
     </transition>
 
-    <div class="fullLoader" v-show="isVisible.fullLoader" @click.stop>
-      <v-progress-circular indeterminate v-bind:size="50" color="primary"></v-progress-circular>
-    </div>
+    <transition name="fade">
+      <div class="fullLoader" v-show="isVisible.fullLoader" @click.stop>
+        <v-progress-circular indeterminate v-bind:size="50" color="primary"></v-progress-circular>
+      </div>
+    </transition>
 
   </v-app>
 </template>
@@ -100,11 +102,11 @@
 <style scoped>
 .fullLoader {
   position: fixed;
-  z-index: 5000;
+  z-index: 7;
   top: 0; bottom: 0;
   left: 0; right: 0;
 
-  background: rgba(255, 255, 255, .5);
+  background: rgba(255, 255, 255, .8);
 
   display: flex;
   align-items: center;
