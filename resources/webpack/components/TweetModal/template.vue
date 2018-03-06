@@ -1,17 +1,37 @@
 <template>
   <div class="m-tweetModal" @click="hideModal">
-    <local-img-list-component :images="status.extended_entities.media" :disp-index="dispIndex" @on-click-img="toggleBlob" @img-to-right="prevImg" @img-to-left="nextImg" @img-to-up="hideModal" @img-to-down="hideModal"></local-img-list-component>
+    <local-img-list-component
+      :images="status.extended_entities.media"
+      :disp-index="dispIndex"
+      @on-click-img="toggleBlob"
+      @img-to-right="prevImg"
+      @img-to-left="nextImg"
+      @img-to-up="hideModal"
+      @img-to-down="hideModal"
+    ></local-img-list-component>
 
       <div class="m-tweetModal_blob" @click.stop>
         <transition name="slideup">
-          <button v-show="blobIsVisible" class="m-tweetModal_close" @click="hideModal"><v-icon dark>fa-times</v-icon></button>
+          <button
+            v-show="blobIsVisible"
+            class="m-tweetModal_close"
+            @click="hideModal"
+          ><v-icon dark>fa-times</v-icon></button>
         </transition>
         <div class="m-tweetModal_nav">
           <transition name="slideleft">
-            <div v-show="prevImgIsExist && blobIsVisible" class="m-tweetModal_navItem m-tweetModal_navItem-prev" @click="prevImg"><v-icon dark>fa-chevron-left</v-icon></div>
+            <div
+              v-show="prevImgIsExist && blobIsVisible"
+              class="m-tweetModal_navItem m-tweetModal_navItem-prev"
+              @click="prevImg"
+            ><v-icon dark>fa-chevron-left</v-icon></div>
           </transition>
           <transition name="slideright">
-            <div v-show="nextImgIsExist && blobIsVisible" class="m-tweetModal_navItem m-tweetModal_navItem-next" @click="nextImg"><v-icon dark>fa-chevron-right</v-icon></div>
+            <div
+              v-show="nextImgIsExist && blobIsVisible"
+              class="m-tweetModal_navItem m-tweetModal_navItem-next"
+              @click="nextImg"
+            ><v-icon dark>fa-chevron-right</v-icon></div>
           </transition>
         </div>
         <transition name="slidedown">
@@ -43,10 +63,32 @@
                   <div class="m-tweet01_leftCol"></div>
                   <div class="m-tweet01_rightCol">
                     <ul class="m-tweet01_actionBtns">
-                      <li class="m-tweet01_actionBtn"><action-btn-component icon="repeat" :initial-state="status.retweeted" :activate-url="retweetUrl" :deactivate-url="unretweetUrl" text="リツイート" active-color="green"></action-btn-component></li>
-                      <li class="m-tweet01_actionBtn"><action-btn-component icon="favorite" :initial-state="status.favorited" :activate-url="createFavUrl" :deactivate-url="destroyFavUrl" text="いいね" active-color="pink"></action-btn-component></li>
                       <li class="m-tweet01_actionBtn">
-                        <a :href="img.media_url + ':orig'" target="_blank" class="m-actionBtn"><i class="material-icons">photo</i><br>オリジナル画像</a>
+                        <action-btn-component
+                          icon="repeat"
+                          :initial-state="status.retweeted"
+                          :activate-url="retweetUrl"
+                          :deactivate-url="unretweetUrl"
+                          text="リツイート"
+                          active-color="green"
+                        ></action-btn-component>
+                      </li>
+                      <li class="m-tweet01_actionBtn">
+                        <action-btn-component
+                          icon="favorite"
+                          :initial-state="status.favorited"
+                          :activate-url="createFavUrl"
+                          :deactivate-url="destroyFavUrl"
+                          text="いいね"
+                          active-color="pink"
+                        ></action-btn-component>
+                      </li>
+                      <li class="m-tweet01_actionBtn">
+                        <a
+                          :href="img.media_url + ':orig'"
+                          target="_blank"
+                          class="m-actionBtn"
+                        ><i class="material-icons">photo</i><br>オリジナル画像</a>
                       </li>
                     </ul>
                   </div>
@@ -157,7 +199,6 @@ img {
   color: #fff;
   padding: 40px 0 10px;
 }
-
 
 
 .m-tweet01 {

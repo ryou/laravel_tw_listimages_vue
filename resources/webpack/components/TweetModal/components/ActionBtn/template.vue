@@ -8,52 +8,52 @@
 </template>
 
 <script>
-  var $ = require('jquery');
+const $ = require('jquery');
 
-  export default {
-    data: function() {
-      return {
-        isActive: null
-      };
-    },
-    props: ['activateUrl', 'deactivateUrl', 'icon', 'initialState', 'text', 'activeColor'],
-    computed: {
-      classObj() {
-        const classArray = [];
-        if (this.isActive) {
-          classArray.push(`${this.activeColor}--text lighten-3`);
-        }
+export default {
+  data() {
+    return {
+      isActive: null,
+    };
+  },
+  props: ['activateUrl', 'deactivateUrl', 'icon', 'initialState', 'text', 'activeColor'],
+  computed: {
+    classObj() {
+      const classArray = [];
+      if (this.isActive) {
+        classArray.push(`${this.activeColor}--text lighten-3`);
+      }
 
-        return classArray;
-      },
+      return classArray;
     },
-    created: function() {
-      this.isActive = this.initialState;
-    },
-    methods: {
-      changeState: function() {
-        var url = '';
-        if (this.isActive) {
-          url = this.deactivateUrl;
-        } else {
-          url = this.activateUrl;
-        }
-        this.isActive = !this.isActive;
+  },
+  created() {
+    this.isActive = this.initialState;
+  },
+  methods: {
+    changeState() {
+      let url = '';
+      if (this.isActive) {
+        url = this.deactivateUrl;
+      } else {
+        url = this.activateUrl;
+      }
+      this.isActive = !this.isActive;
 
-        $.ajax({
-          url: url,
-          type: 'POST',
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }
-        })
-        .done(function() {
+      $.ajax({
+        url,
+        type: 'POST',
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        },
+      })
+        .done(() => {
           //
         })
-        .always(function() {
+        .always(() => {
           //
         });
-      }
-    }
-  };
+    },
+  },
+};
 </script>

@@ -12,7 +12,7 @@ const MOVE_DIR = {
 };
 
 export default {
-  data: function() {
+  data() {
     return {
       touchStart: {
         x: 0,
@@ -30,7 +30,7 @@ export default {
       // horizontal/vertical
       moveDir: null,
 
-      isMoveAnimation: false
+      isMoveAnimation: false,
     };
   },
   props: ['images', 'dispIndex'],
@@ -67,40 +67,39 @@ export default {
         y: this.currentTouch.y - this.touchStart.y,
       };
     },
-    touchMove: function() {
+    touchMove() {
       if (this.touches.length <= 0) {
-        return {x: 0, y: 0};
+        return { x: 0, y: 0 };
       }
 
       return {
         x: this.touches[this.touches.length - 1].x - this.touches[0].x,
-        y: this.touches[this.touches.length - 1].y - this.touches[0].y
+        y: this.touches[this.touches.length - 1].y - this.touches[0].y,
       };
     },
   },
   watch: {
-    dispIndex: function() {
+    dispIndex() {
       this.isMoveAnimation = true;
 
       // TODO:ここらへんのアニメーション終了検知無理矢理過ぎるのでなおす
-      var self = this;
-      setTimeout(function() {
-        self.isMoveAnimation = false;
+      setTimeout(() => {
+        this.isMoveAnimation = false;
       }, 200);
-    }
+    },
   },
   methods: {
-    getCurrentUTime: function() {
-      var date = new Date();
+    getCurrentUTime() {
+      const date = new Date();
       return date.getTime();
     },
-    pushNewTouch: function(touch) {
+    pushNewTouch(touch) {
       this.touches.push(touch);
     },
-    onClickImg: function() {
+    onClickImg() {
       this.$emit('on-click-img');
     },
-    onTouchStart: function(e) {
+    onTouchStart(e) {
       // TODO:アニメーション時の処理とか、ご動作起きないような例外処理を追加
 
       const touch = {
@@ -111,7 +110,7 @@ export default {
       this.touchStart = touch;
       this.currentTouch = touch;
     },
-    onTouchMove: function(e) {
+    onTouchMove(e) {
       this.currentTouch = {
         x: e.touches[0].clientX,
         y: e.touches[0].clientY,
@@ -127,7 +126,7 @@ export default {
         }
       }
     },
-    onTouchEnd: function(e) {
+    onTouchEnd() {
       const vectorLength = Math.sqrt(Math.pow(this.touchVector.x, 2) + Math.pow(this.touchVector.y, 2));
 
       if (vectorLength < 10) {
@@ -163,6 +162,6 @@ export default {
       setTimeout(() => {
         this.isMoveAnimation = false;
       }, 200);
-    }
-  }
+    },
+  },
 };

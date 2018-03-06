@@ -14,7 +14,7 @@ class Utils {
       .then(response => response.json());
 
     return promise;
-  };
+  }
 
   static calcVectorDirection(vector) {
     let direction;
@@ -35,7 +35,7 @@ class Utils {
     }
 
     return direction;
-  };
-};
+  }
+}
 
 module.exports = Utils;

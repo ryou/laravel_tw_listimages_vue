@@ -6,10 +6,13 @@
       app
     >
       <v-list dense>
-        <v-list-tile v-for="list in lists" @click="initImages(list)"
+        <v-list-tile
+          v-for="list in lists"
+          @click="initImages(list)"
           :class="{
             'list__tile-wrapper--current': currentList !== null && currentList.id_str === list.id_str,
           }"
+          :key="list.id_str"
         >
           <v-list-tile-content>
             <v-list-tile-title>{{ list.name }}</v-list-tile-title>
@@ -100,7 +103,12 @@
     </v-content>
 
     <transition name="fade">
-      <tweet-modal-component v-if="isVisible.tweetModal" :status="tweetModalProps.status" :index="tweetModalProps.index" @hide-modal="hideModal"></tweet-modal-component>
+      <tweet-modal-component
+        v-if="isVisible.tweetModal"
+        :status="tweetModalProps.status"
+        :index="tweetModalProps.index"
+        @hide-modal="hideModal"
+      ></tweet-modal-component>
     </transition>
 
     <transition name="fade">

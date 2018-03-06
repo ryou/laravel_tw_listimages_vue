@@ -5,7 +5,7 @@ export default {
   data() {
     return {
       blobIsVisible: true,
-      dispIndex: null
+      dispIndex: null,
     };
   },
   props: ['status', 'index'],
@@ -14,55 +14,55 @@ export default {
     'action-btn-component': actionBtnComponent,
   },
   computed: {
-    img: function() {
+    img() {
       return this.status.extended_entities.media[this.dispIndex];
     },
-    prevImgIsExist: function() {
+    prevImgIsExist() {
       return (this.dispIndex > 0);
     },
-    nextImgIsExist: function() {
-      var imgNum = this.status.extended_entities.media.length;
-      return (this.dispIndex < imgNum-1);
+    nextImgIsExist() {
+      const imgNum = this.status.extended_entities.media.length;
+      return (this.dispIndex < imgNum - 1);
     },
-    dateStr: function() {
-      var dateObj = new Date(this.status.created_at);
-      return (dateObj.getMonth()+1) + '/' + dateObj.getDate() + ' ' + dateObj.getHours() + ':' + dateObj.getMinutes();
+    dateStr() {
+      const dateObj = new Date(this.status.created_at);
+      return `${dateObj.getMonth() + 1}/${dateObj.getDate()} ${dateObj.getHours()}:${dateObj.getMinutes}`;
     },
-    retweetUrl: function() {
-      return '/api/retweet/' + this.status.id_str;
+    retweetUrl() {
+      return `/api/retweet/${this.status.id_str}`;
     },
-    unretweetUrl: function() {
-      return '/api/unretweet/' + this.status.id_str;
+    unretweetUrl() {
+      return `/api/unretweet/${this.status.id_str}`;
     },
-    createFavUrl: function() {
-      return '/api/add_favorite/' + this.status.id_str;
+    createFavUrl() {
+      return `/api/add_favorite/${this.status.id_str}`;
     },
-    destroyFavUrl: function() {
-      return '/api/delete_favorite/' + this.status.id_str;
-    }
+    destroyFavUrl() {
+      return `/api/delete_favorite/${this.status.id_str}`;
+    },
   },
-  created: function() {
+  created() {
     this.dispIndex = this.index;
   },
   methods: {
-    getMediaData: function(index) {
+    getMediaData(index) {
       return this.status.extended_entities.media[index];
     },
-    toggleBlob: function() {
+    toggleBlob() {
       this.blobIsVisible = !this.blobIsVisible;
     },
-    hideModal: function() {
+    hideModal() {
       this.$emit('hide-modal');
     },
-    nextImg: function() {
+    nextImg() {
       if (this.nextImgIsExist === false) return;
 
-      this.dispIndex++;
+      this.dispIndex += 1;
     },
-    prevImg: function() {
+    prevImg() {
       if (this.prevImgIsExist === false) return;
 
-      this.dispIndex--;
-    }
+      this.dispIndex -= 1;
+    },
   },
 };

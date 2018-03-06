@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     displayImages() {
-      let images = this.images;
+      let { images } = this;
       if (this.includeRts === false) {
         images = images.filter(image => !image.status.retweet_user);
       }
@@ -45,7 +45,7 @@ export default {
     },
     toolBarTitle() {
       if (this.currentList !== null) {
-        return this.currentList.name
+        return this.currentList.name;
       }
 
       return 'Twitter List Images Viewer';
@@ -63,7 +63,7 @@ export default {
       const w = window.innerWidth;
       if (w < 600) {
         this.layoutCode = LAYOUT_CODE.xs;
-      } else if(w < 960) {
+      } else if (w < 960) {
         this.layoutCode = LAYOUT_CODE.sm;
       } else if (w < 1264) {
         this.layoutCode = LAYOUT_CODE.md;
@@ -87,16 +87,16 @@ export default {
       Utils.fetchJSON(`/api/get_list_images/${id}/1`, {
         credentials: 'include',
       })
-      .catch(() => {
-        this.isVisible.loginModal = true;
-      })
-      .then((json) => {
-        this.images = json;
+        .catch(() => {
+          this.isVisible.loginModal = true;
+        })
+        .then((json) => {
+          this.images = json;
 
-        this.nextPage = 2;
-        this.isVisible.fullLoader = false;
-        this.isVisible.moreBtn = true;
-      });
+          this.nextPage = 2;
+          this.isVisible.fullLoader = false;
+          this.isVisible.moreBtn = true;
+        });
     },
     addImages() {
       const id = this.currentList.id_str;
@@ -105,19 +105,19 @@ export default {
       Utils.fetchJSON(`/api/get_list_images/${id}/${this.nextPage}`, {
         credentials: 'include',
       })
-      .catch(() => {
-        this.isVisible.loginModal = true;
-      })
-      .then((json) => {
-        if (json.length > 0) {
-          this.images = this.images.concat(json);
-          this.nextPage += 1;
-        } else {
-          this.isVisible.moreBtn = false;
-        }
+        .catch(() => {
+          this.isVisible.loginModal = true;
+        })
+        .then((json) => {
+          if (json.length > 0) {
+            this.images = this.images.concat(json);
+            this.nextPage += 1;
+          } else {
+            this.isVisible.moreBtn = false;
+          }
 
-        this.isLoading.addImage = false;
-      });
+          this.isLoading.addImage = false;
+        });
     },
     showModal(image) {
       this.tweetModalProps.status = image.status;
@@ -136,14 +136,14 @@ export default {
     Utils.fetchJSON('/api/get_lists', {
       credentials: 'include',
     })
-    .catch(() => {
-      this.isVisible.loginModal = true;
-    })
-    .then((json) => {
-      this.lists = json;
+      .catch(() => {
+        this.isVisible.loginModal = true;
+      })
+      .then((json) => {
+        this.lists = json;
 
-      this.isVisible.fullLoader = false;
-    });
+        this.isVisible.fullLoader = false;
+      });
 
     this.updateLayoutCode();
   },

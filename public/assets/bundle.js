@@ -8262,7 +8262,7 @@ class Utils {
 
     return direction;
   }
-};
+}
 
 module.exports = Utils;
 
@@ -27063,7 +27063,7 @@ const LAYOUT_CODE = {
   },
   computed: {
     displayImages() {
-      let images = this.images;
+      let { images } = this;
       if (this.includeRts === false) {
         images = images.filter(image => !image.status.retweet_user);
       }
@@ -27213,6 +27213,7 @@ var render = function() {
               return _c(
                 "v-list-tile",
                 {
+                  key: list.id_str,
                   class: {
                     "list__tile-wrapper--current":
                       _vm.currentList !== null &&
@@ -27682,55 +27683,55 @@ exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;
     'action-btn-component': __WEBPACK_IMPORTED_MODULE_1__components_ActionBtn_template_vue__["a" /* default */]
   },
   computed: {
-    img: function () {
+    img() {
       return this.status.extended_entities.media[this.dispIndex];
     },
-    prevImgIsExist: function () {
+    prevImgIsExist() {
       return this.dispIndex > 0;
     },
-    nextImgIsExist: function () {
-      var imgNum = this.status.extended_entities.media.length;
+    nextImgIsExist() {
+      const imgNum = this.status.extended_entities.media.length;
       return this.dispIndex < imgNum - 1;
     },
-    dateStr: function () {
-      var dateObj = new Date(this.status.created_at);
-      return dateObj.getMonth() + 1 + '/' + dateObj.getDate() + ' ' + dateObj.getHours() + ':' + dateObj.getMinutes();
+    dateStr() {
+      const dateObj = new Date(this.status.created_at);
+      return `${dateObj.getMonth() + 1}/${dateObj.getDate()} ${dateObj.getHours()}:${dateObj.getMinutes}`;
     },
-    retweetUrl: function () {
-      return '/api/retweet/' + this.status.id_str;
+    retweetUrl() {
+      return `/api/retweet/${this.status.id_str}`;
     },
-    unretweetUrl: function () {
-      return '/api/unretweet/' + this.status.id_str;
+    unretweetUrl() {
+      return `/api/unretweet/${this.status.id_str}`;
     },
-    createFavUrl: function () {
-      return '/api/add_favorite/' + this.status.id_str;
+    createFavUrl() {
+      return `/api/add_favorite/${this.status.id_str}`;
     },
-    destroyFavUrl: function () {
-      return '/api/delete_favorite/' + this.status.id_str;
+    destroyFavUrl() {
+      return `/api/delete_favorite/${this.status.id_str}`;
     }
   },
-  created: function () {
+  created() {
     this.dispIndex = this.index;
   },
   methods: {
-    getMediaData: function (index) {
+    getMediaData(index) {
       return this.status.extended_entities.media[index];
     },
-    toggleBlob: function () {
+    toggleBlob() {
       this.blobIsVisible = !this.blobIsVisible;
     },
-    hideModal: function () {
+    hideModal() {
       this.$emit('hide-modal');
     },
-    nextImg: function () {
+    nextImg() {
       if (this.nextImgIsExist === false) return;
 
-      this.dispIndex++;
+      this.dispIndex += 1;
     },
-    prevImg: function () {
+    prevImg() {
       if (this.prevImgIsExist === false) return;
 
-      this.dispIndex--;
+      this.dispIndex -= 1;
     }
   }
 });
@@ -27802,7 +27803,7 @@ const MOVE_DIR = {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  data: function () {
+  data() {
     return {
       touchStart: {
         x: 0,
@@ -27857,7 +27858,7 @@ const MOVE_DIR = {
         y: this.currentTouch.y - this.touchStart.y
       };
     },
-    touchMove: function () {
+    touchMove() {
       if (this.touches.length <= 0) {
         return { x: 0, y: 0 };
       }
@@ -27869,28 +27870,27 @@ const MOVE_DIR = {
     }
   },
   watch: {
-    dispIndex: function () {
+    dispIndex() {
       this.isMoveAnimation = true;
 
       // TODO:ここらへんのアニメーション終了検知無理矢理過ぎるのでなおす
-      var self = this;
-      setTimeout(function () {
-        self.isMoveAnimation = false;
+      setTimeout(() => {
+        this.isMoveAnimation = false;
       }, 200);
     }
   },
   methods: {
-    getCurrentUTime: function () {
-      var date = new Date();
+    getCurrentUTime() {
+      const date = new Date();
       return date.getTime();
     },
-    pushNewTouch: function (touch) {
+    pushNewTouch(touch) {
       this.touches.push(touch);
     },
-    onClickImg: function () {
+    onClickImg() {
       this.$emit('on-click-img');
     },
-    onTouchStart: function (e) {
+    onTouchStart(e) {
       // TODO:アニメーション時の処理とか、ご動作起きないような例外処理を追加
 
       const touch = {
@@ -27901,7 +27901,7 @@ const MOVE_DIR = {
       this.touchStart = touch;
       this.currentTouch = touch;
     },
-    onTouchMove: function (e) {
+    onTouchMove(e) {
       this.currentTouch = {
         x: e.touches[0].clientX,
         y: e.touches[0].clientY
@@ -27917,7 +27917,7 @@ const MOVE_DIR = {
         }
       }
     },
-    onTouchEnd: function (e) {
+    onTouchEnd() {
       const vectorLength = Math.sqrt(Math.pow(this.touchVector.x, 2) + Math.pow(this.touchVector.y, 2));
 
       if (vectorLength < 10) {
@@ -28075,10 +28075,10 @@ if (false) {(function () {
 //
 //
 
-var $ = __webpack_require__(46);
+const $ = __webpack_require__(46);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  data: function () {
+  data() {
     return {
       isActive: null
     };
@@ -28094,12 +28094,12 @@ var $ = __webpack_require__(46);
       return classArray;
     }
   },
-  created: function () {
+  created() {
     this.isActive = this.initialState;
   },
   methods: {
-    changeState: function () {
-      var url = '';
+    changeState() {
+      let url = '';
       if (this.isActive) {
         url = this.deactivateUrl;
       } else {
@@ -28108,14 +28108,14 @@ var $ = __webpack_require__(46);
       this.isActive = !this.isActive;
 
       $.ajax({
-        url: url,
+        url,
         type: 'POST',
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-      }).done(function () {
+      }).done(() => {
         //
-      }).always(function () {
+      }).always(() => {
         //
       });
     }
