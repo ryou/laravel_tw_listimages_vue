@@ -27105,6 +27105,7 @@ const LAYOUT_CODE = {
 
       this.isVisible.fullLoader = true;
       this.images = [];
+      this.isVisible.moreBtn = false;
       this.currentList = list;
       if (this.layoutCode < LAYOUT_CODE.lg) {
         this.drawer = false;
