@@ -43,6 +43,13 @@ export default {
 
       return images;
     },
+    toolBarTitle() {
+      if (this.currentList !== null) {
+        return this.currentList.name
+      }
+
+      return 'Twitter List Images Viewer';
+    },
   },
   methods: {
     pushView(id, params = {}) {

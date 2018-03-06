@@ -19,7 +19,7 @@
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Twitter List Images Viewer</v-toolbar-title>
+      <v-toolbar-title>{{ toolBarTitle }}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon @click="isVisible.settingModal = true">
         <v-icon>settings</v-icon>

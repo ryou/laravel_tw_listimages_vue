@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/assets/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -262,7 +262,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(22)
+var listToStyles = __webpack_require__(23)
 
 /*
 type StyleObject = {
@@ -8014,7 +8014,7 @@ setTimeout(function () {
 
 /* harmony default export */ __webpack_exports__["a"] = (Vue$3);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4), __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4), __webpack_require__(8)))
 
 /***/ }),
 /* 4 */
@@ -8224,15 +8224,59 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports) {
+
+class Utils {
+  // fetch APIは4xxエラーをrejectしてくれないので以下を参考に
+  // JSONのfetch用関数作成
+  // http://blog.mudatobunka.org/entry/2016/04/26/092518
+  static fetchJSON(url, options) {
+    const promise = fetch(url, options).then(response => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+
+      return response;
+    }).then(response => response.json());
+
+    return promise;
+  }
+
+  static calcVectorDirection(vector) {
+    let direction;
+    const rad = Math.atan2(vector.y, vector.x);
+    let theta = rad / (2 * Math.PI) * 360; // -179.9999 ~ 180
+    theta = theta < 0 ? 360 + theta : theta; // 0 ~ 359.9999
+
+    if (theta < 45) {
+      direction = 'right';
+    } else if (theta < 135) {
+      direction = 'down';
+    } else if (theta < 225) {
+      direction = 'left';
+    } else if (theta < 315) {
+      direction = 'up';
+    } else {
+      direction = 'right';
+    }
+
+    return direction;
+  }
+};
+
+module.exports = Utils;
+
+/***/ }),
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetify__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetify__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuetify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_template_vue__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_template_vue__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_TweetModal_template_vue__ = __webpack_require__(35);
 
 
@@ -8254,7 +8298,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({ // eslint-disable-lin
 });
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 var g;
@@ -8281,7 +8325,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -25293,13 +25337,13 @@ function unbind(el, binding) {
 //# sourceMappingURL=vuetify.js.map
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_createView__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_createView__ = __webpack_require__(12);
 /* eslint-disable no-param-reassign */
 /*
   ■ no-param-reassignを無効にする理由
@@ -25372,7 +25416,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 }));
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26318,14 +26362,14 @@ var index_esm = {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Top_template_vue__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__About_template_vue__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Posts_template_vue__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Post_template_vue__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Top_template_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__About_template_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Posts_template_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Post_template_vue__ = __webpack_require__(20);
 
 
 
@@ -26347,11 +26391,11 @@ const viewMap = {
 });
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_b1b73432_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_b1b73432_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(14);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -26395,7 +26439,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26417,11 +26461,11 @@ if (false) {
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0de51822_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0de51822_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(16);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -26465,7 +26509,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26487,12 +26531,12 @@ if (false) {
 }
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3e6f852e_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3e6f852e_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(19);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -26535,7 +26579,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26551,7 +26595,7 @@ if (false) {(function () {
 });
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26621,16 +26665,16 @@ if (false) {
 }
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f3506db4_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f3506db4_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(25);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(20)
+  __webpack_require__(21)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -26673,13 +26717,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(21);
+var content = __webpack_require__(22);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -26699,7 +26743,7 @@ if(false) {
 }
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -26713,7 +26757,7 @@ exports.push([module.i, "\n.Post[data-v-f3506db4] {\n}\n.Post_title[data-v-f3506
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 /**
@@ -26746,7 +26790,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26773,7 +26817,7 @@ module.exports = function listToStyles (parentId, list) {
 });
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -26801,18 +26845,18 @@ if (false) {
 }
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c310530c_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(34);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(26)
-  __webpack_require__(28)
-  __webpack_require__(30)
+  __webpack_require__(27)
+  __webpack_require__(29)
+  __webpack_require__(31)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -26855,13 +26899,13 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(27);
+var content = __webpack_require__(28);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -26881,7 +26925,7 @@ if(false) {
 }
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -26895,13 +26939,13 @@ exports.push([module.i, "/*!\n* Vuetify v0.17.6\n* Forged by John Leider\n* Rele
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(29);
+var content = __webpack_require__(30);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -26921,7 +26965,7 @@ if(false) {
 }
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -26935,13 +26979,13 @@ exports.push([module.i, "\n.list__tile-wrapper--current .list__tile {\n  backgro
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(31);
+var content = __webpack_require__(32);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -26961,7 +27005,7 @@ if(false) {
 }
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -26975,11 +27019,11 @@ exports.push([module.i, "\n.fullLoader[data-v-c310530c] {\n  position: fixed;\n 
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Utils__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Utils__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Utils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__libs_Utils__);
 
 
@@ -27025,6 +27069,13 @@ const LAYOUT_CODE = {
       }
 
       return images;
+    },
+    toolBarTitle() {
+      if (this.currentList !== null) {
+        return this.currentList.name;
+      }
+
+      return 'Twitter List Images Viewer';
     }
   },
   methods: {
@@ -27119,50 +27170,6 @@ const LAYOUT_CODE = {
 });
 
 /***/ }),
-/* 33 */
-/***/ (function(module, exports) {
-
-class Utils {
-  // fetch APIは4xxエラーをrejectしてくれないので以下を参考に
-  // JSONのfetch用関数作成
-  // http://blog.mudatobunka.org/entry/2016/04/26/092518
-  static fetchJSON(url, options) {
-    const promise = fetch(url, options).then(response => {
-      if (!response.ok) {
-        throw Error(response.statusText);
-      }
-
-      return response;
-    }).then(response => response.json());
-
-    return promise;
-  }
-
-  static calcVectorDirection(vector) {
-    let direction;
-    const rad = Math.atan2(vector.y, vector.x);
-    let theta = rad / (2 * Math.PI) * 360; // -179.9999 ~ 180
-    theta = theta < 0 ? 360 + theta : theta; // 0 ~ 359.9999
-
-    if (theta < 45) {
-      direction = 'right';
-    } else if (theta < 135) {
-      direction = 'down';
-    } else if (theta < 225) {
-      direction = 'left';
-    } else if (theta < 315) {
-      direction = 'up';
-    } else {
-      direction = 'right';
-    }
-
-    return direction;
-  }
-};
-
-module.exports = Utils;
-
-/***/ }),
 /* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27244,7 +27251,7 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("v-toolbar-title", [_vm._v("Twitter List Images Viewer")]),
+          _c("v-toolbar-title", [_vm._v(_vm._s(_vm.toolBarTitle))]),
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
@@ -27732,7 +27739,7 @@ exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_script_js__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_75f00e45_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_template_vue__ = __webpack_require__(43);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
@@ -27776,7 +27783,180 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 42 */,
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const Utils = __webpack_require__(6);
+
+const STATE = {
+  NORMAL: 0,
+  MOVE: 1,
+  ANIMATE: 2
+};
+
+const MOVE_DIR = {
+  VERTICAL: 0,
+  HORIZONTAL: 1
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  data: function () {
+    return {
+      touchStart: {
+        x: 0,
+        y: 0
+      },
+      currentTouch: {
+        x: 0,
+        y: 0
+      },
+
+      state: STATE.NORMAL,
+
+      touches: [],
+
+      // horizontal/vertical
+      moveDir: null,
+
+      isMoveAnimation: false
+    };
+  },
+  props: ['images', 'dispIndex'],
+  computed: {
+    styleObj() {
+      const style = {};
+
+      const base = {
+        x: -1 * this.dispIndex * window.innerWidth,
+        y: 0
+      };
+      const add = {
+        x: 0,
+        y: 0
+      };
+
+      if (this.moveDir === MOVE_DIR.VERTICAL) {
+        add.y = this.touchVector.y;
+      } else if (this.moveDir === MOVE_DIR.HORIZONTAL) {
+        add.x = this.touchVector.x;
+      }
+
+      style.transform = `translate(${base.x + add.x}px, ${base.y + add.y}px)`;
+
+      if (this.isMoveAnimation) {
+        style.transition = '.2s';
+      }
+
+      return style;
+    },
+    touchVector() {
+      return {
+        x: this.currentTouch.x - this.touchStart.x,
+        y: this.currentTouch.y - this.touchStart.y
+      };
+    },
+    touchMove: function () {
+      if (this.touches.length <= 0) {
+        return { x: 0, y: 0 };
+      }
+
+      return {
+        x: this.touches[this.touches.length - 1].x - this.touches[0].x,
+        y: this.touches[this.touches.length - 1].y - this.touches[0].y
+      };
+    }
+  },
+  watch: {
+    dispIndex: function () {
+      this.isMoveAnimation = true;
+
+      // TODO:ここらへんのアニメーション終了検知無理矢理過ぎるのでなおす
+      var self = this;
+      setTimeout(function () {
+        self.isMoveAnimation = false;
+      }, 200);
+    }
+  },
+  methods: {
+    getCurrentUTime: function () {
+      var date = new Date();
+      return date.getTime();
+    },
+    pushNewTouch: function (touch) {
+      this.touches.push(touch);
+    },
+    onClickImg: function () {
+      this.$emit('on-click-img');
+    },
+    onTouchStart: function (e) {
+      // TODO:アニメーション時の処理とか、ご動作起きないような例外処理を追加
+
+      const touch = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+
+      this.touchStart = touch;
+      this.currentTouch = touch;
+    },
+    onTouchMove: function (e) {
+      this.currentTouch = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+
+      if (this.moveDir === null) {
+        const direction = Utils.calcVectorDirection(this.touchVector);
+
+        if (direction === 'up' || direction === 'down') {
+          this.moveDir = MOVE_DIR.VERTICAL;
+        } else {
+          this.moveDir = MOVE_DIR.HORIZONTAL;
+        }
+      }
+    },
+    onTouchEnd: function (e) {
+      const vectorLength = Math.sqrt(Math.pow(this.touchVector.x, 2) + Math.pow(this.touchVector.y, 2));
+
+      if (vectorLength < 10) {
+        this.$emit('on-click-img');
+      }
+
+      switch (this.moveDir) {
+        case MOVE_DIR.VERTICAL:
+          if (Math.abs(this.touchVector.y) > 50) {
+            if (this.touchVector.y > 0) {
+              this.$emit('img-to-down');
+            } else {
+              this.$emit('img-to-up');
+            }
+          }
+          break;
+        case MOVE_DIR.HORIZONTAL:
+          if (Math.abs(this.touchVector.x) > 50) {
+            if (this.touchVector.x > 0) {
+              this.$emit('img-to-right');
+            } else {
+              this.$emit('img-to-left');
+            }
+          }
+          break;
+        default:
+          break;
+      }
+
+      this.isMoveAnimation = true;
+      this.moveDir = null;
+
+      setTimeout(() => {
+        this.isMoveAnimation = false;
+      }, 200);
+    }
+  }
+});
+
+/***/ }),
 /* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -38671,180 +38851,6 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-419c49b4", esExports)
   }
 }
-
-/***/ }),
-/* 49 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-const Utils = __webpack_require__(33);
-
-const STATE = {
-  NORMAL: 0,
-  MOVE: 1,
-  ANIMATE: 2
-};
-
-const MOVE_DIR = {
-  VERTICAL: 0,
-  HORIZONTAL: 1
-};
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  data: function () {
-    return {
-      touchStart: {
-        x: 0,
-        y: 0
-      },
-      currentTouch: {
-        x: 0,
-        y: 0
-      },
-
-      state: STATE.NORMAL,
-
-      touches: [],
-
-      // horizontal/vertical
-      moveDir: null,
-
-      isMoveAnimation: false
-    };
-  },
-  props: ['images', 'dispIndex'],
-  computed: {
-    styleObj() {
-      const style = {};
-
-      const base = {
-        x: -1 * this.dispIndex * window.innerWidth,
-        y: 0
-      };
-      const add = {
-        x: 0,
-        y: 0
-      };
-
-      if (this.moveDir === MOVE_DIR.VERTICAL) {
-        add.y = this.touchVector.y;
-      } else if (this.moveDir === MOVE_DIR.HORIZONTAL) {
-        add.x = this.touchVector.x;
-      }
-
-      style.transform = `translate(${base.x + add.x}px, ${base.y + add.y}px)`;
-
-      if (this.isMoveAnimation) {
-        style.transition = '.2s';
-      }
-
-      return style;
-    },
-    touchVector() {
-      return {
-        x: this.currentTouch.x - this.touchStart.x,
-        y: this.currentTouch.y - this.touchStart.y
-      };
-    },
-    touchMove: function () {
-      if (this.touches.length <= 0) {
-        return { x: 0, y: 0 };
-      }
-
-      return {
-        x: this.touches[this.touches.length - 1].x - this.touches[0].x,
-        y: this.touches[this.touches.length - 1].y - this.touches[0].y
-      };
-    }
-  },
-  watch: {
-    dispIndex: function () {
-      this.isMoveAnimation = true;
-
-      // TODO:ここらへんのアニメーション終了検知無理矢理過ぎるのでなおす
-      var self = this;
-      setTimeout(function () {
-        self.isMoveAnimation = false;
-      }, 200);
-    }
-  },
-  methods: {
-    getCurrentUTime: function () {
-      var date = new Date();
-      return date.getTime();
-    },
-    pushNewTouch: function (touch) {
-      this.touches.push(touch);
-    },
-    onClickImg: function () {
-      this.$emit('on-click-img');
-    },
-    onTouchStart: function (e) {
-      // TODO:アニメーション時の処理とか、ご動作起きないような例外処理を追加
-
-      const touch = {
-        x: e.touches[0].clientX,
-        y: e.touches[0].clientY
-      };
-
-      this.touchStart = touch;
-      this.currentTouch = touch;
-    },
-    onTouchMove: function (e) {
-      this.currentTouch = {
-        x: e.touches[0].clientX,
-        y: e.touches[0].clientY
-      };
-
-      if (this.moveDir === null) {
-        const direction = Utils.calcVectorDirection(this.touchVector);
-
-        if (direction === 'up' || direction === 'down') {
-          this.moveDir = MOVE_DIR.VERTICAL;
-        } else {
-          this.moveDir = MOVE_DIR.HORIZONTAL;
-        }
-      }
-    },
-    onTouchEnd: function (e) {
-      const vectorLength = Math.sqrt(Math.pow(this.touchVector.x, 2) + Math.pow(this.touchVector.y, 2));
-
-      if (vectorLength < 10) {
-        this.$emit('on-click-img');
-      }
-
-      switch (this.moveDir) {
-        case MOVE_DIR.VERTICAL:
-          if (Math.abs(this.touchVector.y) > 50) {
-            if (this.touchVector.y > 0) {
-              this.$emit('img-to-down');
-            } else {
-              this.$emit('img-to-up');
-            }
-          }
-          break;
-        case MOVE_DIR.HORIZONTAL:
-          if (Math.abs(this.touchVector.x) > 50) {
-            if (this.touchVector.x > 0) {
-              this.$emit('img-to-right');
-            } else {
-              this.$emit('img-to-left');
-            }
-          }
-          break;
-        default:
-          break;
-      }
-
-      this.isMoveAnimation = true;
-      this.moveDir = null;
-
-      setTimeout(() => {
-        this.isMoveAnimation = false;
-      }, 200);
-    }
-  }
-});
 
 /***/ })
 /******/ ]);
