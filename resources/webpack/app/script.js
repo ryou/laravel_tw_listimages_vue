@@ -128,16 +128,18 @@ export default {
       this.isVisible.tweetModal = false;
     },
     logout() {
-      this.isVisible.fullLoader = true;
+      if (window.confirm('ログアウトしますか？')) {
+        this.isVisible.fullLoader = true;
 
-      Utils.fetchJSON(`/api/logout`, {
-        credentials: 'include',
-      })
-        .catch(() => {
+        Utils.fetchJSON(`/api/logout`, {
+          credentials: 'include',
         })
-        .then((json) => {
-          window.location.reload(true);
-        });
+          .catch(() => {
+          })
+          .then((json) => {
+            window.location.reload(true);
+          });
+      }
     },
   },
   created() {

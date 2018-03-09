@@ -27151,13 +27151,15 @@ const LAYOUT_CODE = {
       this.isVisible.tweetModal = false;
     },
     logout() {
-      this.isVisible.fullLoader = true;
+      if (window.confirm('ログアウトしますか？')) {
+        this.isVisible.fullLoader = true;
 
-      __WEBPACK_IMPORTED_MODULE_0__libs_Utils___default.a.fetchJSON(`/api/logout`, {
-        credentials: 'include'
-      }).catch(() => {}).then(json => {
-        window.location.reload(true);
-      });
+        __WEBPACK_IMPORTED_MODULE_0__libs_Utils___default.a.fetchJSON(`/api/logout`, {
+          credentials: 'include'
+        }).catch(() => {}).then(json => {
+          window.location.reload(true);
+        });
+      }
     }
   },
   created() {
