@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Twitter;
+use Session;
 
 use Illuminate\Http\Request;
 
@@ -87,6 +88,11 @@ class ApiController extends Controller
     public function unretweet(Request $request)
     {
         Twitter::post('statuses/unretweet/' . $request->id, []);
+    }
+
+    public function logout()
+    {
+        Session::forget('access_token');
     }
 
 }

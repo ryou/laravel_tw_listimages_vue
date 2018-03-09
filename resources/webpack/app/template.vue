@@ -6,16 +6,34 @@
       app
     >
       <v-list dense>
-        <v-list-tile
-          v-for="list in lists"
-          @click="initImages(list)"
-          :class="{
-            'list__tile-wrapper--current': currentList !== null && currentList.id_str === list.id_str,
-          }"
-          :key="list.id_str"
-        >
+        <v-list-group :value="true">
+          <v-list-tile slot="item" @click="">
+            <v-list-tile-action>
+              <v-icon>list</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>リスト</v-list-tile-title>
+            </v-list-tile-content>
+            <v-list-tile-action>
+              <v-icon>keyboard_arrow_down</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+          <v-list-tile v-for="list in lists" @click="initImages(list)"
+            :class="{
+              'list__tile-wrapper--current': currentList !== null && currentList.id_str === list.id_str,
+            }"
+          >
+            <v-list-tile-content>
+              <v-list-tile-title>{{ list.name }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-group>
+        <v-list-tile @click="logout">
+          <v-list-tile-action>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>{{ list.name }}</v-list-tile-title>
+            <v-list-tile-title>ログアウト</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>

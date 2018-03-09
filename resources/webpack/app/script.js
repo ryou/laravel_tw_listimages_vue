@@ -127,6 +127,18 @@ export default {
     hideModal() {
       this.isVisible.tweetModal = false;
     },
+    logout() {
+      this.isVisible.fullLoader = true;
+
+      Utils.fetchJSON(`/api/logout`, {
+        credentials: 'include',
+      })
+        .catch(() => {
+        })
+        .then((json) => {
+          window.location.reload(true);
+        });
+    },
   },
   created() {
     window.addEventListener('popstate', () => {

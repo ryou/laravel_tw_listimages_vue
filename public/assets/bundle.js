@@ -27149,6 +27149,15 @@ const LAYOUT_CODE = {
     },
     hideModal() {
       this.isVisible.tweetModal = false;
+    },
+    logout() {
+      this.isVisible.fullLoader = true;
+
+      __WEBPACK_IMPORTED_MODULE_0__libs_Utils___default.a.fetchJSON(`/api/logout`, {
+        credentials: 'include'
+      }).catch(() => {}).then(json => {
+        window.location.reload(true);
+      });
     }
   },
   created() {
@@ -27209,32 +27218,91 @@ var render = function() {
           _c(
             "v-list",
             { attrs: { dense: "" } },
-            _vm._l(_vm.lists, function(list) {
-              return _c(
-                "v-list-tile",
-                {
-                  key: list.id_str,
-                  class: {
-                    "list__tile-wrapper--current":
-                      _vm.currentList !== null &&
-                      _vm.currentList.id_str === list.id_str
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.initImages(list)
-                    }
-                  }
-                },
+            [
+              _c(
+                "v-list-group",
+                { attrs: { value: true } },
                 [
                   _c(
+                    "v-list-tile",
+                    {
+                      attrs: { slot: "item" },
+                      on: { click: function($event) {} },
+                      slot: "item"
+                    },
+                    [
+                      _c(
+                        "v-list-tile-action",
+                        [_c("v-icon", [_vm._v("list")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-tile-content",
+                        [_c("v-list-tile-title", [_vm._v("リスト")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-tile-action",
+                        [_c("v-icon", [_vm._v("keyboard_arrow_down")])],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.lists, function(list) {
+                    return _c(
+                      "v-list-tile",
+                      {
+                        class: {
+                          "list__tile-wrapper--current":
+                            _vm.currentList !== null &&
+                            _vm.currentList.id_str === list.id_str
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.initImages(list)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "v-list-tile-content",
+                          [
+                            _c("v-list-tile-title", [_vm._v(_vm._s(list.name))])
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-tile",
+                { on: { click: _vm.logout } },
+                [
+                  _c(
+                    "v-list-tile-action",
+                    [_c("v-icon", [_vm._v("exit_to_app")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
                     "v-list-tile-content",
-                    [_c("v-list-tile-title", [_vm._v(_vm._s(list.name))])],
+                    [_c("v-list-tile-title", [_vm._v("ログアウト")])],
                     1
                   )
                 ],
                 1
               )
-            })
+            ],
+            1
           )
         ],
         1

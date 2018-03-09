@@ -15,6 +15,7 @@ Route::get('/', 'MainController@index')->name('main.index');
 
 Route::get('/api/get_lists', 'ApiController@getLists')->name('api.get_lists');
 Route::get('/api/get_list_images/{id}/{page}', 'ApiController@getListImages')->name('api.get_list_images');
+Route::get('/api/logout', 'ApiController@logout')->name('api.logout');
 Route::post('/api/add_favorite/{id}', 'ApiController@addFavorite')->name('api.add_favorite');
 Route::post('/api/delete_favorite/{id}', 'ApiController@deleteFavorite')->name('api.delete_favorite');
 Route::post('/api/retweet/{id}', 'ApiController@retweet')->name('api.retweet');
