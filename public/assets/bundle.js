@@ -27445,13 +27445,17 @@ var render = function() {
               _c(
                 "v-card",
                 [
-                  _c("v-card-title", [_vm._v("ログイン")]),
-                  _vm._v(" "),
-                  _c("v-card-text"),
+                  _c("v-card-text", [
+                    _vm._v("\n          Twitter認証が必要です。"),
+                    _c("br"),
+                    _vm._v("\n          ログインボタンを押して、認証に進んでください。\n        ")
+                  ]),
                   _vm._v(" "),
                   _c(
                     "v-card-actions",
                     [
+                      _c("v-spacer"),
+                      _vm._v(" "),
                       _c(
                         "v-btn",
                         {
@@ -27461,8 +27465,10 @@ var render = function() {
                             href: "/auth/login"
                           }
                         },
-                        [_vm._v("Login")]
-                      )
+                        [_vm._v("ログイン")]
+                      ),
+                      _vm._v(" "),
+                      _c("v-spacer")
                     ],
                     1
                   )

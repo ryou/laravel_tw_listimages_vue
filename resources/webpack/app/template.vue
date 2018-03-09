@@ -93,11 +93,14 @@
         persistent
       >
         <v-card>
-          <v-card-title>ログイン</v-card-title>
           <v-card-text>
+            Twitter認証が必要です。<br>
+            ログインボタンを押して、認証に進んでください。
           </v-card-text>
-        <v-card-actions>
-          <v-btn color="primary" flat href="/auth/login">Login</v-btn>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" flat href="/auth/login">ログイン</v-btn>
+            <v-spacer></v-spacer>
           </v-card-actions>
         </v-card>
       </v-dialog>
