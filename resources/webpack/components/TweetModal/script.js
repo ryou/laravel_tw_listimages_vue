@@ -26,7 +26,7 @@ export default {
     },
     dateStr() {
       const dateObj = new Date(this.status.created_at);
-      return `${dateObj.getMonth() + 1}/${dateObj.getDate()} ${dateObj.getHours()}:${dateObj.getMinutes}`;
+      return `${dateObj.getMonth() + 1}/${dateObj.getDate()} ${dateObj.getHours()}:${dateObj.getMinutes()}`;
     },
     retweetUrl() {
       return `/api/retweet/${this.status.id_str}`;

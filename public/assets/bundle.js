@@ -27771,7 +27771,7 @@ exports.push([module.i, "\n.l-container {\n  margin: 0 auto;\n  padding: 0 10px;
     },
     dateStr() {
       const dateObj = new Date(this.status.created_at);
-      return `${dateObj.getMonth() + 1}/${dateObj.getDate()} ${dateObj.getHours()}:${dateObj.getMinutes}`;
+      return `${dateObj.getMonth() + 1}/${dateObj.getDate()} ${dateObj.getHours()}:${dateObj.getMinutes()}`;
     },
     retweetUrl() {
       return `/api/retweet/${this.status.id_str}`;
