@@ -100,6 +100,28 @@ export default {
           this.isVisible.moreBtn = true;
         });
     },
+    recentImages() {
+      const id = this.currentList.id_str;
+
+      this.isVisible.fullLoader = true;
+
+      Utils.fetchJSON(`/api/get_list_images/${id}/1`, {
+        credentials: 'include',
+      })
+        .catch(() => {
+          this.isVisible.loginModal = true;
+        })
+        .then((json) => {
+          const newImages = _.differenceWith(
+            json,
+            this.images,
+            (a, b) => a.status.id_str === b.status.id_str
+          );
+          this.images = newImages.concat(this.images);
+
+          this.isVisible.fullLoader = false;
+        });
+    },
     addImages() {
       const id = this.currentList.id_str;
       this.isLoading.addImage = true;
@@ -112,7 +134,11 @@ export default {
         })
         .then((json) => {
           if (json.length > 0) {
-            const newImages = _.differenceWith(json, this.images, (a, b) => a.id_str === b.id_str);
+            const newImages = _.differenceWith(
+              json,
+              this.images,
+              (a, b) => a.status.id_str === b.status.id_str
+            );
             this.images = this.images.concat(newImages);
             this.nextPage += 1;
           } else {

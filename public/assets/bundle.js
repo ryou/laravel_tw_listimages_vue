@@ -27125,6 +27125,22 @@ const LAYOUT_CODE = {
         this.isVisible.moreBtn = true;
       });
     },
+    recentImages() {
+      const id = this.currentList.id_str;
+
+      this.isVisible.fullLoader = true;
+
+      __WEBPACK_IMPORTED_MODULE_0__libs_Utils___default.a.fetchJSON(`/api/get_list_images/${id}/1`, {
+        credentials: 'include'
+      }).catch(() => {
+        this.isVisible.loginModal = true;
+      }).then(json => {
+        const newImages = _.differenceWith(json, this.images, (a, b) => a.status.id_str === b.status.id_str);
+        this.images = newImages.concat(this.images);
+
+        this.isVisible.fullLoader = false;
+      });
+    },
     addImages() {
       const id = this.currentList.id_str;
       this.isLoading.addImage = true;
@@ -27135,7 +27151,7 @@ const LAYOUT_CODE = {
         this.isVisible.loginModal = true;
       }).then(json => {
         if (json.length > 0) {
-          const newImages = _.differenceWith(json, this.images, (a, b) => a.id_str === b.id_str);
+          const newImages = _.differenceWith(json, this.images, (a, b) => a.status.id_str === b.status.id_str);
           this.images = this.images.concat(newImages);
           this.nextPage += 1;
         } else {
@@ -44449,6 +44465,13 @@ var render = function() {
           _c("v-toolbar-title", [_vm._v(_vm._s(_vm.toolBarTitle))]),
           _vm._v(" "),
           _c("v-spacer"),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            { attrs: { icon: "" }, on: { click: _vm.recentImages } },
+            [_c("v-icon", [_vm._v("refresh")])],
+            1
+          ),
           _vm._v(" "),
           _c(
             "v-btn",
