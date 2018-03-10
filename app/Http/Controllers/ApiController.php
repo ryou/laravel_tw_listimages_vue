@@ -112,4 +112,9 @@ class ApiController extends Controller
         Session::forget('access_token');
     }
 
+    public function api_test()
+    {
+        echo 'test';
+    }
+
 }
