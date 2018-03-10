@@ -1,5 +1,7 @@
 import Utils from '../libs/Utils';
 
+const _ = require('lodash');
+
 const LAYOUT_CODE = {
   xs: 0,
   sm: 1,
@@ -110,7 +112,8 @@ export default {
         })
         .then((json) => {
           if (json.length > 0) {
-            this.images = this.images.concat(json);
+            const newImages = _.differenceWith(json, this.images, (a, b) => a.id_str === b.id_str);
+            this.images = this.images.concat(newImages);
             this.nextPage += 1;
           } else {
             this.isVisible.moreBtn = false;
