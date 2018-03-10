@@ -50,7 +50,7 @@
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>{{ toolBarTitle }}</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon @click="recentImages">
+      <v-btn v-if="displayImages.length > 0" icon @click="recentImages">
         <v-icon>refresh</v-icon>
       </v-btn>
       <v-btn icon @click="isVisible.settingModal = true">
