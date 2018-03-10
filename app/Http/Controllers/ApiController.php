@@ -20,8 +20,12 @@ class ApiController extends Controller
             return view('mock.api.get_lists');
         }
 
-        $lists = Twitter::getLists();
-        echo json_encode($lists);
+        try {
+            $lists = Twitter::getLists();
+            echo json_encode($lists);
+        } catch (\Exception $e) {
+            return response($e->getMessage(), $e->getCode());
+        }
     }
 
     public function getListImages($id, $page)
