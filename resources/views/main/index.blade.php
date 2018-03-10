@@ -7,6 +7,9 @@
   <title>Twitter List Images Viewer</title>
 
   <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" href="/icon/icon_32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/icon/icon_152.png" sizes="152x152">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/icon_152.png">
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
