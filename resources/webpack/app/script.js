@@ -1,6 +1,7 @@
 import Utils from '../libs/Utils';
 
 const _ = require('lodash');
+const axios = require('axios');
 
 const LAYOUT_CODE = {
   xs: 0,
@@ -61,6 +62,32 @@ export default {
       });
       this.drawer = false;
     },
+    callAPI(url, onSuccess) {
+      const promise = axios.get(url, {
+        withCredentials: true,
+      })
+        .then(response => response.data)
+        .then(onSuccess)
+        .catch((error) => {
+          const { status, data } = error.response;
+
+          switch (status) {
+            case 401:
+              this.isVisible.loginModal = true;
+              break;
+            case 429:
+              alert('利用制限にかかりました。15分以上時間を置いた後、再度実行してください。');
+              this.isVisible.fullLoader = false;
+              this.isLoading.addImage = false;
+              break;
+            default:
+              alert(`${status}: ${data}`);
+              break;
+          }
+        });
+
+      return promise;
+    },
     updateLayoutCode() {
       const w = window.innerWidth;
       if (w < 600) {
@@ -86,67 +113,49 @@ export default {
         this.drawer = false;
       }
 
-      Utils.fetchJSON(`/api/get_list_images/${id}/1`, {
-        credentials: 'include',
-      })
-        .catch(() => {
-          this.isVisible.loginModal = true;
-        })
-        .then((json) => {
-          this.images = json;
+      this.callAPI(`/api/get_list_images/${id}/1`, (data) => {
+        this.images = data;
 
-          this.nextPage = 2;
-          this.isVisible.fullLoader = false;
-          this.isVisible.moreBtn = true;
-        });
+        this.nextPage = 2;
+        this.isVisible.fullLoader = false;
+        this.isVisible.moreBtn = true;
+      });
     },
     recentImages() {
       const id = this.currentList.id_str;
 
       this.isVisible.fullLoader = true;
 
-      Utils.fetchJSON(`/api/get_list_images/${id}/1`, {
-        credentials: 'include',
-      })
-        .catch(() => {
-          this.isVisible.loginModal = true;
-        })
-        .then((json) => {
-          const newImages = _.differenceWith(
-            json,
-            this.images,
-            (a, b) => a.status.id_str === b.status.id_str
-          );
-          this.images = newImages.concat(this.images);
+      this.callAPI(`/api/get_list_images/${id}/1`, (data) => {
+        const newImages = _.differenceWith(
+          data,
+          this.images,
+          (a, b) => a.status.id_str === b.status.id_str
+        );
+        this.images = newImages.concat(this.images);
 
-          this.isVisible.fullLoader = false;
-        });
+        this.isVisible.fullLoader = false;
+      });
     },
     addImages() {
       const id = this.currentList.id_str;
       this.isLoading.addImage = true;
 
-      Utils.fetchJSON(`/api/get_list_images/${id}/${this.nextPage}`, {
-        credentials: 'include',
-      })
-        .catch(() => {
-          this.isVisible.loginModal = true;
-        })
-        .then((json) => {
-          if (json.length > 0) {
-            const newImages = _.differenceWith(
-              json,
-              this.images,
-              (a, b) => a.status.id_str === b.status.id_str
-            );
-            this.images = this.images.concat(newImages);
-            this.nextPage += 1;
-          } else {
-            this.isVisible.moreBtn = false;
-          }
+      this.callAPI(`/api/get_list_images/${id}/${this.nextPage}`, (data) => {
+        if (data.length > 0) {
+          const newImages = _.differenceWith(
+            data,
+            this.images,
+            (a, b) => a.status.id_str === b.status.id_str
+          );
+          this.images = this.images.concat(newImages);
+          this.nextPage += 1;
+        } else {
+          this.isVisible.moreBtn = false;
+        }
 
-          this.isLoading.addImage = false;
-        });
+        this.isLoading.addImage = false;
+      });
     },
     showModal(image) {
       this.tweetModalProps.status = image.status;
@@ -160,14 +169,9 @@ export default {
       if (window.confirm('ログアウトしますか？')) {
         this.isVisible.fullLoader = true;
 
-        Utils.fetchJSON(`/api/logout`, {
-          credentials: 'include',
-        })
-          .catch(() => {
-          })
-          .then((json) => {
-            window.location.reload(true);
-          });
+        this.callAPI('/api/logout', () => {
+          window.location.reload(true);
+        });
       }
     },
   },
@@ -176,17 +180,11 @@ export default {
       this.$store.commit('popView');
     });
 
-    Utils.fetchJSON('/api/get_lists', {
-      credentials: 'include',
-    })
-      .catch(() => {
-        this.isVisible.loginModal = true;
-      })
-      .then((json) => {
-        this.lists = json;
+    this.callAPI('/api/get_lists', (data) => {
+      this.lists = data;
 
-        this.isVisible.fullLoader = false;
-      });
+      this.isVisible.fullLoader = false;
+    });
 
     this.updateLayoutCode();
   },

@@ -22,6 +22,6 @@ class CheckAuth
             return $next($request);
         }
 
-        return response('', 401);
+        return response('Authorization required.', 401);
     }
 }
