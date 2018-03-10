@@ -44361,6 +44361,27 @@ var render = function() {
             { attrs: { dense: "" } },
             [
               _c(
+                "v-list-tile",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.initImages({ id_str: "home", name: "ホームタイムライン" })
+                    }
+                  }
+                },
+                [
+                  _c("v-list-tile-action", [_c("v-icon", [_vm._v("home")])], 1),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [_c("v-list-tile-title", [_vm._v("ホームタイムライン")])],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
                 "v-list-group",
                 { attrs: { value: true } },
                 [

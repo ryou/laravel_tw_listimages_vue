@@ -30,40 +30,53 @@ class ApiController extends Controller
             return view('mock.api.get_list_images');
         }
 
-        $timeline = Twitter::getListsStatuses([
-            'list_id' => $id,
-            'count' => 200,
-            'page' => $page
-        ]);
+        $timeline = null;
 
-        $imgList = [];
-        foreach ($timeline as $tweet)
-        {
-            // デフォルトのretweeted_statusの扱いが微妙なので整理
-            if (isset($tweet->retweeted_status))
-            {
-                $tmp = $tweet->retweeted_status;
-                $tmp->retweet_user = $tweet->user;
-                $tweet = $tmp;
+        try {
+            if ($id === 'home') {
+                $timeline = Twitter::getHomeTimeline([
+                    'count' => 200,
+                    'page' => $page
+                ]);
+            } else {
+                $timeline = Twitter::getListsStatuses([
+                    'list_id' => $id,
+                    'count' => 200,
+                    'page' => $page
+                ]);
             }
 
-            if (isset($tweet->extended_entities->media))
+            $imgList = [];
+            foreach ($timeline as $tweet)
             {
-                $cnt = 0;
-                foreach ($tweet->extended_entities->media as $img)
+                // デフォルトのretweeted_statusの扱いが微妙なので整理
+                if (isset($tweet->retweeted_status))
                 {
-                    $tmp = array(
-                        'status' => $tweet,
-                        'index' => $cnt
-                    );
-                    $imgList[] = $tmp;
+                    $tmp = $tweet->retweeted_status;
+                    $tmp->retweet_user = $tweet->user;
+                    $tweet = $tmp;
+                }
 
-                    $cnt++;
+                if (isset($tweet->extended_entities->media))
+                {
+                    $cnt = 0;
+                    foreach ($tweet->extended_entities->media as $img)
+                    {
+                        $tmp = array(
+                            'status' => $tweet,
+                            'index' => $cnt
+                        );
+                        $imgList[] = $tmp;
+
+                        $cnt++;
+                    }
                 }
             }
-        }
 
-        echo json_encode($imgList);
+            echo json_encode($imgList);
+        } catch (\Exception $e) {
+            return response($e->getMessage(), $e->getCode());
+        }
     }
 
     public function addFavorite(Request $request)

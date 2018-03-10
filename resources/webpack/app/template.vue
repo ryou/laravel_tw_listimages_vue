@@ -6,6 +6,14 @@
       app
     >
       <v-list dense>
+        <v-list-tile @click="initImages({ id_str: 'home', name: 'ホームタイムライン' })">
+          <v-list-tile-action>
+            <v-icon>home</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>ホームタイムライン</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
         <v-list-group :value="true">
           <v-list-tile slot="item" @click="">
             <v-list-tile-action>
