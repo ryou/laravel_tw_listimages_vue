@@ -22,7 +22,8 @@ class ApiController extends Controller
 
         try {
             $lists = Twitter::getLists();
-            echo json_encode($lists);
+            $json = json_encode($lists);
+            return view('main.api')->with('json', $json);
         } catch (\Exception $e) {
             return response($e->getMessage(), $e->getCode());
         }
@@ -77,7 +78,8 @@ class ApiController extends Controller
                 }
             }
 
-            echo json_encode($imgList);
+            $json = json_encode($imgList);
+            return view('main.api')->with('json', $json);
         } catch (\Exception $e) {
             return response($e->getMessage(), $e->getCode());
         }
