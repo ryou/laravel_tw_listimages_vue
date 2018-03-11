@@ -87,26 +87,38 @@ class ApiController extends Controller
 
     public function addFavorite(Request $request)
     {
-        Twitter::postFavorite([
+        $json = Twitter::postFavorite([
             'id' => $request->id
         ]);
+
+        $json = json_encode($json);
+        return view('main.api')->with('json', $json);
     }
 
     public function deleteFavorite(Request $request)
     {
-        Twitter::destroyFavorite([
+        $json = Twitter::destroyFavorite([
             'id' => $request->id
         ]);
+
+        $json = json_encode($json);
+        return view('main.api')->with('json', $json);
     }
 
     public function retweet(Request $request)
     {
-        Twitter::postRt($request->id);
+        $json = Twitter::postRt($request->id);
+
+        $json = json_encode($json);
+        return view('main.api')->with('json', $json);
     }
 
     public function unretweet(Request $request)
     {
-        Twitter::post('statuses/unretweet/' . $request->id, []);
+        $json = Twitter::post('statuses/unretweet/' . $request->id, []);
+
+        $json = json_encode($json);
+        return view('main.api')->with('json', $json);
     }
 
     public function logout()

@@ -12,6 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+        // TODO: CSRF対策無視してしまっているので、CORSにてCSRF対策する方法調べる
+        'api/*'
     ];
 }
