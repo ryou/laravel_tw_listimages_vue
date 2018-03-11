@@ -83,7 +83,7 @@ class AuthController extends Controller
                     Session::put('access_token', $token);
 
                     // タイムラインを表示するメソッドへリダイレクト
-                    return Redirect::route('main.index');
+                    return Redirect::to(env('FRONT_URL'));
                 }
 
                 // 問題がある場合はとりあえずログイン画面に
