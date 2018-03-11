@@ -14,20 +14,6 @@ class ApiController extends Controller
       $this->middleware('auth.twitter');
     }
 
-    public function auth(Request $request)
-    {
-        $token = [
-            'token' => $request->token,
-            'secret' => $request->token_secret
-        ];
-        Session::put('access_token', $token);
-
-        Twitter::reconfig([
-            'token'  => $token['token'],
-            'secret' => $token['secret']
-        ]);
-    }
-
     public function getLists()
     {
         if (env('USE_FRONT_MOCK', false)) {
