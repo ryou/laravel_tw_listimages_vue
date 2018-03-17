@@ -87,9 +87,14 @@ class ApiController extends Controller
 
     public function addFavorite(Request $request)
     {
-        $json = Twitter::postFavorite([
-            'id' => $request->id
-        ]);
+        $json = null;
+        try {
+            $json = Twitter::postFavorite([
+                'id' => $request->id
+            ]);
+        } catch (\Exception $e) {
+            return response($e->getMessage(), $e->getCode());
+        }
 
         $json = json_encode($json);
         return view('main.api')->with('json', $json);
@@ -97,9 +102,14 @@ class ApiController extends Controller
 
     public function deleteFavorite(Request $request)
     {
-        $json = Twitter::destroyFavorite([
-            'id' => $request->id
-        ]);
+        $json = null;
+        try {
+            $json = Twitter::destroyFavorite([
+                'id' => $request->id
+            ]);
+        } catch (\Exception $e) {
+            return response($e->getMessage(), $e->getCode());
+        }
 
         $json = json_encode($json);
         return view('main.api')->with('json', $json);
@@ -107,7 +117,12 @@ class ApiController extends Controller
 
     public function retweet(Request $request)
     {
-        $json = Twitter::postRt($request->id);
+        $json = null;
+        try {
+            $json = Twitter::postRt($request->id);
+        } catch (\Exception $e) {
+            return response($e->getMessage(), $e->getCode());
+        }
 
         $json = json_encode($json);
         return view('main.api')->with('json', $json);
@@ -115,7 +130,12 @@ class ApiController extends Controller
 
     public function unretweet(Request $request)
     {
-        $json = Twitter::post('statuses/unretweet/' . $request->id, []);
+        $json = null;
+        try {
+            $json = Twitter::post('statuses/unretweet/' . $request->id, []);
+        } catch (\Exception $e) {
+            return response($e->getMessage(), $e->getCode());
+        }
 
         $json = json_encode($json);
         return view('main.api')->with('json', $json);
