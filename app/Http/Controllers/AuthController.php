@@ -10,11 +10,6 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function index()
-    {
-        return view('auth.index');
-    }
-
     public function login()
     {
         Twitter::reconfig([
@@ -35,8 +30,8 @@ class AuthController extends Controller
             return Redirect::to($url);
         }
 
-        // エラー時にはとりあえずログイン画面に戻す
-        return Redirect::route('auth.index');
+        // 問題がある場合はとりあえずフロント画面に
+        return Redirect::to(env('FRONT_URL'));
     }
 
     public function callback(Request $request)
@@ -70,8 +65,8 @@ class AuthController extends Controller
                 $token = Twitter::getAccessToken($oauth_verifier);
                 if (!isset($token['oauth_token_secret']))
                 {
-                    // 問題がある場合はとりあえずログイン画面に
-                    return Redirect::route('auth.index');
+                    // 問題がある場合はとりあえずフロント画面に
+                    return Redirect::to(env('FRONT_URL'));
                 }
 
                 // 認証に成功したユーザーの情報取得
@@ -86,20 +81,12 @@ class AuthController extends Controller
                     return Redirect::to(env('FRONT_URL'));
                 }
 
-                // 問題がある場合はとりあえずログイン画面に
-                return Redirect::route('auth.index');
+                // 問題がある場合はとりあえずフロント画面に
+                return Redirect::to(env('FRONT_URL'));
             }
         } catch(\Exception $e) {
-            \Session::flash('flash_message', 'ログインに失敗しました。');
-            return Redirect::route('auth.index');
+            return Redirect::to(env('FRONT_URL'));
         }
-    }
-
-    public function logout()
-    {
-        Session::forget('access_token');
-
-        return Redirect::route('auth.index');
     }
 
 }

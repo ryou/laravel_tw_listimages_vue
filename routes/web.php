@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', 'MainController@index')->name('main.index');
-
 Route::get('/api/get_lists', 'ApiController@getLists')->name('api.get_lists');
 Route::get('/api/get_list_images/{id}/{page}', 'ApiController@getListImages')->name('api.get_list_images');
 Route::get('/api/logout', 'ApiController@logout')->name('api.logout');
@@ -22,7 +20,5 @@ Route::post('/api/delete_favorite/{id}', 'ApiController@deleteFavorite')->name('
 Route::post('/api/retweet/{id}', 'ApiController@retweet')->name('api.retweet');
 Route::post('/api/unretweet/{id}', 'ApiController@unretweet')->name('api.unretweet');
 
-Route::get('/auth', 'AuthController@index')->name('auth.index');
 Route::get('/auth/login', 'AuthController@login')->name('auth.login');
-Route::get('/auth/logout', 'AuthController@logout')->name('auth.logout');
 Route::get('/auth/callback', 'AuthController@callback')->name('auth.callback');
