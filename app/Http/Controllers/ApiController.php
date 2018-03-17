@@ -14,10 +14,6 @@ class ApiController extends Controller
       $this->middleware('auth.twitter');
     }
 
-    public function preflight()
-    {
-    }
-
     public function getLists()
     {
         if (env('USE_FRONT_MOCK', false)) {
