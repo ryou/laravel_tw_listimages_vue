@@ -78,7 +78,41 @@ class ApiController extends Controller
                 }
             }
 
-            $json = json_encode($imgList);
+            $shrinkedImgList = [];
+            foreach ($imgList as $img)
+            {
+                $tmp = [
+                    'index' => $img['index'],
+                    'status' => [
+                        'id_str' => $img['status']->id_str,
+                        'text' => $img['status']->text,
+                        'created_at' => $img['status']->created_at,
+                        'favorited' => $img['status']->favorited,
+                        'retweeted' => $img['status']->retweeted,
+                        'user' => [
+                            'id_str' => $img['status']->user->id_str,
+                            'name' => $img['status']->user->name,
+                            'screen_name' => $img['status']->user->screen_name,
+                            'profile_image_url_https' => $img['status']->user->profile_image_url_https,
+                        ],
+                        'extended_entities' => $img['status']->extended_entities,
+                    ],
+                ];
+                if (isset($img['status']->retweet_user))
+                {
+                    $tmp['status']['retweet_user'] = [
+                        'id_str' => $img['status']->retweet_user->id_str,
+                        'name' => $img['status']->retweet_user->name,
+                        'screen_name' => $img['status']->retweet_user->screen_name,
+                    ];
+                }
+
+                $shrinkedImgList[] = $tmp;
+            }
+
+            // サイズを抑えるために、マルチバイトUnicodeをエスケープしない
+            $json = json_encode($shrinkedImgList, JSON_UNESCAPED_UNICODE);
+
             return view('main.api')->with('json', $json);
         } catch (\Exception $e) {
             return response($e->getMessage(), $e->getCode());
